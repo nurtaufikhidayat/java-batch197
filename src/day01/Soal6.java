@@ -1,9 +1,8 @@
+package day01;
 import java.util.Scanner;
 
-public class soal3 {
+public class Soal6 {
 	protected static Scanner input;
-
-
 	public static void main(String[] args) {
 		input = new Scanner(System.in);
 		
@@ -13,11 +12,17 @@ public class soal3 {
 		
 		int number = 1;
 		
-		for(int i = 0; i<n; i++) {
-			System.out.print(number +"\t");
+		for(int i = 1; i<=n; i++) {
 			
-			number = number + 3;
+			if ( i%3 ==0 ) {
+				System.out.print("*"+ "\t");
+			} else {
+				System.out.print(number +"\t");
+				
+			}
+			number = number + 4;
+			
+		}
 	}
 
-}
 }

@@ -1,7 +1,8 @@
+package day01;
 
 
 import java.util.Scanner;
-public class soal1 {
+public class soal01 {
 
 	protected static Scanner input;
 	public static void main(String[] args) {

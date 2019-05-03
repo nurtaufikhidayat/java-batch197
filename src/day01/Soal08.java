@@ -1,6 +1,7 @@
+package day01;
 import java.util.Scanner;
 
-public class soal9 {
+public class Soal08 {
 	protected static Scanner input;
 	public static void main(String[] args) {
 		input = new Scanner(System.in);
@@ -9,16 +10,12 @@ public class soal9 {
 		
 		int n = Integer.parseInt(input.nextLine());
 		
-		int number = 4;
+		int number = 3;
 		
-		for(int i = 1; i<=n; i++) {
+		for(int i = 0; i<n; i++) {
+			System.out.print(number +"\t");
 			
-			if(i%3 == 0) {
-				System.out.print("*" + "\t");
-			} else {
-				System.out.print(number +"\t");
-				number = number * 4;
-			}
+			number = number * 3;
 		}
 
 	}
