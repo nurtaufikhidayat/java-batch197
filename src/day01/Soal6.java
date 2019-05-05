@@ -14,15 +14,12 @@ public class Soal6 {
 		
 		for(int i = 1; i<=n; i++) {
 			
-			if ( i%3 ==0 ) {
+			if ( i%3 == 0 ) {
 				System.out.print("*"+ "\t");
 			} else {
 				System.out.print(number +"\t");
-				
 			}
 			number = number + 4;
-			
 		}
 	}
-
 }
