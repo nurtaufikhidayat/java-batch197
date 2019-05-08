@@ -1,7 +1,10 @@
 package day02;
+
 import java.util.Scanner;
-public class Soal01 {
-	public static Scanner input;
+
+public class Logic02Soal01Ulang4 {
+
+	protected static Scanner input;
 	public static void main(String[] args) {
 		input = new Scanner(System.in);
         System.out.println("input n1 : ");
@@ -13,6 +16,7 @@ public class Soal01 {
        
         table(n1,angka);
         test(n2,angka);
+
 	}
 	public static void table(int t1, int t2) {
 		for (int counter = 0; counter < t1; counter++) {
@@ -24,24 +28,20 @@ public class Soal01 {
 			t2=t2*3;
 		}
 	}
-	
-	 public static void test(int a, int b) {
-	        int c = 0;
-	        System.out.println("");
-	        for(int counter = 0;counter<a;counter++) {
-	            if(counter<a-1) {
-	                c=c+b;
-	                System.out.print(b+" + ");
-	                b=b*3;
-	               
-	            }else {
-	            System.out.print(b+" = ");
-	            c=c+b;
-	            System.out.print(c);
-	            }
-	        }
-	 
-	    }
+	public static void test(int a, int b) {
+        int c = 0;
+        System.out.println("");
+        for(int counter = 0;counter<a;counter++) {
+            if(counter<a-1) {
+                c=c+b;
+                System.out.print(b+" + ");
+                b=b*3;
+               
+            }else {
+            System.out.print(b+" = ");
+            c=c+b;
+            System.out.print(c);
+            }
+        }
+    }
 }
-
-
