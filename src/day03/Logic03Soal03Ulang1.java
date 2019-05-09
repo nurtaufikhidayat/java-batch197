@@ -2,7 +2,7 @@ package day03;
 
 import java.util.Scanner;
 
-public class Logic03Soal03 {
+public class Logic03Soal03Ulang1 {
 
 	public static Scanner input;
 
@@ -18,7 +18,6 @@ public class Logic03Soal03 {
 		int arr[][] = new int[n][n];
 		int[] array = deretTiga(n * 4, m, o);
 		int index = 0;
-		//atas kekanan
 		for (int i = 0; i < n; i++) {
 			arr[0][i] = array[index];
 			index++;
@@ -64,4 +63,5 @@ public class Logic03Soal03 {
 		}
 		return arr;
 	}
+
 }
