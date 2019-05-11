@@ -8,6 +8,21 @@ public class Orang {
 	public String jk;
 	public String noTelp;
 	
+	public Orang() {
+		
+	}
+	
+	public Orang(String id, String nama, String alamat, String jk, String noTelp) {
+		this.id = id;
+		this.nama = nama;
+		this.alamat = alamat;
+		this.jk = jk;
+		this.noTelp = noTelp;
+		
+		
+	}
+	
+	//deklarasi objeck banyakInput dengan tipe data Main
 	Main banyakInput = new Main();
 	
 	int kapasitas = banyakInput.n;
@@ -23,20 +38,12 @@ public class Orang {
 		return a+b+c ;
 	}
 	
-//	public Orang(String id, String nama, String alamat, String jk, String noTelp) {
-//		this.id = id;
-//		this.nama = nama;
-//		this.alamat = alamat;
-//		this.jk = jk;
-//		this.noTelp = noTelp;
-//		
-//	}
 	public void cetakData() {
 		System.out.println("ID 	\t: " + id);
 		System.out.println("Nama 	\t: " + nama);
 		System.out.println("Alamat 	\t: " + alamat);
-		System.out.println("Jenik Kelamin \t: " + jk);
-		System.out.println("No telep \t: " + noTelp);
+		System.out.println("Jenis Kelamin \t: " + jk);
+		System.out.println("No Telp \t: " + noTelp);
 		
 		
 	}
