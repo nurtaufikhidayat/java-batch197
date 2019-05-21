@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h2>Form Data Diri</h2>
+	<form action="/action_page.php">
+	<table>
+		<tr>
+			<td>Nama Lengkap</td>
+			<td>:</td>
+			<td><input type="text" name="Nama" size="25"
+				value="Nur Taufik Hidayat" /></td>
+		</tr>
+		<tr>
+			<td>Nama Panggilan</td>
+			<td>:</td>
+			<td><input type="text" name="namaPanggilan" size="25"
+				value="Nur Taufik Hidayat" /></td>
+		</tr>
+		<tr>
+			<td>Jenis Kelamin</td>
+			<td>:</td>
+			<td><input type="radio" name="jenisKelamin" value="Male"> Laki-Laki
+			<input type="radio" name="jenisKelamin" value="Female"> Perempuan
+			<input type="radio" name="jenisKelamin" value="Other"> Lain-Lain</td>
+		</tr>
+		<tr>
+			<td>Agama</td>
+			<td>:</td>
+			<td><input type="radio" name="agama" value="islam">Islam
+			<input type="radio" name="agama" value="kristen">Kristen
+			<input type="radio" name="agama" value="budha">Budha</td>
+		</tr>
+		
+		<tr>
+			<td>Golongan Darah</td>
+			<td>:</td>
+			<td><select>
+			<option nama="goldar" value="O">O</option>
+			<option nama="goldar" value="AB">AB</option>
+			<option nama="goldar" value="A">A</option>
+			<option nama="goldar" value="B">B</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top">Alamat</td>
+			<td style="vertical-align:top">:</td>
+			<td><textarea rows="4" cols="50"></textarea></td>
+		</tr>
+	</table>
+		<input type="submit" name="Submit">
+		<input type="reset" name="Reset">
+
+	</form>
+
+	<p>if you click the "Submit" button, the form data will be sent to
+		a page</p>
+
+</body>
+</html>
