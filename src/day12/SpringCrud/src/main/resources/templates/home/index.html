@@ -1,0 +1,72 @@
+<<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+    <style>
+        table {
+            border: 1px solid black;
+            padding: 20px
+        }
+    </style>
+<form th:action="@{/home/save}" method="post">
+<table>
+    <caption><h2>Form Biodata</h2></caption>
+    <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td><input type="text" size="25" name="nama"></td>
+    </tr>
+    <tr>
+        <td>Alamat</td>
+        <td>:</td>
+        <td><textarea name="alamat" rows="3" cols="25"></textarea></td>
+    </tr>
+    <tr>
+        <td>Tempat Lahir</td>
+        <td>:</td>
+        <td><input type="text" size="25" name="tptLahir"></td>
+    </tr>
+    <tr>
+        <td>Tanggal Lahir</td>
+        <td>:</td>
+        <td><input type="date" name="tglLahir" max="2019-12-31"></td>
+    </tr>
+    <tr>
+        <td>Jenis Kelamin</td>
+        <td>:</td>
+        <td><input type="radio" name="jk" value="Pria">Pria
+            <input type="radio" name="jk" value="Wanita">Wanita</td>
+    </tr>
+    <tr>
+        <td>Agama</td>
+        <td>:</td>
+        <td>
+        <select name="agama">
+            <option value="Islam">Islam</option>
+            <option value="Kristen">Kristen Protestan</option>
+            <option value="Katolik">Katolik</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Budha">Buddha</option>
+            <option value="Konghucu">Konghucu</option>
+        </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Golongan Darah</td>
+        <td>:</td>
+        <td><input type="radio" name="golDarah" value="A">A
+            <input type="radio" name="golDarah" value="B">B
+            <input type="radio" name="golDarah" value="AB">AB
+            <input type="radio" name="golDarah" value="O">O</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><input type="submit" value="Submit">
+            <input type="reset" value="Reset"></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

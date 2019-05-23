@@ -1,0 +1,23 @@
+<html>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>Kode Fakultas</th>
+			<th>Nama Fakultas</th>
+			<th>action</th>
+			<th>hapus</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="item:${fakultasList}">
+		<td><span th:text="${item.kdFakultas}"></span></td>
+        <td><span th:text="${item.nmFakultas}"></span></td>
+        <td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
+        <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>

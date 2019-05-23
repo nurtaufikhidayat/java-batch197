@@ -1,0 +1,22 @@
+<html>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>Kode Nilai</th>
+			<th>Bobot</th>
+			<th>Action</th>
+			<th>Hapus</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="item:${bobotnilaiList}">
+		<td><span th:text="${item.kdNilai}"></span></td>
+		<td><span th:text="${item.bobot}"></span></td>
+		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
+        <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

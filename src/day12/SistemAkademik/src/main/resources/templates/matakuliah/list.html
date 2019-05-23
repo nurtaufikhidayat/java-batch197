@@ -1,0 +1,26 @@
+<html>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>Kode Matakuliah</th>
+			<th>Nama Matakuliah</th>
+			<th>SKS</th>
+			<th>Kode Jurusan</th>
+			<th>Action</th>
+			<th>Hapus</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="item:${matakuliahList}">
+		<td><span th:text="${item.kdMatakuliah}"></span></td>
+		<td><span th:text="${item.nmMatakuliah}"></span></td>
+		<td><span th:text="${item.sks}"></span></td>
+		<td><span th:text="${item.kdJurusan}"></span></td>
+		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
+        <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<style>
+table {
+            border: 1px solid black;
+            padding: 20px
+        }
+</style>
+	<form th:action="@{/matakuliah/save}" method="post">
+		<table>
+			<caption>
+				<h2>Form Mata Kuliah</h2>
+			</caption>
+			<input type="hidden" name="id" th:value="${matakuliahEdit.id}">
+			<tr>
+				<td>Kode Matakulih</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="kdMatakuliah" th:value="${matakuliahEdit.kdMatakuliah}"></td>
+			</tr>
+			<tr>
+				<td>Nama Matakuliah</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="nmMatakuliah" th:value="${matakuliahEdit.nmMatakuliah}"></td>
+			</tr>
+			<tr>
+				<td>SKS</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="sks" th:value="${matakuliahEdit.sks}"></td>
+			</tr>
+			<tr>
+				<td>Kode Jurusan</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="kdJurusan" th:value="${matakuliahEdit.kdJurusan}"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"> 
+				<input type="reset" value="Reset">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

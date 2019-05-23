@@ -1,0 +1,25 @@
+<html>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Nama</th>
+        <th>Alamat</th>
+        <th>Tempat Lahir</th>
+        <th>action</th>
+        <th>hapus</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="item:${biodataList}">
+        <td><span th:text="${item.nama}"></span></td>
+        <td><span th:text="${item.alamat}"></span></td>
+        <td><span th:text="${item.tptLahir}"></span></td>
+        <td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
+        <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
+ 

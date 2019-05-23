@@ -1,0 +1,26 @@
+<html>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>Kode Dosen</th>
+			<th>Nama Dosen</th>
+			<th>Jenis Kelamin</th>
+			<th>Alamat</th>
+			<th>Action</th>
+			<th>Hapus</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="item:${dosenList}">
+		<td><span th:text="${item.kdDosen}"></span></td>
+		<td><span th:text="${item.nmDosen}"></span></td>
+		<td><span th:text="${item.jk}"></span></td>
+		<td><span th:text="${item.alamat}"></span></td>
+		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
+        <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

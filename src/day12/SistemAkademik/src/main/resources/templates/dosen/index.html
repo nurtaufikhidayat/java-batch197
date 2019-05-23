@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<style>
+table {
+            border: 1px solid black;
+            padding: 20px
+        }
+</style>
+	<form th:action="@{/dosen/save}" method="post">
+		<table>
+			<caption>
+				<h2>Form Dosen</h2>
+			</caption>
+			<tr>
+				<td>Kode Dosen</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="kdDosen"></td>
+			</tr>
+			<tr>
+				<td>Nama Dosen</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="nmDosen"></td>
+			</tr>
+			<tr>
+				<td>Jenis Kelamin</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="jk"></td>
+			</tr>
+			<tr>
+				<td>Alamat</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="alamat"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"> 
+				<input type="reset" value="Reset">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

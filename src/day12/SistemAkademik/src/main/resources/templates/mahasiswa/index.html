@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<style>
+table {
+            border: 1px solid black;
+            padding: 20px
+        }
+</style>
+	<form th:action="@{/mahasiswa/save}" method="post">
+		<table>
+			<caption>
+				<h2>Form Mahasiswa</h2>
+			</caption>
+			<tr>
+				<td>NIM</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="nim"></td>
+			</tr>
+			<tr>
+				<td>Nama Mahasiswa</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="nmMhs"></td>
+			</tr>
+			<tr>
+				<td>Jenis Kelamin</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="jk"></td>
+			</tr>
+			<tr>
+				<td>Alamat</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="alamat"></td>
+			</tr>
+			<tr>
+				<td>Kode Jurusan</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="kdJurusan"></td>
+			</tr>
+			<tr>
+				<td>Status</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="status"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"> 
+				<input type="reset" value="Reset">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<style>
+table {
+            border: 1px solid black;
+            padding: 20px
+        }
+</style>
+	<form th:action="@{/jurusan/save}" method="post">
+		<table>
+			<caption>
+				<h2>Form Jurusan</h2>
+			</caption>
+			<tr>
+				<td>Kode Jurusan</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="kdJurusan"></td>
+			</tr>
+			<tr>
+				<td>Nama Jurusan</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="nmJurusan"></td>
+			</tr>
+			<tr>
+				<td>Kode Fakultas</td>
+				<td>:</td>
+				<td><select name="fakultasId">
+					<option th:each="item:${listFakultas}" th:value="${item.id}" th:text="${item.nmFakultas}">Pilih Fakultas</option>
+				</select> </td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"> 
+				<input type="reset" value="Reset">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

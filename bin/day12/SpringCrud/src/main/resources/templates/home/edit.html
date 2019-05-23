@@ -1,0 +1,77 @@
+<html>
+<head>
+<style type="text/css">
+	table{
+	 border: 2px solid black;
+	 padding: 10px;
+	}
+</style>
+</head>
+<body>
+<h2>Form Data Diri</h2>
+<form th:action="@{/home/save}" method="post">
+	<table>
+	<input type="hidden" name="id" th:value="${biodataEdit.id}">
+		<tr>
+			<td>Nama Lengkap</td>
+			<td>:</td>
+			<td><input name="nama" type="text" size="25" th:value="${biodataEdit.name}"></td>
+		</tr>
+
+		<tr>
+			<td>Tempat Lahir</td>
+			<td>:</td>
+			<td><input name="tpt_lahir" type="text"></td>
+		</tr>
+		
+		<tr>
+			<td>Tanggal Lahir</td>
+			<td>:</td>
+			<td><input name="tgl_lahir" type ="date"></td>
+		</tr>
+		<tr>
+			<td>Jenis Kelamin</td>
+			<td>:</td>
+			<td><input type="radio" name="jk" value="Male"> Laki-Laki
+			<input type="radio" name="jk" value="Female"> Perempuan
+			<input type="radio" name="jk" value="Other"> Lain-Lain</td>
+		</tr>
+		<tr>
+			<td>Pekerjaan</td>
+			<td>:</td>
+			<td><input nama="pekerjaan" type="text" size="25" th:value="${biodataEdit.pekerjaan}"></td>
+		</tr>
+		<tr>
+			<td>Agama</td>
+			<td>:</td>
+			<td><select name="agama">
+				<option value="islam">Islam</option>
+				<option value="kristen">Kristen</option>
+				<option value="budha">Budha</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td>Golongan Darah</td>
+			<td>:</td>
+			<td><select name="gol_darah">
+				<option value="O">O</option>
+				<option value="AB">AB</option>
+				<option value="A">A</option>
+				<option value="B">B</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top">Alamat</td>
+			<td style="vertical-align:top">:</td>
+			<td><textarea name ="alamat" rows="4" cols="50" th:value="${biodataEdit.alamat}"></textarea></td>
+		</tr>
+		<tr>
+			<td>
+			<input type="submit" name="Submit">
+			<input type="reset" name="Reset"></td>
+		</tr>
+	</table>
+
+</form>
+</body>
+</html>
