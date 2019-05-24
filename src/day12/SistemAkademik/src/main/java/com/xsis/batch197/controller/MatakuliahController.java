@@ -47,6 +47,8 @@ public class MatakuliahController {
 	public String edit(Model kirim, @PathVariable(name = "id") Integer id) {
 		MatakuliahModel matakuliahEdit = matakuliahRepo.findById(id).orElse(null);
 		kirim.addAttribute("matakuliahEdit", matakuliahEdit);
+		List<JurusanModel> listJurusan = jurusanRepo.findAll();
+		kirim.addAttribute("listJurusan", listJurusan);
 		return "matakuliah/edit";
 	}
 

@@ -35,8 +35,8 @@ public class MahasiswaController {
 	}
 	@RequestMapping(value = "/mahasiswa/list")
 	public String list(Model kirim) {
-		List<MahasiswaModel> mahasiswaList = mahasiswaRepo.findAll();
-		kirim.addAttribute("mahasiswaList", mahasiswaList);
+		List<MahasiswaModel> listMhs = mahasiswaRepo.findAll();
+		kirim.addAttribute("listMhs", listMhs);
 		return "mahasiswa/list";
 	}
 	
@@ -44,6 +44,8 @@ public class MahasiswaController {
 	public String edit(Model kirim, @PathVariable(name="id")Integer id) {
 		MahasiswaModel mahasiswaEdit = mahasiswaRepo.findById(id).orElse(null);
 		kirim.addAttribute("mahasiswaEdit", mahasiswaEdit);
+		List<JurusanModel> listJurusan = jurusanRepo.findAll();
+		kirim.addAttribute("listJurusan", listJurusan);
 		return "mahasiswa/edit";
 	}
 	

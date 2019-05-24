@@ -37,8 +37,8 @@ table {
 			<tr>
 				<td>Kode Jurusan</td>
 				<td>:</td>
-				<td><select name="kdJurusan">
-					<option th:each="item:${listJurusan}" th:value="${item.id}" th:text="${item.kdJurusan}">Pilih Fakultas</option>
+				<td><select name="jurusanId">
+					<option th:each="item:${listJurusan}" th:value="${item.id}" th:text="${item.nmJurusan}">Pilih Jurusan</option>
 				</select></td>
 			</tr>
 			<tr>

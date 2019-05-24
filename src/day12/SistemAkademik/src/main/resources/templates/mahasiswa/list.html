@@ -14,12 +14,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="item:${mahasiswaList}">
+		<tr th:each="item:${listMhs}">
 		<td><span th:text="${item.nim}"></span></td>
 		<td><span th:text="${item.nmMhs}"></span></td>
 		<td><span th:text="${item.jk}"></span></td>
 		<td><span th:text="${item.alamat}"></span></td>
-		<td><span th:text="${item.kdJurusan}"></span></td>
+		<td><span th:text="${item.jurusan.kdJurusan}"></span></td>
 		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
         <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
 		</tr>

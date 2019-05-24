@@ -38,7 +38,9 @@ table {
 			<tr>
 				<td>Kode Jurusan</td>
 				<td>:</td>
-				<td><input type="text" size="25" name="kdJurusan" th:value="${mahasiswaEdit.kdJurusan}"></td>
+				<td><select name="jurusanId">
+					<option th:each="item:${listJurusan}" th:value="${item.id}" th:text="${item.nmJurusan}">Pilih Jurusan</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Status</td>

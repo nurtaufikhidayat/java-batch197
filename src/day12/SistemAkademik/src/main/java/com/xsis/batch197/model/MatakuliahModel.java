@@ -20,13 +20,13 @@ public class MatakuliahModel {
     @Column(name = "id")
     private int id;
 	
-	@Column(name="KD_MK", length = 10)
+	@Column(name="kd_mk", length = 10)
 	private String kdMatakuliah;
 	
-	@Column(name="NM_MK", length = 50)
+	@Column(name="nm_mk", length = 50)
 	private String nmMatakuliah;
 
-	@Column(name="SKS")
+	@Column(name="sks")
 	private int sks;
 	
 	@ManyToOne
