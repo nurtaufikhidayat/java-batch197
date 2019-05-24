@@ -35,6 +35,17 @@ public class JurusanModel {
 	private int fakultasId;
 	
 	@OneToMany(mappedBy="jurusan")
+	private List<MatakuliahModel> listMatakuliah = new ArrayList<MatakuliahModel>();
+	
+	public List<MatakuliahModel> getListMatakuliah() {
+		return listMatakuliah;
+	}
+
+	public void setListMatakuliah(List<MatakuliahModel> listMatakuliah) {
+		this.listMatakuliah = listMatakuliah;
+	}
+
+	@OneToMany(mappedBy="jurusan")
 	private List<MahasiswaModel> listMhs = new ArrayList<MahasiswaModel>();
 	
 	@ManyToOne

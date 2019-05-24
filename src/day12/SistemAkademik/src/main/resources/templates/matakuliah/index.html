@@ -15,7 +15,7 @@ table {
 				<h2>Form Mata Kuliah</h2>
 			</caption>
 			<tr>
-				<td>Kode Matakulih</td>
+				<td>Kode Matakuliah</td>
 				<td>:</td>
 				<td><input type="text" size="25" name="kdMatakuliah"></td>
 			</tr>
@@ -32,7 +32,9 @@ table {
 			<tr>
 				<td>Kode Jurusan</td>
 				<td>:</td>
-				<td><input type="text" size="25" name="kdJurusan"></td>
+				<td><select name="kdJurusan">
+					<option th:each="item:${listJurusan}" th:value="${item.id}" th:text="${item.kdJurusan}">Pilih Fakultas</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Submit"> 

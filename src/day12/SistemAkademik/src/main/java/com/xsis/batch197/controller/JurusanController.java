@@ -46,6 +46,8 @@ public class JurusanController {
 	public String edit(Model kirim, @PathVariable(name ="id")Integer id) {
 		JurusanModel jurusanEdit=jurusanRepo.findById(id).orElse(null);
 		kirim.addAttribute("jurusanEdit", jurusanEdit);
+		List<FakultasModel> listFakultas = fakultasRepo.findAll();
+		kirim.addAttribute("listFakultas", listFakultas);
 		return "jurusan/edit";
 	}
 	

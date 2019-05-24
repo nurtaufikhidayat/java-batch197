@@ -42,8 +42,8 @@ public class HomeController {
 	
 	@RequestMapping(value="/home/hapus/{id}")
     public String hapus(@PathVariable(name = "id") Integer id) {
-        FakultasModel fakultasEdit=fakultasRepo.findById(id).orElse(null);
-        fakultasRepo.delete(fakultasEdit);
+        FakultasModel fakultasHapus=fakultasRepo.findById(id).orElse(null);
+        fakultasRepo.delete(fakultasHapus);
         return "redirect:/home/list";
 	}
 }

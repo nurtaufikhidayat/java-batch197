@@ -2,9 +2,12 @@ package com.xsis.batch197.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -25,6 +28,10 @@ public class MatakuliahModel {
 
 	@Column(name="SKS")
 	private int sks;
+	
+	@ManyToOne
+	@JoinColumn(name="jurusan_id", foreignKey=@ForeignKey(name="fk_matakuliah_jurusan"), insertable= false, updatable = false)
+	private JurusanModel jurusan;
 	
 	public int getId() {
 		return id;

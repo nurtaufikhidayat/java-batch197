@@ -28,7 +28,9 @@ table {
 			<tr>
 				<td>Kode Fakultas</td>
 				<td>:</td>
-				<td><input type="text" size="25" name="fakultasId" th:value="${jurusanEdit.fakultasId}"></td>
+				<td><select name="fakultasId">
+					<option th:each="item:${listFakultas}" th:value="${item.id}" th:text="${item.kdFakultas}">Pilih Fakultas</option>
+				</select> </td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Submit"> 

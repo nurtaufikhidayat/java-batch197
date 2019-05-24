@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xsis.batch197.model.JurusanModel;
 import com.xsis.batch197.model.MahasiswaModel;
+import com.xsis.batch197.repository.JurusanRepo;
 import com.xsis.batch197.repository.MahasiswaRepo;
 
 @Controller
@@ -17,8 +19,13 @@ public class MahasiswaController {
 	@Autowired
 	private MahasiswaRepo mahasiswaRepo;
 	
+	@Autowired
+	private JurusanRepo jurusanRepo;
+	
 	@RequestMapping(value = "/mahasiswa/index")
-	public String index() {
+	public String index(Model jurusan) {
+		List<JurusanModel> listJurusan = jurusanRepo.findAll();
+		jurusan.addAttribute("listJurusan", listJurusan);
 		return "mahasiswa/index";
 	}
 	@RequestMapping(value="/mahasiswa/save")

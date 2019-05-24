@@ -15,7 +15,7 @@
 		<tr th:each="item:${jurusanList}">
 		<td><span th:text="${item.kdJurusan}"></span></td>
 		<td><span th:text="${item.nmJurusan}"></span></td>
-		<td><span th:text="${item.fakultasId}"></span></td>
+		<td><span th:text="${item.fakultas.kdFakultas}"></span></td>
 		<td><span th:text="${item.fakultas.nmFakultas}"></span></td>
 		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
         <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>

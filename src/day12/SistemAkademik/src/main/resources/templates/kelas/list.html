@@ -1,0 +1,28 @@
+<html>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>Kode Kelas</th>
+			<th>Nama Kelas</th>
+			<th>Kode Dosen</th>
+			<th>Kode Matakuliah</th>
+			<th>Kode Ruang</th>
+			<th>Action</th>
+			<th>Hapus</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="item:${kelasList}">
+		<td><span th:text="${item.kdKelas}"></span></td>
+		<td><span th:text="${item.nmKelas}"></span></td>
+		<td><span th:text="${item.kdDosen}"></span></td>
+		<td><span th:text="${item.kdMatakuliah}"></span></td>
+		<td><span th:text="${item.kdRuang}"></span></td>
+		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
+        <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

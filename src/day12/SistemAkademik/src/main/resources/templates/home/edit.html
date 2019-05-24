@@ -9,7 +9,7 @@ table {
             padding: 20px
         }
 </style>
-<form th:action="@{/home/save}" method="post"></form>
+<form th:action="@{/home/save}" method="post">
 <table>
 	<caption><h2>Form Fakultas</h2></caption>
 	<input type="hidden" name="id" th:value="${fakultasEdit.id}">
@@ -29,6 +29,8 @@ table {
 		</td>
 	</tr>
 
+
 </table>
+</form>
 </body>
 </html>

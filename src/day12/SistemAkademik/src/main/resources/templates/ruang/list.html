@@ -1,0 +1,24 @@
+<html>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>Kode Ruang</th>
+			<th>Nama Ruang</th>
+			<th>Kapasitas</th>
+			<th>Action</th>
+			<th>Hapus</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="item:${ruangList}">
+		<td><span th:text="${item.kdRuang}"></span></td>
+		<td><span th:text="${item.nmRuang}"></span></td>
+		<td><span th:text="${item.kapasitas}"></span></td>
+		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
+        <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>
