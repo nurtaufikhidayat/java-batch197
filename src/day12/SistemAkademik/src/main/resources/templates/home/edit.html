@@ -11,7 +11,7 @@ table {
 </style>
 <form th:action="@{/home/save}" method="post">
 <table>
-	<caption><h2>Form Fakultas</h2></caption>
+	<caption><h2>Form Edit Fakultas</h2></caption>
 	<input type="hidden" name="id" th:value="${fakultasEdit.id}">
 	<tr>
 		<td>Kode Fakultas</td>
@@ -28,9 +28,13 @@ table {
 		<input type="reset" value="Reset">		
 		</td>
 	</tr>
-
-
 </table>
 </form>
+	<table>
+		<th>
+			<button type="button"><a href="/home/fakultas">View Form</a></button>
+			<button type="button"><a href="/home/list">View List</a></button>
+		</th>
+	</table>
 </body>
 </html>

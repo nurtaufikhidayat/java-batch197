@@ -13,25 +13,28 @@
 <table>
 	<thead>
 		<tr>
-			<th>Kode Nilai</th>
-			<th>Bobot</th>
+			<th>Kode Kelas</th>
+			<th>NIM</th>
+			<th>Nilai</th>
+			<th>Status</th>
 			<th>Action</th>
 			<th>Hapus</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="item:${bobotnilaiList}">
-		<td><span th:text="${item.kdNilai}"></span></td>
-		<td><span th:text="${item.bobot}"></span></td>
+		<tr th:each="item:${kelasdetailList}">
+		<td><span th:text="${item.kelas.kdKelas}"></span></td>
+		<td><span th:text="${item.mahasiswa.nim}"></span></td>
+		<td><span th:text="${item.bobotnilai.kdNilai}"></span></td>
+		<td><span th:text="${item.status}"></span></td>
 		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
         <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
 		</tr>
 	</tbody>
 </table>
-<br>
 <table>
 		<th>
-			<button type="button"><a href="/bobotnilai/index">View Form</a></button>
+			<button type="button"><a href="/kelasdetail/index">View Form</a></button>
 		</th>
 	</table>
 </body>

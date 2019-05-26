@@ -12,7 +12,7 @@ table {
 	<form th:action="@{/ruang/save}" method="post">
 		<table>
 			<caption>
-				<h2>Form Ruang</h2>
+				<h2>Form Edit Ruang</h2>
 			</caption>
 			<input type="hidden" name="id" th:value="${ruangEdit.id}">
 			<tr>
@@ -37,5 +37,11 @@ table {
 			</tr>
 		</table>
 	</form>
+	<table>
+		<th>
+			<button type="button"><a href="/ruang/index">View Form</a></button>
+			<button type="button"><a href="/ruang/list">View List</a></button>
+		</th>
+	</table>
 </body>
 </html>

@@ -1,5 +1,15 @@
 <html>
 <body>
+<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 5px;
+			text-align: left;
+		}
+	</style>
 <table>
 	<thead>
 		<tr>
@@ -20,10 +30,17 @@
 		<td><span th:text="${item.jk}"></span></td>
 		<td><span th:text="${item.alamat}"></span></td>
 		<td><span th:text="${item.jurusan.kdJurusan}"></span></td>
+		<td><span th:text="${item.status}"></span></td>
 		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
         <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
 		</tr>
 	</tbody>
 </table>
+<br>
+	<table>
+		<th>
+			<button type="button"><a href="/mahasiswa/index">View Form</a></button>
+		</th>
+	</table>
 </body>
 </html>

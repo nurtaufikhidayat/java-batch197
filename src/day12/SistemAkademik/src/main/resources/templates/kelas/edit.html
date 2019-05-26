@@ -28,17 +28,23 @@ table {
 			<tr>
 				<td>Kode Dosen</td>
 				<td>:</td>
-				<td><input type="text" size="25" name="kdDosen" th:value="${kelasEdit.kdDosen}"></td>
+				<td><select name="dosenId">
+					<option th:each="item:${listDosen}" th:value="${item.id}" th:text="${item.kdDosen}">Pilih Kode Dosen</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>Kode Matakuliah</td>
 				<td>:</td>
-				<td><input type="text" size="25" name="kdMatakuliah" th:value="${kelasEdit.kdMatakuliah}"></td>
+				<td><select name="matakuliahId">
+					<option th:each="item:${listMatakuliah}" th:value="${item.id}" th:text="${item.kdMatakuliah}">Pilih Kode Matakuliah</option>
+				</select></td>
 			</tr>
 				<tr>
 				<td>Kode Ruang</td>
 				<td>:</td>
-				<td><input type="text" size="25" name="kdRuang" th:value="${kelasEdit.kdRuang}"></td>
+				<td><select name="ruangId">
+					<option th:each="item:${listRuang}" th:value="${item.id}" th:text="${item.kdRuang}">Pilih Kode Ruang</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Submit"> 
@@ -47,5 +53,11 @@ table {
 			</tr>
 		</table>
 	</form>
+	<table>
+		<th>
+			<button type="button"><a href="/kelas/index">View Form</a></button>
+			<button type="button"><a href="/kelas/list">View List</a></button>
+		</th>
+	</table>
 </body>
 </html>

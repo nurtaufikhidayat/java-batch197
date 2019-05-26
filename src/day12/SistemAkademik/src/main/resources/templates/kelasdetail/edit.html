@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<style>
+table {
+            border: 1px solid black;
+            padding: 20px
+        }
+</style>
+	<form th:action="@{/kelasdetail/save}" method="post">
+		<table>
+			<caption>
+				<h2>Form Edit Kelas</h2>
+			</caption>
+			<input type="hidden" name="id" th:value="${kelasdetailEdit.id}">
+			<tr>
+				<td>Kode Kelas</td>
+				<td>:</td>
+				<td><select name="kelasId">
+					<option th:each="item:${listKelas}" th:value="${item.id}" th:text="${item.kdKelas}">Pilih Kode Kelas</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>NIM</td>
+				<td>:</td>
+				<td><select name="nimId">
+					<option th:each="item:${listMahasiswa}" th:value="${item.id}" th:text="${item.nim}">Pilih Nim</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Nilai</td>
+				<td>:</td>
+				<td><select name="nilaiId">
+					<option th:each="item:${listBobotnilai}" th:value="${item.id}" th:text="${item.kdNilai}">Pilih Nilai</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Status</td>
+				<td>:</td>
+				<td><input type="text" size="25" name="status" th:value="${kelasdetailEdit.status}"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"> 
+				<input type="reset" value="Reset">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<table>
+		<th>
+			<button type="button"><a href="/kelasdetail/list">View List</a></button>
+		</th>
+	</table>
+</body>
+</html>

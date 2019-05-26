@@ -1,10 +1,14 @@
 package com.xsis.batch197.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -17,15 +21,26 @@ public class DosenModel {
     @Column(name = "id")
     private int id;
 	
-	@Column(name ="KD_DOSEN", length = 10)
+	@Column(name ="kd_dosen", length = 10)
 	private String kdDosen;
 	
-	@Column(name ="NM_DOSEN", length = 50)
+	@Column(name ="nm_dosen", length = 50)
 	private String nmDosen;
 	
 	@Column(name ="JK", length = 10)
 	private String jk;
 	
+	@OneToMany(mappedBy="dosen")
+	private List<KelasModel> listKelas = new ArrayList<KelasModel>();
+	
+	public List<KelasModel> getListKelas() {
+		return listKelas;
+	}
+
+	public void setListKelas(List<KelasModel> listKelas) {
+		this.listKelas = listKelas;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -66,6 +81,6 @@ public class DosenModel {
 		this.alamat = alamat;
 	}
 
-	@Column(name ="ALAMAT", length = 20)
+	@Column(name ="alamat", length = 20)
 	private String alamat;
 }

@@ -21,7 +21,6 @@ public class MatakuliahController {
 	
 	@Autowired
 	private JurusanRepo jurusanRepo;
-	
 
 	@RequestMapping(value = "/matakuliah/index")
 	public String index(Model jurusan) {

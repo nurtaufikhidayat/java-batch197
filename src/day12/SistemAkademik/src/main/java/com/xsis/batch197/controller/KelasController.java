@@ -9,8 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+import com.xsis.batch197.model.DosenModel;
 import com.xsis.batch197.model.KelasModel;
+import com.xsis.batch197.model.MatakuliahModel;
+import com.xsis.batch197.model.RuangModel;
+import com.xsis.batch197.repository.DosenRepo;
 import com.xsis.batch197.repository.KelasRepo;
+import com.xsis.batch197.repository.MatakuliahRepo;
+import com.xsis.batch197.repository.RuangRepo;
 
 @Controller
 public class KelasController {
@@ -18,8 +25,23 @@ public class KelasController {
 	@Autowired
 	private KelasRepo kelasRepo;
 	
+	@Autowired
+	private DosenRepo dosenRepo;
+	
+	@Autowired
+	private MatakuliahRepo matakuliahRepo;
+	
+	@Autowired
+	private RuangRepo ruangRepo;
+	
 	@RequestMapping(value = "/kelas/index")
-	public String index() {
+	public String index(Model kirim) {
+		List<DosenModel> listDosen = dosenRepo.findAll();
+		kirim.addAttribute("listDosen", listDosen);
+		List<MatakuliahModel> listMatakuliah = matakuliahRepo.findAll();
+		kirim.addAttribute("listMatakuliah", listMatakuliah);
+		List<RuangModel> listRuang = ruangRepo.findAll();
+		kirim.addAttribute("listRuang", listRuang);
 		return "/kelas/index";
 	}
 	
@@ -40,6 +62,12 @@ public class KelasController {
 	public String edit(Model kirim, @PathVariable(name="id")Integer id) {
 		KelasModel kelasEdit = kelasRepo.findById(id).orElse(null);
 		kirim.addAttribute("kelasEdit", kelasEdit);
+		List<DosenModel> listDosen = dosenRepo.findAll();
+		kirim.addAttribute("listDosen", listDosen);
+		List<MatakuliahModel> listMatakuliah = matakuliahRepo.findAll();
+		kirim.addAttribute("listMatakuliah", listMatakuliah);
+		List<RuangModel> listRuang = ruangRepo.findAll();
+		kirim.addAttribute("listRuang", listRuang);
 		return "kelas/edit";
 	}
 	

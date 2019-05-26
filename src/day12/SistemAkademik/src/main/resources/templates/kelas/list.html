@@ -1,5 +1,15 @@
 <html>
 <body>
+<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 5px;
+			text-align: left;
+		}
+	</style>
 <table>
 	<thead>
 		<tr>
@@ -16,13 +26,18 @@
 		<tr th:each="item:${kelasList}">
 		<td><span th:text="${item.kdKelas}"></span></td>
 		<td><span th:text="${item.nmKelas}"></span></td>
-		<td><span th:text="${item.kdDosen}"></span></td>
-		<td><span th:text="${item.kdMatakuliah}"></span></td>
-		<td><span th:text="${item.kdRuang}"></span></td>
+		<td><span th:text="${item.dosen.kdDosen}"></span></td>
+		<td><span th:text="${item.matakuliah.kdMatakuliah}"></span></td>
+		<td><span th:text="${item.ruang.kdRuang}"></span></td>
 		<td><a th:href = "@{edit/{id}(id=${item.id})}">edit</a></td>
         <td><a th:href = "@{hapus/{id}(id=${item.id})}">hapus</a></td>
 		</tr>
 	</tbody>
 </table>
+<table>
+		<th>
+			<button type="button"><a href="/kelas/index">View Form</a></button>
+		</th>
+	</table>
 </body>
 </html>

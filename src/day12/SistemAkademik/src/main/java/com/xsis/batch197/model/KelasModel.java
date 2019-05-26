@@ -1,10 +1,17 @@
 package com.xsis.batch197.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
@@ -20,17 +27,40 @@ public class KelasModel {
 	@Column(name="kd_kelas", length = 10)
 	private String kdKelas;
 	
-	@Column(name="nm_kelas", length = 50)
+	@Column(name="nm_kelas", length = 100)
 	private String nmKelas;
 	
-	@Column(name="kd_dosen", length = 10 )
-	private String kdDosen;
+	@Column(name="dosen_id")
+	private int dosenId;
 	
-	@Column(name="kd_mk", length = 10)
-	private String kdMatakuliah;
+	@Column(name="matakuliah_id")
+	private int matakuliahId;
 	
-	@Column(name="kd_ruang", length = 10)
-	private String kdRuang;
+	@Column(name="ruang_id")
+	private int ruangId;
+	
+	@OneToMany(mappedBy="kelas")
+	private List<KelasdetailModel> listKelasdetail = new ArrayList<KelasdetailModel>();
+	
+	public List<KelasdetailModel> getListKelasdetail() {
+		return listKelasdetail;
+	}
+
+	public void setListKelasdetail(List<KelasdetailModel> listKelasdetail) {
+		this.listKelasdetail = listKelasdetail;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="dosen_id", foreignKey=@ForeignKey(name="fk_kelas_dosen"), insertable= false, updatable= false)
+	private DosenModel dosen;
+	
+	@ManyToOne
+	@JoinColumn(name="matakuliah_id", foreignKey=@ForeignKey(name="fk_kelas_matakuliah"), insertable= false, updatable= false)
+	private MatakuliahModel matakuliah;
+	
+	@ManyToOne
+	@JoinColumn(name="ruang_id", foreignKey=@ForeignKey(name="fk_kelas_ruang"), insertable = false, updatable = false)
+	private RuangModel ruang;
 
 	public int getId() {
 		return id;
@@ -56,28 +86,52 @@ public class KelasModel {
 		this.nmKelas = nmKelas;
 	}
 
-	public String getKdDosen() {
-		return kdDosen;
+	public int getDosenId() {
+		return dosenId;
 	}
 
-	public void setKdDosen(String kdDosen) {
-		this.kdDosen = kdDosen;
+	public void setDosenId(int dosenId) {
+		this.dosenId = dosenId;
 	}
 
-	public String getKdMatakuliah() {
-		return kdMatakuliah;
+	public int getMatakuliahId() {
+		return matakuliahId;
 	}
 
-	public void setKdMatakuliah(String kdMatakuliah) {
-		this.kdMatakuliah = kdMatakuliah;
+	public void setMatakuliahId(int matakuliahId) {
+		this.matakuliahId = matakuliahId;
 	}
 
-	public String getKdRuang() {
-		return kdRuang;
+	public int getRuangId() {
+		return ruangId;
 	}
 
-	public void setKdRuang(String kdRuang) {
-		this.kdRuang = kdRuang;
+	public void setRuangId(int ruangId) {
+		this.ruangId = ruangId;
+	}
+
+	public DosenModel getDosen() {
+		return dosen;
+	}
+
+	public void setDosen(DosenModel dosen) {
+		this.dosen = dosen;
+	}
+
+	public MatakuliahModel getMatakuliah() {
+		return matakuliah;
+	}
+
+	public void setMatakuliah(MatakuliahModel matakuliah) {
+		this.matakuliah = matakuliah;
+	}
+
+	public RuangModel getRuang() {
+		return ruang;
+	}
+
+	public void setRuang(RuangModel ruang) {
+		this.ruang = ruang;
 	}
 	
 }

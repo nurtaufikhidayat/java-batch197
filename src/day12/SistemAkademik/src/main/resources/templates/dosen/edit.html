@@ -23,7 +23,7 @@ table {
 			<tr>
 				<td>Nama Dosen</td>
 				<td>:</td>
-				<td><input type="text" size="25" name="nmDosen" th:value="${DosenEdit.nmDosen}"></td>
+				<td><input type="text" size="25" name="nmDosen" th:value="${dosenEdit.nmDosen}"></td>
 			</tr>
 			<tr>
 				<td>Jenis Kelamin</td>
@@ -42,5 +42,11 @@ table {
 			</tr>
 		</table>
 	</form>
+	<table>
+		<th>
+			<button type="button"><a href="/dosen/index">View Form</a></button>
+			<button type="button"><a href="/dosen/list">View List</a></button>
+		</th>
+	</table>
 </body>
 </html>
