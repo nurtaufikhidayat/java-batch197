@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header_app">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<!-- header -->
+		<header th:replace="fragments/header :: header"></header>
+		<!-- sidebar -->
+		<aside th:replace="fragments/sidebar :: sidebar"></aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Lookup <small>Index</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li class="active">Lookup</li>
+				</ol>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<!-- content mulai -->
+						<div class="box box-info box-solid">
+							<div class="box-header with-border">
+								<h3 class="box-title">List Lookup</h3>
+								<div class="box-tools">
+									<a th:href="@{~/lookup/add}" class="btn btn-info">
+										<i class="fa fa-plus"></i> Add 
+									</a>
+								</div>
+							</div>
+							<div class="box-body">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th>Kode</th>
+											<th>Nama</th>
+											<th>Type</th>
+											<th>Posisi</th>
+											<th>#</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="item :${list}">
+											<td th:text="${item.id}"></td>
+											<td th:text="${item.kdLookup}"></td>
+											<td th:text="${item.nmLookup}"></td>
+											<td th:text="${item.type}"></td>
+											<td th:text="${item.posisi}"></td>
+											<td class="col-md-1">
+												<a th:href="@{~/lookup/detail/{id}(id=${item.id})}" class="btn btn-xs btn-detail btn-success" th:value="${item.id}">
+													<i class="fa fa-eye"></i>
+												</a>
+												
+												<a th:href="@{~/lookup/edit/{id}(id=${item.id})}" class="btn btn-xs btn-edit btn-warning" th:value="${item.id}">
+													<i class="fa fa-edit"></i>
+												</a>
+												
+												<a th:href="@{~/lookup/delete/{id}(id=${item.id})}" class="btn btn-xs btn-delete btn-danger" th:value="${item.id}">
+													<i class="fa fa-trash"></i>
+												</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- content selesai -->
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- footer -->
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+	<!-- script javascript -->
+	<div th:replace="fragments/footer :: scripts"></div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header_app">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<!-- header -->
+		<header th:replace="fragments/header :: header"></header>
+		<!-- sidebar -->
+		<aside th:replace="fragments/sidebar :: sidebar"></aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					Lookup <small>Detail</small>
+				</h1>
+				<ol class="breadcrumb">
+					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a th:href="@{~/lookup/index}">Lookup</a></li>
+					<li class="active">Detail</li>
+				</ol>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<!-- content mulai -->
+						<form th:action="@{~/lookup/update}" th:object="${lookup}" method="post" >
+						<div class="box box-success box-solid">
+							<div class="box-header">
+								<h3 class="box-title">Update Lookup</h3>
+							</div>
+							<div class="box-body form-horizontal">							
+								<table class="table">
+									<tbody>
+										<tr>
+											<th class="col-md-2">Id</th>
+											<td th:text="${lookup.id}"></td>
+										</tr>
+										
+										<tr>
+											<th class="col-md-2">Kode</th>
+											<td th:text="${lookup.kdLookup}"></td>
+										</tr>
+										
+										<tr>
+											<th class="col-md-2">Nama</th>
+											<td th:text="${lookup.nmLookup}"></td>
+										</tr>
+										
+										<tr>
+											<th class="col-md-2">Type</th>
+											<td th:text="${lookup.type}"></td>
+										</tr>
+										
+										<tr>
+											<th class="col-md-2">Posisi</th>
+											<td th:text="${lookup.posisi}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="box-footer">								
+								<a th:href="@{~/lookup/index}" class="btn btn-default pull-right">Cancel</a>
+							</div>
+						</div>
+						</form>
+						<!-- content selesai -->
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- footer -->
+		<div th:replace="fragments/footer :: footer"></div>
+	</div>
+	<!-- script javascript -->
+	<div th:replace="fragments/footer :: scripts"></div>
+</body>
+</html>

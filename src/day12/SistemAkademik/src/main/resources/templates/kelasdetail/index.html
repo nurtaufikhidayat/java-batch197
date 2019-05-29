@@ -24,14 +24,14 @@ table {
 			<tr>
 				<td>NIM</td>
 				<td>:</td>
-				<td><select name="nimId">
+				<td><select name="mahasiswaId">
 					<option th:each="item:${listMahasiswa}" th:value="${item.id}" th:text="${item.nim}">Pilih Nim</option>
 				</select></td>
 			</tr>
 			<tr>
 				<td>Nilai</td>
 				<td>:</td>
-				<td><select name="nilaiId">
+				<td><select name="bobotnilaiId">
 					<option th:each="item:${listBobotnilai}" th:value="${item.id}" th:text="${item.kdNilai}">Pilih Nilai</option>
 				</select></td>
 			</tr>
