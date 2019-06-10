@@ -1,0 +1,40 @@
+<!-- content mulai -->
+<form th:action="@{~/kecamatan/update}" th:object="${kecamatan}" method="post" id="form-kecamatan">
+<div class="box box-success box-solid">
+	<div class="box-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+		<h4 class="box-title">Detail kecamatan</h4>
+	</div>
+	<div class="box-body form-horizontal">							
+		<table class="table">
+			<tbody>
+				<tr>
+					<th class="col-md-2">Id</th>
+					<td th:text="${kecamatan.id}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Kode</th>
+					<td th:text="${kecamatan.kdKecamatan}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Nama</th>
+					<td th:text="${kecamatan.nmKecamatan}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Kota</th>
+					<td th:text="${kecamatan.kota.nmKota}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="box-footer">								
+		<button data-dismiss="modal" class="btn btn-default pull-right">Cancel</button>
+	</div>
+</div>
+</form>
+<!-- content selesai -->

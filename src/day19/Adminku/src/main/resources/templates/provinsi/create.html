@@ -1,0 +1,36 @@
+<!-- content mulai -->
+<form th:action="@{~/provinsi/save}" th:object="${provinsi}" method="post" id="form-provinsi" >
+<div class="box box-info box-solid">
+	<div class="box-header with-border">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+		<h4 class="box-title">Form Provinsi</h4>
+	</div>
+	<div class="box-body form-horizontal">							
+		<div th:class="${#fields.hasErrors('kdProvinsi')} ? 'form-group has-error':'form-group'">
+			<label class="control-label col-md-2">Kode</label>
+			<div class="col-md-8">
+				<input type="text" th:field="*{kdProvinsi}" class="form-control" />
+				<span th:if="${#fields.hasErrors('kdProvinsi')}" class="help-block" th:errors="*{kdProvinsi}">Kode Tidak Boleh Kosong</span>
+			</div>
+		</div>
+		
+		<div th:class="${#fields.hasErrors('nmProvinsi')} ? 'form-group has-error':'form-group'">
+			<label class="control-label col-md-2">Nama</label>
+			<div class="col-md-8">
+				<input type="text" th:field="*{nmProvinsi}" class="form-control"/>
+				<span th:if="${#fields.hasErrors('nmProvinsi')}" class="help-block" th:errors="*{nmProvinsi}">Nama Tidak Boleh Kosong</span>
+			</div>
+		</div>
+		
+	</div>
+	<div class="box-footer">
+		<button type="submit" class="btn btn-primary">
+			<i class="fa fa-save"></i> Save
+		</button>
+		<button data-dismiss ="modal" class="btn btn-default">Cancel</button>
+	</div>
+</div>
+</form>
+<!-- content selesai -->

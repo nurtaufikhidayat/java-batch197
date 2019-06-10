@@ -1,0 +1,17 @@
+<tr th:each="item :${list}">
+	<td th:text="${item.id}"></td>
+	<td th:text="${item.kdKota}"></td>
+	<td th:text="${item.nmKota}"></td>
+	<td th:text="${item.provinsi.nmProvinsi}"></td>
+	<td class="col-md-1">
+		<button class="btn btn-xs btn-detail btn-success" th:value="${item.id}">
+			<i class="fa fa-eye"></i>
+		</button>		
+		<button class="btn btn-xs btn-edit btn-warning" th:value="${item.id}">
+			<i class="fa fa-edit"></i>
+		</button>		
+		<button class="btn btn-xs btn-delete btn-danger" th:value="${item.id}">
+			<i class="fa fa-trash"></i>
+		</button>
+	</td>
+</tr>

@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="footer" th:remove="tag">
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Version</b> 2.4.0
+			</div>
+			<strong>Copyright &copy; 2014-2016 <a
+				href="https://adminlte.io">Almsaeed Studio</a>.
+			</strong> All rights reserved.
+		</footer>		
+		<div class="control-sidebar-bg"></div>
+	</div>
+	<div th:fragment="scripts" th:remove="tag">
+		<!-- jQuery 3 -->
+		<script th:src="@{~/jquery/dist/jquery.min.js}"></script>
+		<!-- jQuery UI 1.11.4 -->
+		<script th:src="@{~/jquery-ui/jquery-ui.min.js}"></script>
+		<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+		<script>
+		  $.widget.bridge('uibutton', $.ui.button);
+		</script>
+		<!-- Bootstrap 3.3.7 -->
+		<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+		
+		<script th:src="@{~/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+		
+		<!-- Slimscroll -->
+		<script th:src="@{~/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+		<!-- AdminLTE App -->
+		<script th:src="@{~/dist/js/adminlte.min.js}"></script>
+		<!-- AdminLTE for demo purposes -->
+		<script th:src="@{~/dist/js/demo.js}"></script>
+		
+	</div>
+</body>
+</html>

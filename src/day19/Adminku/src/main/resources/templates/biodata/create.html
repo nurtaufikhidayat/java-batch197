@@ -1,0 +1,36 @@
+<!-- content mulai -->
+<form th:action="@{~/biodata/save}" th:object="${biodata}" method="post" id="form-biodata" >
+<div class="box box-info box-solid">
+	<div class="box-header with-border">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+		<h4 class="box-title">Create biodata</h4>
+	</div>
+	<div class="box-body form-horizontal">							
+		<div th:class="${#fields.hasErrors('nik')} ? 'form-group has-error':'form-group'">
+			<label class="control-label col-md-3">Kode</label>
+			<div class="col-md-8">
+				<input type="text" th:field="*{nik}" class="form-control" />
+				<span th:if="${#fields.hasErrors('nik')}" class="help-block" th:errors="*{nik}">Kode Tidak Boleh Kosong</span>
+			</div>
+		</div>
+		
+		<div th:class="${#fields.hasErrors('nama')} ? 'form-group has-error':'form-group'">
+			<label class="control-label col-md-3">Nama</label>
+			<div class="col-md-8">
+				<input type="text" th:field="*{nama}" class="form-control"/>
+				<span th:if="${#fields.hasErrors('nama')}" class="help-block" th:errors="*{nama}">Nama Tidak Boleh Kosong</span>
+			</div>
+		</div>
+		
+	</div>
+	<div class="box-footer">
+		<button type="submit" class="btn btn-info pull-right">
+			<i class="fa fa-save"></i> Save
+		</button>		
+		<button data-dismiss="modal" class="btn btn-default">Cancel</button>
+	</div>
+</div>
+</form>
+<!-- content selesai -->

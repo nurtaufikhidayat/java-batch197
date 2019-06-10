@@ -1,0 +1,35 @@
+<!-- content mulai -->
+<form th:action="@{~/biodata/update}" th:object="${biodata}" method="post" id="form-biodata">
+<div class="box box-success box-solid">
+	<div class="box-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+		<h4 class="box-title">Detail biodata</h4>
+	</div>
+	<div class="box-body form-horizontal">							
+		<table class="table">
+			<tbody>
+				<tr>
+					<th class="col-md-2">Id</th>
+					<td th:text="${biodata.id}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Kode</th>
+					<td th:text="${biodata.nik}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Nama</th>
+					<td th:text="${biodata.nama}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="box-footer">								
+		<button data-dismiss="modal" class="btn btn-default pull-right">Cancel</button>
+	</div>
+</div>
+</form>
+<!-- content selesai -->

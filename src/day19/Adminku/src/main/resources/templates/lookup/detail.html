@@ -1,0 +1,42 @@
+<!-- content mulai -->
+<form th:action="@{~/lookup/update}" th:object="${lookup}" method="post" id="form-lookup">
+<div class="box box-success box-solid">
+	<div class="box-header">
+		<h3 class="box-title">Detail Lookup</h3>
+	</div>
+	<div class="box-body form-horizontal">							
+		<table class="table">
+			<tbody>
+				<tr>
+					<th class="col-md-2">Id</th>
+					<td th:text="${lookup.id}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Kode</th>
+					<td th:text="${lookup.kdLookup}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Nama</th>
+					<td th:text="${lookup.nmLookup}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Type</th>
+					<td th:text="${lookup.type}"></td>
+				</tr>
+				
+				<tr>
+					<th class="col-md-2">Posisi</th>
+					<td th:text="${lookup.posisi}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="box-footer">								
+		<button data-dismiss="modal" class="btn btn-default pull-right">Cancel</button>
+	</div>
+</div>
+</form>
+<!-- content selesai -->
