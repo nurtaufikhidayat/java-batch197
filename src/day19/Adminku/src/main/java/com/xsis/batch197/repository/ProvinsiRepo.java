@@ -16,6 +16,6 @@ public interface ProvinsiRepo extends JpaRepository<ProvinsiModel, Long>{
 	public List<ProvinsiModel> findByNmProvinsi(String nama);
 	public List<ProvinsiModel> findByKdProvinsi(String kode);
 	
-	@Query(value="SELECT p FROM ProvinsiModel p WHERE LOWER(p.nmProvinsi) LIKE CONCAT('%', LOWER(:nama),'%')")
+	@Query(value="SELECT p FROM ProvinsiModel p WHERE LOWER(p.nmProvinsi) LIKE CONCAT('%', LOWER(:nama),'%') or LOWER(p.kdProvinsi) LIKE CONCAT('%', LOWER(:nama),'%')")
 	public List<ProvinsiModel> search(@Param("nama") String nama);
 }

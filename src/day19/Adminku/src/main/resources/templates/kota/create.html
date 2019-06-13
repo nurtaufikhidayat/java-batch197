@@ -11,7 +11,7 @@
 		<div th:class="${#fields.hasErrors('kdKota')} ? 'form-group has-error':'form-group'">
 			<label class="control-label col-md-3">Kode</label>
 			<div class="col-md-8">
-				<input type="text" th:field="*{kdKota}" class="form-control" />
+				<input type="text" th:field="*{kdKota}" class="form-control" readonly />
 				<span th:if="${#fields.hasErrors('kdKota')}" class="help-block" th:errors="*{kdKota}">Kode Tidak Boleh Kosong</span>
 			</div>
 		</div>
