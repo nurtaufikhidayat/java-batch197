@@ -1,27 +1,36 @@
 package com.xsis.batch197.controller;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.servlet.ModelAndView;
 
 import com.xsis.batch197.model.XBiodataModel;
 import com.xsis.batch197.model.XRiwayatPendidikanModel;
+import com.xsis.batch197.repository.XBiodataRepo;
 import com.xsis.batch197.repository.XRiwayatPendidikanRepo;
 
 @Controller
 @RequestMapping(value = "/pelamar")
 public class PelamarController {
-
+	private static final Logger logger = LoggerFactory.getLogger(PelamarController.class);
+	
 	@Autowired
 	private XRiwayatPendidikanRepo repoRiwPend;
-	
-	
+	@Autowired
+	private XBiodataRepo repoBiodata;
 
 	@GetMapping(value = "/index")
 	public ModelAndView index() {
@@ -38,6 +47,28 @@ public class PelamarController {
 		// object pelamar adalah new object dari PelamarModel
 		XBiodataModel pelamar = new XBiodataModel();
 		// isi kdProvinsi dengan method getKode()
+		view.addObject("pelamar", pelamar);
+		return view;
+	}
+
+	//#3. Menangkap data dari form
+	@PostMapping(value = "/save")
+	public ModelAndView save(@Valid @ModelAttribute("pelamar") XBiodataModel pelamar, BindingResult result) {
+		if (result.hasErrors()) {
+			logger.info("save pelamar error");
+		} else {
+			Long dummyIdUser = new Long(1);
+			Date createdOn = new Date();
+			pelamar.setCreatedOn(createdOn);
+			pelamar.setCreatedBy(dummyIdUser);
+			pelamar.setIsDelete(false);
+			pelamar.setIdentityTypeId(new Long(1));
+			pelamar.setCompanyId("");
+
+			repoBiodata.save(pelamar);
+		}
+
+		ModelAndView view = new ModelAndView("pelamar/create");
 		view.addObject("pelamar", pelamar);
 		return view;
 	}

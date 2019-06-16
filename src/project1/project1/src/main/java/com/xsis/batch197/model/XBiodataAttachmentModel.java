@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="x_biodata")
+@Table(name="x_biodata_attachment")
 public class XBiodataAttachmentModel {
 
 	@Id

@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -51,7 +52,8 @@ public class XBiodataModel {
 	@Column(name="is_delete", nullable=false)
 	private Boolean isDelete;
 	
-	@Column(name="fullname", length=225, nullable=false)
+	@NotNull
+	@Column(name="fullname", length=225)
 	private String fullname;
 	
 	@Column(name="nickname", length=100, nullable=false)
@@ -135,6 +137,8 @@ public class XBiodataModel {
 
 	@Column(name="is_complete", nullable=true)
 	private Boolean isComplete;
+	
+	
 
 	public Long getId() {
 		return id;
