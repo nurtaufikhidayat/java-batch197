@@ -11,7 +11,11 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,7 +25,6 @@ public class XBiodataModel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE, generator="x_biodata_idx")
 	@TableGenerator(name="x_biodata_idx", table="tbl_index", pkColumnName="index_id", valueColumnName="index_value", initialValue=0, allocationSize=1)
-	
 	@Column(name="id", length=11)
 	private Long id;
 	
@@ -52,13 +55,15 @@ public class XBiodataModel {
 	@Column(name="is_delete", nullable=false)
 	private Boolean isDelete;
 	
-	@NotNull
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="fullname", length=225)
 	private String fullname;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="nickname", length=100, nullable=false)
 	private String nickname;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="pob", length=100, nullable=false)
 	private String pob;
 	
@@ -67,51 +72,64 @@ public class XBiodataModel {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dob;
 	
+	@NotNull(message="Tidak boleh kosong")
 	@Column(name="gender", nullable=false)
 	private Boolean gender;
 	
+	@NotNull(message="Tidak boleh kosong")
 	@Column(name="religion_id", length=11, nullable=false)
 	private Long religionId;
 
+	@NotNull(message="Tidak boleh kosong")
 	@Column(name="high", nullable=true)
 	private Integer high;
 
+	@NotNull(message="Tidak boleh kosong")
 	@Column(name="weight", nullable=true)
 	private Integer weight;
 
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="nationality", length=100, nullable=true)
 	private String nationality;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="ethic", length=50, nullable=true)
 	private String ethic;
 	
 	@Column(name="hobby", length=225, nullable=true)
 	private String hobby;
 	
+	@NotNull(message="Tidak boleh kosong")
 	@Column(name="identity_type_id", length=11, nullable=false)
 	private Long identityTypeId;
 	
 	@Column(name="identity_no", length=50, nullable=false)
 	private String identityNo;
 	
+	@Email(message="Format email salah")
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="email", length=100, nullable=false)
 	private String email;
 
-	@Column(name="phone_number1", length=50, nullable=false)
+	@Column(name="phone_number1", length=50, nullable=true)
 	private String phoneNumber1;
 	
 	@Column(name="phone_number2", length=50, nullable=true)
 	private String phoneNumber2;
-	
+
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="parent_phone_number", length=50, nullable=false)
 	private String parentPhoneNumber;
 
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="child_sequence", length=5, nullable=true)
 	private String childSequence;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="how_many_brothers", length=5, nullable=true)
 	private String howManyBrothers;
-	
+
+	@NotNull(message="Tidak boleh kosong")
 	@Column(name="marital_status_id", length=11, nullable=false)
 	private Long maritalStatusId;
 	

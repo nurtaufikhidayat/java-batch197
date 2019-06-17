@@ -27,15 +27,9 @@ public class XAddressModel {
 	@Column(name="id", length=11)
 	private Long id;
 	
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Column(name="created_by", length=11, nullable=false)
 	private Long createdBy;
 	
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Column(name="created_on", nullable=false)
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -64,45 +58,59 @@ public class XAddressModel {
 	@Column(name="biodata_id", length=11, nullable=false)
 	private Long biodataId;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="address1", length=1000, nullable=true)
 	private String address1;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="postal_code1", length=20, nullable=true)
 	private String postalCode1;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="rt1", length=5, nullable=true)
 	private String rt1;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="rw1", length=5, nullable=true)
 	private String rw1;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="kelurahan1", length=100, nullable=true)
 	private String kelurahan1;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="kecamatan1", length=100, nullable=true)
 	private String kecamatan1;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="region1", length=100, nullable=true)
 	private String region1;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="address2", length=1000, nullable=true)
 	private String address2;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="postal_code2", length=20, nullable=true)
 	private String postalCode2;
-	
+
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="rt2", length=5, nullable=true)
 	private String rt2;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="rw2", length=5, nullable=true)
 	private String rw2;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="kelurahan2", length=100, nullable=true)
 	private String kelurahan2;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="kecamatan2", length=100, nullable=true)
 	private String kecamatan2;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="region2", length=100, nullable=true)
 	private String region2;
 

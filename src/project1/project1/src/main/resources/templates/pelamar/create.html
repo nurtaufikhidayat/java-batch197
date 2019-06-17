@@ -13,21 +13,21 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<div th:class="${#fields.hasErrors('fullname')} ? 'form-group has-error':'form-group'">
+						<div th:class="${#fields.hasErrors('biodata.fullname')} ? 'form-group has-error':'form-group'">
 							<label class="control-label">Nama Lengkap *</label> 
-							<input type="text" th:field="*{fullname}" class="form-control" name="" />
-							<span th:if="${#fields.hasErrors('fullname')}" class="help-block" th:errors="*{fullname}">fullname Tidak Boleh Kosong</span>
+							<input type="text" th:field="*{biodata.fullname}" class="form-control" name="" />
+							<span th:if="${#fields.hasErrors('biodata.fullname')}" class="help-block" th:errors="*{biodata.fullname}">fullname Tidak Boleh Kosong</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<div
-							th:class="${#fields.hasErrors('nickname')} ? 'form-group has-error':'form-group'">
+							th:class="${#fields.hasErrors('biodata.nickname')} ? 'form-group has-error':'form-group'">
 							<label class="control-label">Nama Panggilan *</label> <input
-								type="text" th:field="*{nickname}" class="form-control" /> <span
-								th:if="${#fields.hasErrors('nickname')}" class="help-block"
-								th:errors="*{nickname}">nickname Tidak Boleh Kosong</span>
+								type="text" th:field="*{biodata.nickname}" class="form-control" /> <span
+								th:if="${#fields.hasErrors('biodata.nickname')}" class="help-block"
+								th:errors="*{biodata.nickname}">nickname Tidak Boleh Kosong</span>
 						</div>
 					</div>
 				</div>
@@ -36,37 +36,37 @@
 				<div class="col-md-3">
 					<div class="form-group">
 						<div
-							th:class="${#fields.hasErrors('pob')} ? 'form-group has-error':'form-group'">
+							th:class="${#fields.hasErrors('biodata.pob')} ? 'form-group has-error':'form-group'">
 							<label class="control-label">Tempat Lahir *</label> <input
-								type="text" th:field="*{pob}" class="form-control" name="" /> <span
-								th:if="${#fields.hasErrors('pob')}" class="help-block"
-								th:errors="*{pob}">pob Tidak Boleh Kosong</span>
+								type="text" th:field="*{biodata.pob}" class="form-control" name="" /> <span
+								th:if="${#fields.hasErrors('biodata.pob')}" class="help-block"
+								th:errors="*{biodata.pob}">pob Tidak Boleh Kosong</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group" id="marriedDiv">
 						<div
-							th:class="${#fields.hasErrors('dob')} ? 'form-group has-error':'form-group'">
+							th:class="${#fields.hasErrors('biodata.dob')} ? 'form-group has-error':'form-group'">
 							<label class="control-label">Tgl. Lahir (yyyy-mm-dd) *</label> <input
-								type="text" th:field="*{dob}" class="form-control datepicker" />
-							<span th:if="${#fields.hasErrors('dob')}" class="help-block"
-								th:errors="*{dob}">dob Tidak Boleh Kosong</span>
+								type="text" th:field="*{biodata.dob}" class="form-control datepicker" />
+							<span th:if="${#fields.hasErrors('biodata.dob')}" class="help-block"
+								th:errors="*{biodata.dob}">dob Tidak Boleh Kosong</span>
 						</div>
 					</div>
 				</div>
 					<div class="col-md-3">
 						<div class="form-group">
 							<div
-								th:class="${#fields.hasErrors('gender')} ? 'form-group has-error':'form-group'">
+								th:class="${#fields.hasErrors('biodata.gender')} ? 'form-group has-error':'form-group'">
 								<label class="control-label">Jenis Kelamin *</label> <select
-									class="form-control select2" th:field="*{gender}"
+									class="form-control select2" th:field="*{biodata.gender}"
 									style="width: 100%;">
 									<option selected="selected" value="">Pilih</option>
 									<option value="1">Pria</option>
 									<option value="0">Wanita</option>
-								</select> <span th:if="${#fields.hasErrors('gender')}"
-									class="help-block" th:errors="*{gender}">gender Tidak
+								</select> <span th:if="${#fields.hasErrors('biodata.gender')}"
+									class="help-block" th:errors="*{biodata.gender}">gender Tidak
 									Boleh Kosong</span>
 							</div>
 						</div>
@@ -74,9 +74,9 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<div
-								th:class="${#fields.hasErrors('religionId')} ? 'form-group has-error':'form-group'">
+								th:class="${#fields.hasErrors('biodata.religionId')} ? 'form-group has-error':'form-group'">
 								<label class="control-label">Agama *</label> 
-								<select class="form-control select2" th:field="*{religionId}" style="width: 100%;">
+								<select class="form-control select2" th:field="*{biodata.religionId}" style="width: 100%;">
 									<option selected="selected" value="">Pilih</option>
 									<option value="1">Islam</option>
 									<option value="2">Kristen</option>
@@ -84,8 +84,8 @@
 									<option value="4">Hindu</option>
 									<option value="5">Budha</option>
 									<option value="6">Kong Hu Cu</option>
-								</select> <span th:if="${#fields.hasErrors('religionId')}"
-									class="help-block" th:errors="*{religionId}">religion
+								</select> <span th:if="${#fields.hasErrors('biodata.religionId')}"
+									class="help-block" th:errors="*{biodata.religionId}">religion
 									Tidak Boleh Kosong</span>
 							</div>
 						</div>
@@ -95,33 +95,33 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<div
-										th:class="${#fields.hasErrors('high')} ? 'form-group has-error':'form-group'">
+										th:class="${#fields.hasErrors('biodata.high')} ? 'form-group has-error':'form-group'">
 										<label class="control-label">Tinggi(cm) *</label> <input
-											type="text" th:field="*{high}" class="form-control" name="" />
-										<span th:if="${#fields.hasErrors('high')}" class="help-block"
-											th:errors="*{religionId}">tinggi Tidak Boleh Kosong</span>
+											type="text" th:field="*{biodata.high}" class="form-control" name="" />
+										<span th:if="${#fields.hasErrors('biodata.high')}" class="help-block"
+											th:errors="*{biodata.high}">tinggi Tidak Boleh Kosong</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 									<div
-										th:class="${#fields.hasErrors('weight')} ? 'form-group has-error':'form-group'">
+										th:class="${#fields.hasErrors('biodata.weight')} ? 'form-group has-error':'form-group'">
 										<label class="control-label">Berat(kg) *</label> <input
-											type="text" th:field="*{weight}" class="form-control" /> <span
-											th:if="${#fields.hasErrors('high')}" class="help-block"
-											th:errors="*{weight}">berat Tidak Boleh Kosong</span>
+											type="text" th:field="*{biodata.weight}" class="form-control" /> <span
+											th:if="${#fields.hasErrors('biodata.high')}" class="help-block"
+											th:errors="*{biodata.weight}">berat Tidak Boleh Kosong</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 									<div
-										th:class="${#fields.hasErrors('nationality')} ? 'form-group has-error':'form-group'">
+										th:class="${#fields.hasErrors('biodata.nationality')} ? 'form-group has-error':'form-group'">
 										<label class="control-label">Kewarganegaraan *</label> <input
-											type="text" th:field="*{nationality}" class="form-control" />
-										<span th:if="${#fields.hasErrors('nationality')}"
-											class="help-block" th:errors="*{nationality}">kewarganegaraan
+											type="text" th:field="*{biodata.nationality}" class="form-control" />
+										<span th:if="${#fields.hasErrors('biodata.nationality')}"
+											class="help-block" th:errors="*{biodata.nationality}">kewarganegaraan
 											Tidak Boleh Kosong</span>
 									</div>
 								</div>
@@ -129,7 +129,7 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<label class="control-label">Suku Bangsa</label> <input
-										type="text" th:field="*{ethic}" class="form-control" />
+										type="text" th:field="*{biodata.ethic}" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -137,11 +137,11 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								<div
-										th:class="${#fields.hasErrors('hobby')} ? 'form-group has-error':'form-group'">
+										th:class="${#fields.hasErrors('biodata.hobby')} ? 'form-group has-error':'form-group'">
 									<label class="control-label">Kegemaran/Hobi</label> <input
-										type="text" th:field="*{hobby}" class="form-control" name="" />
-										<span th:if="${#fields.hasErrors('hobby')}"
-											class="help-block" th:errors="*{hobby}">hobby
+										type="text" th:field="*{biodata.hobby}" class="form-control" name="" />
+										<span th:if="${#fields.hasErrors('biodata.hobby')}"
+											class="help-block" th:errors="*{biodata.hobby}">hobby
 											Tidak Boleh Kosong</span>
 								</div>
 								</div>
@@ -149,16 +149,16 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<div
-										th:class="${#fields.hasErrors('identityTypeId')} ? 'form-group has-error':'form-group'">
+										th:class="${#fields.hasErrors('biodata.identityTypeId')} ? 'form-group has-error':'form-group'">
 										<label class="control-label">Jenis Identitas *</label> <select
-											class="form-control select2" th:field="*{identityTypeId}"
+											class="form-control select2" th:field="*{biodata.identityTypeId}"
 											style="width: 100%;">
 											<option selected="selected" value=""></option>
 											<option value="1">KTP</option>
 											<option value="2">SIM</option>
 											<option value="3">PASPOR</option>
-										</select> <span th:if="${#fields.hasErrors('identityTypeId')}"
-											class="help-block" th:errors="*{identityTypeId}">kewarganegaraan
+										</select> <span th:if="${#fields.hasErrors('biodata.identityTypeId')}"
+											class="help-block" th:errors="*{biodata.identityTypeId}">kewarganegaraan
 											Tidak Boleh Kosong</span>
 									</div>
 								</div>
@@ -166,7 +166,7 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<label class="control-label">Nomor Identitas</label> <input
-										type="text" th:field="*{identityNo}" class="form-control" />
+										type="text" th:field="*{biodata.identityNo}" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -174,36 +174,36 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<div
-										th:class="${#fields.hasErrors('email')} ? 'form-group has-error':'form-group'">
+										th:class="${#fields.hasErrors('biodata.email')} ? 'form-group has-error':'form-group'">
 										<label class="control-label">Email *</label> <input
-											type="text" th:field="*{email}" class="form-control" name="" />
-										<span th:if="${#fields.hasErrors('email')}" class="help-block"
-											th:errors="*{email}">email Tidak Boleh Kosong</span>
+											type="text" th:field="*{biodata.email}" class="form-control" name="" />
+										<span th:if="${#fields.hasErrors('biodata.email')}" class="help-block"
+											th:errors="*{biodata.email}">email Tidak Boleh Kosong</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 
-									<label class="control-label">No. HP</label> <input type="text" th:field="*{phoneNumber1}"
+									<label class="control-label">No. HP</label> <input type="text" th:field="*{biodata.phoneNumber1}"
 										class="form-control" />
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 									<label class="control-label">No. HP Alternatif</label> <input
-										type="text" th:field="*{phoneNumber2}" class="form-control" />
+										type="text" th:field="*{biodata.phoneNumber2}" class="form-control" />
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 									<div
-										th:class="${#fields.hasErrors('parentPhoneNumber')} ? 'form-group has-error':'form-group'">
+										th:class="${#fields.hasErrors('biodata.parentPhoneNumber')} ? 'form-group has-error':'form-group'">
 										<label class="control-label">No. Tlp(Rumah/Orang Tua)
-											*</label> <input type="text" th:field="*{parentPhoneNumber}"
+											*</label> <input type="text" th:field="*{biodata.parentPhoneNumber}"
 											class="form-control" /> <span
-											th:if="${#fields.hasErrors('parentPhoneNumber')}"
-											class="help-block" th:errors="*{parentPhoneNumber}">nomor
+											th:if="${#fields.hasErrors('biodata.parentPhoneNumber')}"
+											class="help-block" th:errors="*{biodata.parentPhoneNumber}">nomor
 											Tidak Boleh Kosong</span>
 									</div>
 								</div>
@@ -213,12 +213,12 @@
 								<div class="col-md-3">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('childSequence')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('biodata.childSequence')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Anak Ke *</label> <input
-												type="text" th:field="*{childSequence}" class="form-control"
+												type="text" th:field="*{biodata.childSequence}" class="form-control"
 												name="" /> <span
-												th:if="${#fields.hasErrors('childSequence')}"
-												class="help-block" th:errors="*{childSequence}">
+												th:if="${#fields.hasErrors('biodata.childSequence')}"
+												class="help-block" th:errors="*{biodata.childSequence}">
 												Tidak Boleh Kosong</span>
 										</div>
 									</div>
@@ -226,12 +226,12 @@
 								<div class="col-md-3">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('howManyBrothers')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('biodata.howManyBrothers')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Dari Berapa Saudara *</label> <input
-												type="text" th:field="*{howManyBrothers}"
+												type="text" th:field="*{biodata.howManyBrothers}"
 												class="form-control" /> <span
-												th:if="${#fields.hasErrors('howManyBrothers')}"
-												class="help-block" th:errors="*{howManyBrothers}">
+												th:if="${#fields.hasErrors('biodata.howManyBrothers')}"
+												class="help-block" th:errors="*{biodata.howManyBrothers}">
 												Tidak Boleh Kosong</span>
 										</div>
 									</div>
@@ -239,23 +239,23 @@
 								<div class="col-md-3">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('maritalStatusId')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('biodata.maritalStatusId')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Status Pernikahan *</label> <select
-												class="form-control select2" th:field="*{maritalStatusId}"
+												class="form-control select2" th:field="*{biodata.maritalStatusId}"
 												style="width: 100%;">
 												<option selected="selected" value=""></option>
 												<option value="1">Menikah</option>
 												<option value="2">Belum Menikah</option>
-											</select> <span th:if="${#fields.hasErrors('maritalStatusId')}"
-												class="help-block" th:errors="*{maritalStatusId}">
+											</select> <span th:if="${#fields.hasErrors('biodata.maritalStatusId')}"
+												class="help-block" th:errors="*{biodata.maritalStatusId}">
 												Tidak Boleh Kosong</span>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-3">
-									<div th:class="${#fields.hasErrors('marriageYear')} ? 'form-group has-error':'form-group'" id="marriedYear">
+									<div th:class="${#fields.hasErrors('biodata.marriageYear')} ? 'form-group has-error':'form-group'" id="marriedYear">
 										<label class="control-label">Tahun Pernikahan</label>
-										<span th:if="${#fields.hasErrors('marriageYear')}" class="help-block" th:errors="*{marriageYear}"> Tidak Boleh Kosong</span>
+										<span th:if="${#fields.hasErrors('biodata.marriageYear')}" class="help-block" th:errors="*{biodata.marriageYear}"> Tidak Boleh Kosong</span>
 									</div>
 								</div>
 							</div>
@@ -275,15 +275,15 @@
 									</div>
 								</div>
 							</div>
-							<!-- <div class="row">
+							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('address1')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.address1')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Alamat *</label> <input
-												type="text" th:field="*{address1}" class="form-control"
-												name="" /> <span th:if="${#fields.hasErrors('address1')}"
-												class="help-block" th:errors="*{address1}"> Tidak
+												type="text" th:field="*{address.address1}" class="form-control"
+												name="" /> <span th:if="${#fields.hasErrors('address.address1')}"
+												class="help-block" th:errors="*{address.address1}"> Tidak
 												Boleh Kosong</span>
 										</div>
 									</div>
@@ -291,11 +291,11 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('address2')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.address2')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Alamat *</label> <input
-												type="text" th:field="*{address2}" class="form-control"
-												name="" /> <span th:if="${#fields.hasErrors('address2')}"
-												class="help-block" th:errors="*{address2}"> Tidak
+												type="text" th:field="*{address.address2}" class="form-control"
+												name="" /> <span th:if="${#fields.hasErrors('address.address2')}"
+												class="help-block" th:errors="*{address.address2}"> Tidak
 												Boleh Kosong</span>
 										</div>
 									</div>
@@ -305,56 +305,56 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="control-label">Kode Pos</label> <input
-											type="text" class="form-control" name="" />
+											type="text" th:field="*{address.postalCode1}" class="form-control" name="" />
 									</div>
 								</div>
 								<div class="col-md-1">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('rt1')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.rt1')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">RT *</label> <input type="text"
-												th:field="*{rt1}" class="form-control" /> <span
-												th:if="${#fields.hasErrors('rt1')}" class="help-block"
-												th:errors="*{rt1}"> Tidak Boleh Kosong</span>
+												th:field="*{address.rt1}" class="form-control" /> <span
+												th:if="${#fields.hasErrors('address.rt1')}" class="help-block"
+												th:errors="*{address.rt1}"> Tidak Boleh Kosong</span>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-1">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('rw1')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.rw1')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">RW *</label> <input type="text"
-												th:field="*{rw1}" class="form-control" /> <span
-												th:if="${#fields.hasErrors('rw1')}" class="help-block"
-												th:errors="*{rw1}"> Tidak Boleh Kosong</span>
+												th:field="*{address.rw1}" class="form-control" /> <span
+												th:if="${#fields.hasErrors('address.rw1')}" class="help-block"
+												th:errors="*{address.rw1}"> Tidak Boleh Kosong</span>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="control-label">Kode Pos</label> <input
-											type="text" class="form-control" name="" />
+											type="text" th:field="*{address.postalCode2}" class="form-control" name="" />
 									</div>
 								</div>
 								<div class="col-md-1">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('rt2')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.rt2')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">RT *</label> <input type="text"
-												th:field="*{rt2}" class="form-control" /> <span
-												th:if="${#fields.hasErrors('rt2')}" class="help-block"
-												th:errors="*{rt2}"> Tidak Boleh Kosong</span>
+												th:field="*{address.rt2}" class="form-control" /> <span
+												th:if="${#fields.hasErrors('address.rt2')}" class="help-block"
+												th:errors="*{address.rt2}"> Tidak Boleh Kosong</span>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-1">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('rw2')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.rw2')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">RW *</label> <input type="text"
-												th:field="*{rt1}" class="form-control" /> <span
-												th:if="${#fields.hasErrors('rw2')}" class="help-block"
-												th:errors="*{rw2}"> Tidak Boleh Kosong</span>
+												th:field="*{address.rw1}" class="form-control" /> <span
+												th:if="${#fields.hasErrors('address.rw2')}" class="help-block"
+												th:errors="*{address.rw2}"> Tidak Boleh Kosong</span>
 										</div>
 									</div>
 								</div>
@@ -363,11 +363,11 @@
 								<div class="col-md-2">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('kelurahan1')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.kelurahan1')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Desa/Kelurahan *</label> <input
-												type="text" th:field="*{kelurahan1}" class="form-control"
-												name="" /> <span th:if="${#fields.hasErrors('kelurahan1')}"
-												class="help-block" th:errors="*{kelurahan1}"> Tidak
+												type="text" th:field="*{address.kelurahan1}" class="form-control"
+												name="" /> <span th:if="${#fields.hasErrors('address.kelurahan1')}"
+												class="help-block" th:errors="*{address.kelurahan1}"> Tidak
 												Boleh Kosong</span>
 										</div>
 									</div>
@@ -375,11 +375,11 @@
 								<div class="col-md-2">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('kecamatan1')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.kecamatan1')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Kecamatan *</label> <input
-												type="text" th:field="*{kecamatan1}" class="form-control" />
-											<span th:if="${#fields.hasErrors('kecamatan1')}"
-												class="help-block" th:errors="*{kecamatan1}"> Tidak
+												type="text" th:field="*{address.kecamatan1}" class="form-control" />
+											<span th:if="${#fields.hasErrors('address.kecamatan1')}"
+												class="help-block" th:errors="*{address.kecamatan1}"> Tidak
 												Boleh Kosong</span>
 										</div>
 									</div>
@@ -387,11 +387,11 @@
 								<div class="col-md-2">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('region1')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.region1')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Kota *</label> <input
-												type="text" th:field="*{region1}" class="form-control" />
-											<span th:if="${#fields.hasErrors('region1')}"
-												class="help-block" th:errors="*{region1}"> Tidak
+												type="text" th:field="*{address.region1}" class="form-control" />
+											<span th:if="${#fields.hasErrors('address.region1')}"
+												class="help-block" th:errors="*{address.region1}"> Tidak
 												Boleh Kosong</span>
 										</div>
 									</div>
@@ -399,11 +399,11 @@
 								<div class="col-md-2">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('kelurahan2')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.kelurahan2')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Desa/Kelurahan *</label> <input
-												type="text" th:field="*{kelurahan2}" class="form-control"
-												name="" /> <span th:if="${#fields.hasErrors('kelurahan2')}"
-												class="help-block" th:errors="*{kelurahan2}"> Tidak
+												type="text" th:field="*{address.kelurahan2}" class="form-control"
+												name="" /> <span th:if="${#fields.hasErrors('address.kelurahan2')}"
+												class="help-block" th:errors="*{address.kelurahan2}"> Tidak
 												Boleh Kosong</span>
 										</div>
 									</div>
@@ -411,11 +411,11 @@
 								<div class="col-md-2">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('kecamatan2')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.kecamatan2')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Kecamatan *</label> <input
-												type="text" th:field="*{kecamatan2}" class="form-control" />
-											<span th:if="${#fields.hasErrors('kecamatan2')}"
-												class="help-block" th:errors="*{kecamatan2}"> Tidak
+												type="text" th:field="*{address.kecamatan2}" class="form-control" />
+											<span th:if="${#fields.hasErrors('address.kecamatan2')}"
+												class="help-block" th:errors="*{address.kecamatan2}"> Tidak
 												Boleh Kosong</span>
 										</div>
 									</div>
@@ -423,18 +423,17 @@
 								<div class="col-md-2">
 									<div class="form-group">
 										<div
-											th:class="${#fields.hasErrors('region2')} ? 'form-group has-error':'form-group'">
+											th:class="${#fields.hasErrors('address.region2')} ? 'form-group has-error':'form-group'">
 											<label class="control-label">Kota *</label> <input
-												type="text" th:field="*{region2}" class="form-control" />
-											<span th:if="${#fields.hasErrors('region2')}"
-												class="help-block" th:errors="*{region2}"> Tidak
+												type="text" th:field="*{address.region2}" class="form-control" />
+											<span th:if="${#fields.hasErrors('address.region2')}"
+												class="help-block" th:errors="*{address.region2}"> Tidak
 												Boleh Kosong</span>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
- -->
+					</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-primary pull-right">
 								<i class="fa fa-save"></i> Save
@@ -447,7 +446,7 @@
 	$(document).ready(function() {
 		var minOffset = 0, maxOffset = 20; // Change to whatever you want
 		var thisYear = (new Date()).getFullYear();
-		var select = $('<select class="form-control" th:field="*{marriageYear}">');
+		var select = $('<select class="form-control" th:field="*{biodata.marriageYear}" id="biodata.marriageYear" name="biodata.marriageYear">');
 		
 		$('<option>', {
 			value : "",
