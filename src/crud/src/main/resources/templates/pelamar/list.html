@@ -1,0 +1,35 @@
+<!-- <tr th:each="item :${list}">
+<tr>
+	<td>Nama Panggilan</td>
+	<td>:</td>
+	<td th:text="${item.biodata.nickname}"></td>
+</tr>
+
+<tr>
+	<td>Email</td>
+	<td>:</td>
+	<td th:text="${item.biodata.email}"></td>
+</tr>
+<tr>
+	<td>No. Handphone</td>
+	<td>:</td>
+	<td th:text="${item.biodata.phoneNumber1}">14045</td>
+</tr>
+<tr>
+	<td>Pendidikan</td>
+	<td>:</td>
+	<td th:text="${item.major}"></td>
+</tr> -->
+
+<tr th:each="item :${list}">
+	<td th:text="${item.major}"></td>
+	<td class="col-md-1">
+		<button class="btn btn-xs btn-detail btn-success"
+			th:value="${item.id}">
+			<i class="fa fa-eye"></i>
+		</button>
+		<button class="btn btn-xs btn-edit btn-warning" th:value="${item.id}">
+			<i class="fa fa-edit"></i>
+		</button>	
+	</td>
+</tr>

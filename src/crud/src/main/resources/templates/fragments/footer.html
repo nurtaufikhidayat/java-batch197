@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="footer" th:remove="tag">
+		<div class="footer">
+			<b class="copyright">&copy; 2019 JAVA 197 </b>All rights reserved.
+		</div>
+	</div>
+	<div th:fragment="scripts" th:remove="tag">
+
+		<!-- jQuery UI 1.11.4 -->
+		<script th:src="@{~/jquery-ui/jquery-ui.min.js}"></script>
+		<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+		<script>
+			$.widget.bridge('uibutton', $.ui.button);
+		</script>
+		<!-- Date picker -->
+		<script src="/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+		<script th:src="@{~/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+		<script src="/scripts/flot/jquery.flot.js" type="text/javascript"></script>
+		<script src="/scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+		<script src="/scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js" type="text/javascript"></script>
+		<script src="/scripts/common.js" type="text/javascript"></script>
+	</div>
+</body>
+</html>

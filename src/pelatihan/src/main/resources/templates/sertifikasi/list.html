@@ -1,0 +1,24 @@
+<tr th:each="item :${list}">
+	<td th:text="${item.id}"></td>
+	<td th:text="${item.certificateName}"></td>
+	<td th:text="${item.publisher}"></td>
+	<td th:text="${item.notes}"></td>
+	<td th:text="${item.validStartYear}"></td>
+	<td th:text="${item.validStartMonth}"></td>
+	<td th:text="${item.untilYear}"></td>
+	<td th:text="${item.untilMonth}"></td>
+	<td class="col-md-1">
+		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">More
+                    <span class="fa fa-caret-down"></span></button>
+                    <ul class="dropdown-menu">
+                    <li>
+                    <a href="sertifikasi/edit">Edit</a>
+                    </li>
+                    <li>
+                    <a href="sertifikasi/remove">Delete</a>
+                    </li>
+                    </ul>
+                    
+		
+	</td>
+</tr>

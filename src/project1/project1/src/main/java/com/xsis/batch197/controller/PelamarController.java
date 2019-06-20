@@ -32,6 +32,7 @@ public class PelamarController {
 	
 	@Autowired
 	private XRiwayatPendidikanRepo repoRiwPend;
+	
 	@Autowired
 	private XBiodataRepo repoBiodata;
 
@@ -39,7 +40,7 @@ public class PelamarController {
 	private XAddressRepo repoAddress;
 	
 	@GetMapping(value = "/index")
-	public ModelAndView index() {
+	public ModelAndView index() { 
 		ModelAndView view = new ModelAndView("pelamar/index");
 
 		return view;
@@ -50,9 +51,9 @@ public class PelamarController {
 		// buat object view
 		ModelAndView view = new ModelAndView("pelamar/create");
 		// membuat object pelamar yg akan dikirim ke view
-		// object pelamar adalah new object dari PelamarModel
+		// object pelamar adalah new object dari FormBiodataModel
 		FormBiodataModel pelamar = new FormBiodataModel();
-		// isi kdProvinsi dengan method getKode()
+		// lemparkan data ke view
 		view.addObject("pelamar", pelamar);
 		return view;
 	}
@@ -60,30 +61,34 @@ public class PelamarController {
 	//#3. Menangkap data dari form
 	@PostMapping(value = "/save")
 	public ModelAndView save(@Valid @ModelAttribute("pelamar") FormBiodataModel pelamar, BindingResult result) {
-		if (result.hasErrors()) {
-			logger.info("save pelamar error");
-		} else {
-			XBiodataModel biodata = pelamar.getBiodata();
-			Long dummyIdUser = new Long(1);
-			Date createdOn = new Date();
-			biodata.setCreatedOn(createdOn);
-			biodata.setCreatedBy(dummyIdUser);
-			biodata.setIsDelete(false);
-			biodata.setIdentityTypeId(new Long(1));
-			biodata.setCompanyId("");
-
-			repoBiodata.save(biodata);
-			
-			XAddressModel address = pelamar.getAddress();
-			address.setCreatedOn(createdOn);
-			address.setCreatedBy(dummyIdUser);
-			address.setIsDelete(false);
-			address.setBiodataId(biodata.getId());
-			repoAddress.save(address);
-		}
-
 		ModelAndView view = new ModelAndView("pelamar/create");
-		view.addObject("pelamar", pelamar);
+		try {
+			if (result.hasErrors()) {
+				logger.info("save pelamar error");
+			} else {
+				XBiodataModel biodata = pelamar.getBiodata();
+				Long dummyIdUser = new Long(1);
+				Date createdOn = new Date();
+				biodata.setCreatedOn(createdOn);
+				biodata.setCreatedBy(dummyIdUser);
+				biodata.setIsDelete(false);
+				biodata.setIdentityTypeId(new Long(1));
+				biodata.setCompanyId("");
+
+				repoBiodata.save(biodata);
+				
+				XAddressModel address = pelamar.getAddress();
+				address.setCreatedOn(createdOn);
+				address.setCreatedBy(dummyIdUser);
+				address.setIsDelete(false);
+				address.setBiodataId(biodata.getId());
+				repoAddress.save(address);
+			}
+			view.addObject("pelamar", pelamar);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return view;
 	}
 

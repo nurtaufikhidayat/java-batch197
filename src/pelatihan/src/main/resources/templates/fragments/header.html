@@ -1,0 +1,113 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header_app">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Test App</title>
+
+<!-- jQuery 3 -->
+<script th:src="@{~/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+
+<!-- Bootstrap 3.3.7 -->
+<link type="text/css" rel="stylesheet" th:href="@{~/bootstrap/css/bootstrap.min.css}" />
+<!-- Font Awesome -->
+<link rel="stylesheet" th:href="@{~/font-awesome/css/font-awesome.min.css}" />
+<!-- Ionicons -->
+<link rel="stylesheet" th:href="@{~/Ionicons/css/ionicons.min.css}" />
+<!-- Date Picker -->
+<link rel="stylesheet" th:href="@{~/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css}">
+<link type="text/css" th:href="@{~/bootstrap/css/bootstrap-responsive.min.css}" rel="stylesheet">
+<link type="text/css" th:href="@{~/css/theme.css}" rel="stylesheet">
+</head>
+<body>
+	<header class="main-header" th:fragment="header">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<!-- First dropdown code -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu 1
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Sub Menu 1</a></li>
+								<li><a href="#">Sub Menu 2</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Sub Menu 3</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu 2
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Sub Menu 1</a></li>
+								<li><a href="#">Sub Menu 2</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Sub Menu 3</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu 3
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Sub Menu 1</a></li>
+								<li><a href="#">Sub Menu 2</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Sub Menu 3</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Menu 4
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">Menu 5
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">Menu 6
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<!-- Second dropdown code -->
+						<li>
+							<a href="#">
+								<i class="fa fa-bell"></i>
+							</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi, Arfan
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="#cg-pass" class="btn">Ganti Password</a></li>
+								<li><a href="https://www.jquery-az.com/about-us/">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+	</header>
+</body>
+</head>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header_app">
+</head>
+<body>
+	<!-- Header -->
+	<header th:replace="fragments/header :: header"></header>
+	<!-- /Header -->
+
+	<!-- Content Wrapper -->
+	<div class="wrapper">
+		<div class="container">
+			<div class=row>
+				<!-- Sidebar Menu -->
+				<aside th:replace="fragments/sidebar :: sidebar"></aside>
+				<!-- /Sidebar Menu -->
+				<!-- Content -->
+				<div class="span9">
+					<div class="content">
+						<div class="module">
+							<div class="module-head">
+								<h3>Data Pelamar</h3>
+							</div>
+							<div class="module-option clearfix">
+								<form>
+									<div class="input-append pull-left">
+										<input type="text" placeholder="Cari Pelamar...">
+										<button type="submit" class="btn">Cari</button>
+										<button type="reset" class="btn">Reset</button>
+									</div>
+								</form>
+								<div class="btn-group pull-right" data-toggle="buttons-radio">
+									<a href="#"><i class="fa fa-sort"></i></a>
+									<a href="#"><i class="fa fa-list-ul"></i></a>
+									<a href="#"><i class="fa fa-plus-circle"></i></a>
+								</div>
+							</div>
+							<div class="module-body">
+								<div class="row-fluid">
+									<div class="media user">
+										<a class="media-avatar pull-left" href="#">
+											<img alt="Image" src="/dist/img/avatar04.png">
+										</a>
+										<div class="media-body">
+											<h4>Arfan Anhari <small>Offline</small></h4>
+											<table>
+												<tr>
+													<td>Nama Panggilan</td>
+													<td>:</td>
+													<td>Arfan</td>
+												</tr>
+												<tr>
+													<td>Email</td>
+													<td>:</td>
+													<td>arfananakbogor@gmail.com</td>
+												</tr>
+												<tr>
+													<td>No. Handphone</td>
+													<td>:</td>
+													<td>14045</td>
+												</tr>
+												<tr>
+													<td>Pendidikan</td>
+													<td>:</td>
+													<td>IT (Ilmu Tafsir), Al-Azhar University</td>
+												</tr>	
+											</table>
+										</div>
+										<div class="btn-group pull-right" data-toggle="buttons-radio">
+											<a href="#"><i class="fa fa-search"></i></a>
+											<a href="#"><i class="fa fa-envelope"></i></a>
+										</div>
+									</div>
+								</div>
+								<div class="row-fluid">
+									<div class="media user">
+										<a class="media-avatar pull-left" href="#">
+											<img alt="Image" src="/dist/img/avatar04.png">
+										</a>
+										<div class="media-body">
+											<h4>Arfan Anhari <small>Offline</small></h4>
+											<table>
+												<tr>
+													<td>Nama Panggilan</td>
+													<td>:</td>
+													<td>Arfan</td>
+												</tr>
+												<tr>
+													<td>Email</td>
+													<td>:</td>
+													<td>arfananakbogor@gmail.com</td>
+												</tr>
+												<tr>
+													<td>No. Handphone</td>
+													<td>:</td>
+													<td>14045</td>
+												</tr>
+												<tr>
+													<td>Pendidikan</td>
+													<td>:</td>
+													<td>IT (Ilmu Tafsir), Al-Azhar University</td>
+												</tr>	
+											</table>
+										</div>
+										<div class="btn-group pull-right" data-toggle="buttons-radio">
+											<a href="#"><i class="fa fa-search"></i></a>
+											<a href="#"><i class="fa fa-envelope"></i></a>
+										</div>
+									</div>
+								</div>
+								<div class="pagination pagination-right">                              
+									<button type="button" class="btn btn-outline-secondary">Previous
+										<a href="#" class="previous"></a>
+									</button>
+									<button type="button" class="btn btn-outline-secondary">Next
+										<a href="#" class="next"></a>
+									</button>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Content -->
+			</div>
+		</div>
+	</div>
+	<!-- /Content Wrapper -->
+	
+	<!-- Footer -->
+	<div th:replace="fragments/footer :: footer"></div>
+	<!-- /Footer -->
+</body>
+</html>

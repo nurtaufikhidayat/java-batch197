@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header_app">
+</head>
+<body>
+	<style>
+label {
+	font-weight: unset;
+}
+
+.row {
+	margin-left: -15px !important;
+}
+</style>
+
+	<!-- Header -->
+	<header th:replace="fragments/header :: header"></header>
+	<!-- /Header -->
+
+	<!-- Content Wrapper -->
+	<div class="wrapper">
+		<div class="container">
+			<div class=row>
+				<!-- Sidebar Menu -->
+				<aside th:replace="fragments/sidebar :: sidebar"></aside>
+				<!-- /Sidebar Menu -->
+				<!-- Content -->
+				<div class="span10">
+					<div class="content">
+						<div class="module">
+							<div class="module-option clearfix">
+								<form>
+									<div class="input-append input-group input-group-sm pull-Left">
+										<input type="text" id="txt-search" class="form-control"
+											placeholder="Cari Nama Pelamar..." style="width: 700px">
+										<button type="submit" class="btn btn-sm" id="btn-search"
+											style="margin-right: 10px">Cari</button>
+										<button type="reset" class="btn btn-sm" id="btn-reset"
+											onclick="document.getElementById('txt-search').value = ''">Reset</button>
+									</div>
+								</form>
+								<br>
+								
+								<button type="button" class="btn btn-primary pull-right"
+									id="btn-add" style="margin-left: 10px" >
+									<i class="fa fa-plus"></i> Add
+								</button>
+								
+								<div class="btn-group pull-right">
+									<div class="dropdown ">
+										<button class="btn btn-primary dropdown-toggle " type="button"
+											data-toggle="dropdown" id="btn-row" style="margin-left: 10px">
+											Jumlah Data/Halaman <span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu" style="margin-left: 10px">
+											<li><a href="#"><center>10</center></a></li>
+											<li><a href="#"><center>20</center></a></li>
+											<li><a href="#"><center>30</center></a></li>
+											<li><a href="#"><center>40</center></a></li>
+										</ul>
+									</div>
+								</div>
+								
+								<button type="button" class="btn pull-right" id="btn-order">
+									<i class="fa fa-sort-alpha-asc"></i>
+								</button>
+							
+							</div>
+							
+							<div class="module-body">
+								<!-- START List Data Table -->
+								<div class="row-fluid" id="list-data"></div>
+								<!-- END List Data -->
+
+								<div class="pagination pagination-right pull-right">
+									<button type="button" class="btn btn-outline-secondary">
+										Previous <a href="#" class="previous"></a>
+									</button>
+									<button type="button" class="btn btn-outline-secondary">
+										Next <a href="#" class="next"></a>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Content -->
+			</div>
+		</div>
+	</div>
+	<!-- /Content Wrapper -->
+
+	<!-- modal mulai -->
+	<div class="modal fade" id="modal-input">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	<!-- modal selesai -->
+	<!-- Footer -->
+	<div th:replace="fragments/footer :: footer"></div>
+	<!-- /Footer -->
+	<!-- script javascript -->
+	<div th:replace="fragments/footer :: scripts"></div>
+	
+	</body>
+</html>

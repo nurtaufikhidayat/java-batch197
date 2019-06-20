@@ -92,7 +92,6 @@ public class XBiodataModel {
 	@Column(name="nationality", length=100, nullable=true)
 	private String nationality;
 	
-	@NotEmpty(message="Tidak boleh kosong")
 	@Column(name="ethic", length=50, nullable=true)
 	private String ethic;
 	

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header_app">
+</head>
+<body>
+	<!-- Header -->
+	<header th:replace="fragments/header :: header"></header>
+	<!-- /Header -->
+
+	<!-- Content Wrapper -->
+	<div class="wrapper">
+		<div class="container">
+			<div class=row>
+				<!-- Sidebar Menu -->
+				<aside th:replace="fragments/sidebar :: sidebar"></aside>
+				<!-- /Sidebar Menu -->
+				<!-- Content -->
+				
+				<!-- /Content -->
+			</div>
+		</div>
+	</div>
+	<!-- /Content Wrapper -->
+
+	<!-- Footer -->
+	<div th:replace="fragments/footer :: footer"></div>
+	<!-- /Footer -->
+</body>
+</html>

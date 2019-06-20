@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div th:fragment="footer" th:remove="tag">
+		<div class="footer">
+			<b class="copyright">&copy; 2019 JAVA 197 </b>All rights reserved.
+		</div>
+	</div>
+	<div th:fragment="scripts" th:remove="tag">
+
+		<!-- jQuery UI 1.11.4 -->
+		<script th:src="@{~/jquery-ui/jquery-ui.min.js}"></script>
+		<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+		<script>
+			$.widget.bridge('uibutton', $.ui.button);
+		</script>
+		<!-- Date picker -->
+		<script th:src="@{~/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js}"></script>
+	</div>
+</body>
+</html>

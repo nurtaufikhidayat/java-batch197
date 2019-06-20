@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header_app">
+</head>
+<body>
+	<div class="modal-body wrapper">
+		<div class="row">
+			<aside th:replace="fragments/sidebarmodal :: sidebarmodal"></aside>
+			<div class="col-md-9">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					<font color=blue>Sertifikasi</color></font>
+					<!--membuat button tambah  -->
+					<button type="button" class="btn btn-link" id="btn-add">
+						<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+					</button>
+
+				</h3>
+				<!-- membuat garis tabel -->
+
+				<thead class="table-style">
+					<table class="table table-striped">
+						<tr>
+							<th><font color=blue>NAMA SERTIFIKASI</color></font></th>
+							<th><font color=blue>PENERBIT</color></font></th>
+							<th><font color=blue>MASA BERLAKU SERTIFIKASI</color></font></th>
+							<th><font color=blue>#</color></font></th>
+						</tr>
+					</table>
+				</thead>
+			</div>
+		</div>
+	</div>
+
+	<!-- modal mulai -->
+	<div class="modal fade" id="modal-input">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	<!-- modal selesai -->
+
+<!-- script untuk CRUD page sertifikasi  -->
+	<script>
+		//#1. Read function javascript
+		function loadData() {
+			// membuat an async AJAX request pada url kota/list, dengan tujuan menerima data yg berupa html, dan data yang diterima ketika sukses adalah data dengan id list-data
+			$.ajax({
+				url : '/sertifikasi/list',
+				type : 'get',
+				dataType : 'html',
+				success : function(result) {
+					$("#list-data").html(result);
+				}
+			});
+		}
+		//#2. funciton JQuery, pertama kali halaman di load
+		$(function() {
+			loadData();
+		});
+
+		//popup dalam pop up menambilkan create/tambah data
+		
+		$("#modal-input").on("click", "#btn-add", function(){
+			$.ajax({
+				url : '/sertifikasi/add' , // lihat di SertifikasiController, cari GetMapping(value="/create")
+				type : 'get',
+				dataType : 'html',
+				success : function(result) {
+					$("#modal-input").find(".modal-dialog").html(result);
+					// menampilkan modal dengan id modal-input
+					$("#modal-input").modal('show');
+				}
+			});
+			
+		});
+		
+
+		//#4 event di modal input, kemudian cari element dengan id form-sertifikasi
+		// event ny adalah ketika form di submit
+		$("#modal-input").on("submit", "#form-sertifikasi", function() {
+			// inisialisasi variable dataForm, diambil dari serialize method
+			var dataForm = $(this).serialize()
+			// inisialisasi variable urlForm diambil dari atribute action dari form
+			// sehingga untuk CREATE, UPDATE, DELETE menggunakan data ini
+			// dan tidak perlu membuat event submit berkali-kali
+			var urlForm = $(this).attr('action');
+			// submit data dengan AJAX
+			$.ajax({
+				url : urlForm, // url di isi dengan variable urlForm
+				type : 'post',
+				data : dataForm, // data di isi dengan variable dataForm
+				dataType : 'html',
+				done : function() {
+					$("#modal-input").find(".modal-dialog").html("");
+				},
+				success : function(result) {
+					// masukan dulu result ke modal
+					$("#modal-input").find(".modal-dialog").html(result)
+					// check jumlah element yang memiliki class has-error
+					var check = $("#modal-input").find(".has-error").length;
+					// jika tidak ada error
+					if (check == 0) {
+						// menyembunyikan modal dengan id modal-input
+						$("#modal-input").modal('hide');
+						// tampilkan data dengan memanggil method loadData
+						loadData();
+					}
+				},
+			});
+			// mencegah submit automatis, sehingga form akan diam tidak melakukan action
+			return false;
+		});
+
+		//#5. menampilkan detail data
+		$("#list-data").on("click", ".btn-detail", function() {
+			// Metode val () digunakan untuk Return/Set atribut nilai dari elemen yang dipilih.
+			//Saat digunakan untuk mengembalikan nilai:
+			//Metode ini mengembalikan nilai atribut nilai dari elemen yang cocok PERTAMA.
+			//Saat digunakan untuk menetapkan nilai:
+			//Metode ini menetapkan nilai atribut nilai untuk SEMUA elemen yang cocok.
+			var id = $(this).val();
+			// request halaman dengan ajax
+			$.ajax({
+				url : '/sertifikasi/index/' + id, // lihat di PelamarController, cari GetMapping(value="/detail/{id}")
+				type : 'get',
+				dataType : 'html',
+				success : function(result) {
+					$("#modal-input").find(".modal-dialog").html(result);
+					// menampilkan modal dengan id modal-input
+					$("#modal-input").modal('show');
+				}
+			});
+		});
+		
+		$("#modal-input").on("click", ".link-modal",function(){
+			var link = $(this).attr("href");
+			
+			 $.ajax({
+					url : link, // lihat di PelamarController, cari GetMapping(value="/list/{page}")
+					type : 'get',
+					dataType : 'html',
+					success : function(result) {
+						$("#modal-input").find(".modal-body").html(result);
+					}
+				});
+			 
+		});		
+		
+	</script>
+</body>
+</html>

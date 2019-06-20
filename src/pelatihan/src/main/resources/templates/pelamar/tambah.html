@@ -1,0 +1,306 @@
+<!-- content mulai -->
+<form class="" th:action="@{~/pelamar/save}" th:object="${pelamar}"
+	method="post" id="form-pelatihan">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title">Masukan Biodata</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Nama Lengkap *</label> <input
+							type="text" class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Nama Panggilan *</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Tempat Lahir *</label> <input
+							type="text" class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group" id="marriedDiv">
+						<label class="control-label">Tgl. Lahir (yyyy-mm-dd) *</label> 
+						<input type="text" class="form-control datepicker" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Jenis Kelamin *</label> <select
+							class="form-control select2" style="width: 100%;">
+							<option selected="selected"></option>
+							<option>Pria</option>
+							<option>Wanita</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Agama *</label> <select
+							class="form-control select2" style="width: 100%;">
+							<option selected="selected"></option>
+							<option>Islam</option>
+							<option>Kristen</option>
+							<option>Katolik</option>
+							<option>Hindu</option>
+							<option>Budha</option>
+							<option>Kong Hu Cu</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Tinggi(cm) *</label> <input
+							type="text" class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Berat(kg) *</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Kewarganegaraan *</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Suku Bangsa</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Kegemaran/Hobi</label> <input
+							type="text" class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Jenis Identitas *</label> <select
+							class="form-control select2" style="width: 100%;">
+							<option selected="selected"></option>
+							<option>KTP</option>
+							<option>SIM</option>
+							<option>PASPOR</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Nomor Identitas</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Email *</label> <input type="text"
+							class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">No. HP</label> <input type="text"
+							class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">No. HP Alternatif</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">No. Tlp(Rumah/Orang Tua) *</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Anak Ke *</label> <input type="text"
+							class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Dari Berapa Saudara *</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">Status Pernikahan *</label> <select
+							class="form-control select2" style="width: 100%;">
+							<option selected="selected"></option>
+							<option>Menikah</option>
+							<option>Belum Menikah</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group" id="marriedYear">
+						<label class="control-label">Tahun Pernikahan</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group text-center"
+						style="border-bottom: 2px solid black;">
+						<label class="control-label"><b>Alamat Sesuai
+								Identitas</b></label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group text-center"
+						style="border-bottom: 2px solid black;">
+						<label class="control-label"><b>Alamat Sesuai Tempat
+								Tinggal Saat ini</b></label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Alamat *</label> <input type="text"
+							class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label class="control-label">Alamat *</label> <input type="text"
+							class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label">Kode Pos</label> <input type="text"
+							class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-1">
+					<div class="form-group">
+						<label class="control-label">RT *</label> <input type="text"
+							class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-1">
+					<div class="form-group">
+						<label class="control-label">RW *</label> <input type="text"
+							class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="control-label">Kode Pos</label> <input type="text"
+							class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-1">
+					<div class="form-group">
+						<label class="control-label">RT *</label> <input type="text"
+							class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-1">
+					<div class="form-group">
+						<label class="control-label">RW *</label> <input type="text"
+							class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">Desa/Kelurahan *</label> <input
+							type="text" class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">Kecamatan *</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">Kota *</label> <input type="text"
+							class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">Desa/Kelurahan *</label> <input
+							type="text" class="form-control" name="" />
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">Kecamatan *</label> <input
+							type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label class="control-label">Kota *</label> <input type="text"
+							class="form-control" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary pull-right">
+				<i class="fa fa-save"></i> Save
+			</button>
+			<button data-dismiss="modal" class="btn btn-default pull-right">Cancel</button>
+		</div>
+	</div>
+</form>
+<script>
+	$(document).ready(function() {
+		var minOffset = 0, maxOffset = 20; // Change to whatever you want
+		var thisYear = (new Date()).getFullYear();
+		var select = $('<select class="form-control">');
+		for (var i = minOffset; i <= maxOffset; i++) {
+			var year = thisYear - i;
+			$('<option>', {
+				value : year,
+				text : year
+			}).appendTo(select);
+		}
+		$("#marriedYear").append(select);
+		
+		$("#marriedDiv input").datepicker({
+			
+		});
+	})
+</script>
+<!-- content selesai -->

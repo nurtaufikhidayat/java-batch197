@@ -1,0 +1,38 @@
+<!-- content mulai -->
+<form th:action="@{~/sertifikasi/update}" th:object="${sertifikasi}" method="post" id="form-sertifikasi" >
+<div class="box box-warning box-solid">
+	<div class="box-header with-border">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+		<h4 class="box-title">Update Provinsi</h4>
+	</div>
+	<div class="box-body form-horizontal">	
+		<input type="hidden" th:field="*{id}" />						
+		<div th:class="${#fields.hasErrors('certificateName')} ? 'form-group has-error':'form-group'">
+			<label class="control-label col-md-3">Nama Sertifikasi</label>
+			<div class="col-md-8">
+				<input type="text" th:field="*{certificateName}" class="form-control" />
+				<span th:if="${#fields.hasErrors('certificateName')}" class="help-block" th:errors="*{certificateName}">Kode Tidak Boleh Kosong</span>
+			</div>
+		</div>
+		
+		<div th:class="${#fields.hasErrors('publisher')} ? 'form-group has-error':'form-group'">
+			<label class="control-label col-md-3">Penerbit</label>
+			<div class="col-md-8">
+				<input type="text" th:field="*{publisher}" class="form-control"/>
+				<span th:if="${#fields.hasErrors('publisher')}" class="help-block" th:errors="*{publisher}">Nama Tidak Boleh Kosong</span>
+			</div>
+		</div>
+		
+		
+	</div>
+	<div class="box-footer">
+		<button type="submit" class="btn btn-warning pull-right">
+			<i class="fa fa-edit"></i> Update
+		</button>		
+		<button data-dismiss="modal" class="btn btn-default">Cancel</button>
+	</div>
+</div>
+</form>
+<!-- content selesai -->

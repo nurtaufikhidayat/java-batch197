@@ -1,0 +1,240 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header_app">
+</head>
+<body>
+	<style>
+label {
+	font-weight: unset;
+}
+
+.row {
+	margin-left: -15px !important;
+}
+</style>
+
+	<!-- Header -->
+	<header th:replace="fragments/header :: header"></header>
+	<!-- /Header -->
+
+	<!-- Content Wrapper -->
+	<div class="wrapper">
+		<div class="container">
+			<div class=row>
+				<!-- Sidebar Menu -->
+				<aside th:replace="fragments/sidebar :: sidebar"></aside>
+				<!-- /Sidebar Menu -->
+				<!-- Content -->
+				<div class="span10">
+					<div class="content">
+						<div class="module">
+							<div class="module-option clearfix">
+								<form>
+									<div class="input-append input-group input-group-sm pull-Left">
+										<input type="text" id="txt-search" class="form-control"
+											placeholder="Cari Nama Pelamar..."
+											style="width: 700px; border-color: #000066;">
+										<button type="button" id="btn-search" class="btn btn-sm"
+											style="margin-right: 10px; background-color: #000066; color: white; font-weight: bold;">Cari</button>
+										<button type="reset" class="btn btn-sm" id="btn-reset"
+											style="background-color: #000066; color: white; font-weight: bold;"
+											onclick="document.getElementById('txt-search').value = ''">Reset</button>
+									</div>
+								</form>
+								<br>
+
+								<button type="button" class="btn btn-primary pull-right"
+									id="btn-add" style="margin-left: 10px">
+									<i class="fa fa-plus-circle"></i>
+								</button>
+
+								<div class="btn-group pull-right">
+									<div class="dropdown ">
+										<button class="btn btn-primary dropdown-toggle" type="button"
+											data-toggle="dropdown" id="btn-row" style="margin-left: 10px">
+											<i class="fa fa-list-ul"></i>
+										</button>
+										<ul class="dropdown-menu" style="margin-left: 10px">
+											<li><a href="#"><center>10</center></a></li>
+											<li><a href="#"><center>20</center></a></li>
+											<li><a href="#"><center>30</center></a></li>
+											<li><a href="#"><center>40</center></a></li>
+										</ul>
+									</div>
+								</div>
+
+								<button type="button" class="btn pull-right" id="btn-order">
+									<i class="fa fa-sort-alpha-asc"></i>
+								</button>
+
+							</div>
+
+							<div class="module-body">
+								<!-- START List Data Table -->
+								<div class="row-fluid" id="list-data"></div>
+								<!-- END List Data -->
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Content -->
+			</div>
+		</div>
+	
+	<!-- /Content Wrapper -->
+
+	<!-- modal mulai -->
+	<div class="modal fade" id="modal-input">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	<!-- modal selesai -->
+	</div>
+
+	<!-- Footer -->
+	<div th:replace="fragments/footer :: footer"></div>
+	<!-- /Footer -->
+
+	<!-- script javascript -->
+	<div th:replace="fragments/footer :: scripts"></div>
+
+	<!-- script untuk CRUD page provinsi  -->
+
+	<script>
+		//Ganti icon order
+		$("#btn-order").click(function() {
+			$(this).find("i").toggleClass("fa-sort-alpha-desc");
+		});
+
+		//#1. Membaca fungsi javaScript
+		function loadData() {
+			// membuat an async AJAX request pada url pelamar/list, dengan tujuan menerima data yg berupa html, dan data yang diterima ketika sukses adalah data dengan id list-data
+			$.ajax({
+				url : '/pelamar/list',
+				type : 'get',
+				dataType : 'html',
+				success : function(result) {
+					$("#list-data").html(result);
+				}
+			});
+		}
+
+		//#2. funciton JQuery, pertama kali halaman di load
+		// membuat fungsi untuk menjalankan method loadData
+		$(function() {
+			loadData();
+		});
+
+		//#3. event btn-add => cari button dengan id btn-add
+		// event ketika di click, untuk menampilkan form baru
+		$("#btn-add").click(function() {
+			// request halaman dengan ajax
+			$.ajax({
+				url : '/pelamar/add', // lihat di PelamarController, cari GetMapping(value="/add")
+				type : 'get',
+				dataType : 'html',
+				success : function(result) {
+					$("#modal-input").find(".modal-dialog").html(result);
+					// menampilkan modal dengan id modal-input
+					$("#modal-input").modal('show');
+				}
+			});
+		});
+
+		//#4 event di modal input, kemudian cari element dengan id form-pelamar
+		// event ny adalah ketika form di submit
+		$("#modal-input").on("submit", "#form-pelamar", function() {
+			// inisialisasi variable dataForm, diambil dari serialize method
+			var dataForm = $(this).serialize()
+			// inisialisasi variable urlForm diambil dari atribute action dari form
+			// sehingga untuk CREATE, UPDATE, DELETE menggunakan data ini
+			// dan tidak perlu membuat event submit berkali-kali
+			var urlForm = $(this).attr('action');
+			// submit data dengan AJAX
+			$.ajax({
+				url : urlForm, // url di isi dengan variable urlForm
+				type : 'post',
+				data : dataForm, // data di isi dengan variable dataForm
+				dataType : 'html',
+				done : function() {
+					$("#modal-input").find(".modal-dialog").html("");
+				},
+				success : function(result) {
+					// masukan dulu result ke modal
+					$("#modal-input").find(".modal-dialog").html(result)
+					// check jumlah element yang memiliki class has-error
+					var check = $("#modal-input").find(".has-error").length;
+					// jika tidak ada error
+					if (check == 0) {
+						// menyembunyikan modal dengan id modal-input
+						$("#modal-input").modal('hide');
+						// tampilkan data dengan memanggil method loadData
+						loadData();
+					}
+				},
+			});
+			// mencegah submit automatis, sehingga form akan diam tidak melakukan action
+			return false;
+		});
+
+		//#5. menampilkan detail data
+		$("#list-data").on("click", ".btn-detail", function() {
+			// Metode val () digunakan untuk Return/Set atribut nilai dari elemen yang dipilih.
+			//Saat digunakan untuk mengembalikan nilai:
+			//Metode ini mengembalikan nilai atribut nilai dari elemen yang cocok PERTAMA.
+			//Saat digunakan untuk menetapkan nilai:
+			//Metode ini menetapkan nilai atribut nilai untuk SEMUA elemen yang cocok.
+			var id = $(this).val();
+			// request halaman dengan ajax
+			$.ajax({
+				url : '/sertifikasi/index' , // lihat di PelamarController, cari GetMapping(value="/detail/{id}")
+				type : 'get',
+				dataType : 'html',
+				success : function(result) {
+					$("#modal-input").find(".modal-dialog").html(result);
+					// menampilkan modal dengan id modal-input
+					$("#modal-input").modal('show');
+				}
+			});
+		});
+
+		//#8. search method
+		$("#btn-search").click(function() {
+			var key = $("#txt-search").val();
+			if (key == "") {
+				alert("Nama Pelamar Tidak Boleh Kosong");
+			} else {
+				// request halaman dengan ajax
+				$.ajax({
+					url : '/pelamar/list/' + key, // lihat di PelamarController, cari GetMapping(value="/list/{key}")
+					
+					type : 'get',
+					dataType : 'html',
+					success : function(result) {
+						$("#list-data").html(result);
+					}
+				});
+			}
+		});
+
+		//Test
+		function cgPage() {
+			//alert("Hai");
+			var valPage = $(this).val();
+			$.ajax({
+				
+				url : '/pelamar/list' + valPage, // lihat di PelamarController, cari GetMapping(value="/list/{page}")
+				data : {page: page,size:10},
+				type : 'get',
+				dataType : 'html',
+				success : function(result) {
+					$("#list-data").html(result);
+				}
+			});
+		} 
+	</script>
+</body>
+</html>
