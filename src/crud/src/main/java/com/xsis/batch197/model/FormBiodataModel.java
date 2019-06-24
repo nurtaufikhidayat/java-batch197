@@ -21,6 +21,7 @@ public class FormBiodataModel {
 	@NotEmpty(message="Tidak boleh kosong")
 	private String pob;
 	
+	@NotNull(message="Tidak boleh kosong")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dob;
@@ -104,6 +105,7 @@ public class FormBiodataModel {
 	@NotEmpty(message="Tidak boleh kosong")
 	private String kelurahan1;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	private String kecamatan1;
 
 	@NotEmpty(message="Tidak boleh kosong")
@@ -118,6 +120,7 @@ public class FormBiodataModel {
 	@NotEmpty(message="Tidak boleh kosong")
 	private String rt2;
 	
+	@NotEmpty(message="Tidak boleh kosong")
 	private String rw2;
 	
 	@NotEmpty(message="Tidak boleh kosong")

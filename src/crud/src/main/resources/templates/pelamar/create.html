@@ -2,9 +2,9 @@
 <form class="" th:action="@{~/pelamar/save}" th:object="${biodata}"
 	method="post" id="form-pelamar">
 	<div class="modal-content">
-		<div class="modal-header">
+		<div class="modal-header" style="background-color: blue">
 			<button type="button" class="close" data-dismiss="modal"
-				aria-label="Close">
+				aria-label="Close" style="background-color: white">
 				<span aria-hidden="true">&times;</span>
 			</button>
 			<h4 class="modal-title">Masukan Biodata</h4>
@@ -165,8 +165,13 @@
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
+								<div
+										th:class="${#fields.hasErrors('identityNo')} ? 'form-group has-error':'form-group'">
 									<label class="control-label">Nomor Identitas</label> <input
 										type="text" th:field="*{identityNo}" class="form-control" />
+										<span th:if="${#fields.hasErrors('identityNo')}" class="help-block"
+											th:errors="*{identityNo}">email Tidak Boleh Kosong</span>
+								</div>
 								</div>
 							</div>
 						</div>

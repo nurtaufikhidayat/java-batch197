@@ -27,15 +27,9 @@ public class XRiwayatPelatihanModel {
 	@Column(name="id", length=11)
 	private Long id;
 	
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Column(name="created_by", length=11, nullable=false)
 	private Long createdBy;
 	
-	@NotNull
-	@NotBlank
-	@NotEmpty
 	@Column(name="created_on", nullable=false)
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")

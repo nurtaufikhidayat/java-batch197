@@ -1,0 +1,165 @@
+<!-- content mulai -->
+<form class="" th:action="@{~/pelatihan/save}" th:object="${pelatihan}"
+	method="post" id="form-pelatihan">
+	<div class="modal-content">
+		<div class="modal-header" style="background-color: blue">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close" style="background-color: white">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<h4 class="modal-title">Form Pelatihan</h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<div
+							th:class="${#fields.hasErrors('trainingName')} ? 'form-group has-error':'form-group'">
+							<label class="control-label">Nama(kursus, penataran,
+								pelatihan, workshop)</label> <input type="text"
+								th:field="*{trainingName}" class="form-control" /> <span
+								th:if="${#fields.hasErrors('trainingName')}" class="help-block"
+								th:errors="*{trainingName}">Nama Tidak Boleh Kosong</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div
+							th:class="${#fields.hasErrors('organizer')} ? 'form-group has-error':'form-group'">
+							<label class="control-label">Penyelenggara</label> <input
+								type="text" th:field="*{organizer}" class="form-control" /> <span
+								th:if="${#fields.hasErrors('organizer')}" class="help-block"
+								th:errors="*{organizer}">Penyelenggara Tidak Boleh Kosong</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+							<label class="control-label">Waktu Pelaksanaan</label> 
+							<select class="form-control select2" th:field="*{trainingMonth}" style="width: 100%;">
+									<option selected="selected" value="">Pilih</option>
+									<option value="Januari">Januari</option>
+									<option value="Februari">Februari</option>
+									<option value="Maret">Maret</option>
+									<option value="April">April</option>
+									<option value="Mei">Mei</option>
+									<option value="Juni">Juni</option>
+									<option value="Juli">Juli</option>
+									<option value="Agustus">Agustus</option>
+									<option value="September">September</option>
+									<option value="Oktober">Oktober</option>
+									<option value="November">November</option>
+									<option value="Desember">Desember</option>
+								</select>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label"> &nbsp;</label> 
+						<select class="form-control"
+							id="tahun"></select>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<div
+							th:class="${#fields.hasErrors('trainingDuration')} ? 'form-group has-error':'form-group'">
+							<label class="control-label">Lama Durasi</label> <input
+								type="text" th:field="*{trainingDuration}" class="form-control" />
+							<span th:if="${#fields.hasErrors('trainingDuration')}"
+								class="help-block" th:errors="*{trainingDuration}">Nama
+								Tidak Boleh Kosong</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label class="control-label">&nbsp;</label><select class="form-control select2" th:field="*{timePeriodId}" style="width: 100%;">
+									<option selected="selected" value="">Pilih</option>
+									<option value="1">Hari</option>
+									<option value="2">Bulan</option>
+									<option value="3">Tahun</option>
+								</select>
+							
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<div
+							th:class="${#fields.hasErrors('city')} ? 'form-group has-error':'form-group'">
+							<label class="control-label">Kota</label> <input type="text"
+								th:field="*{city}" class="form-control" /> <span
+								th:if="${#fields.hasErrors('city')}" class="help-block"
+								th:errors="*{city}">Nama Tidak Boleh Kosong</span>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<div
+							th:class="${#fields.hasErrors('country')} ? 'form-group has-error':'form-group'">
+							<label class="control-label">Negara</label> <input
+								type="text" th:field="*{country}" class="form-control" /> <span
+								th:if="${#fields.hasErrors('country')}" class="help-block"
+								th:errors="*{country}">Penyelenggara Tidak Boleh Kosong</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="form-group">
+							<label class="control-label">Catatan</label> 
+							<textarea name="notes" style="resize: unset" class="form-control"></textarea>
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="modal-footer">
+			<button th:href="@{~/pelatihan/index}" type="button"
+				class="btn btn-warning col link-modal">
+				<font style="color: white">Batal</font>
+			</button>
+			<button th:href="@{~/pelatihan/index}" type="submit"
+				class="btn btn-primary col" id="btn-simpan">
+				<font style="color: white"> <i class="fa fa-save"></i>Simpan
+				</font>
+			</button>
+		</div>
+		
+	</div>
+</form>
+
+<script>
+	//Select tahun kebawah
+	var max1 = new Date().getFullYear();
+	min1 = max1 - 20, select1 = document.getElementById('tahun');
+
+	var opt1 = document.createElement('option');
+	opt1.value = "";
+	opt1.innerHTML = "- Pilih Tahun -";
+	select1.appendChild(opt1);
+	for (var i = max1; i >= min1; i--) {
+		var opt1 = document.createElement('option');
+		opt1.value = i;
+		opt1.innerHTML = i;
+		select1.appendChild(opt1);
+	}
+	//select1.value = new Date().getFullYear();
+
+</script>
+
+</body>
+</html>

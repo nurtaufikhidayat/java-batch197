@@ -1,138 +1,150 @@
 <!-- content mulai -->
-<form th:action="@{~/sertifikasi/save}" th:object="${sertifikasi}"
-	method="post" id="form-sertifikasi">
+<form class="" th:action="@{~/sertifikasi/save}"
+	th:object="${sertifikasi}" method="post" id="form-sertifikasi">
 	<div class="modal-content">
-		<div class="modal-header">
+		<div class="modal-header" style="background-color: blue">
 			<button type="button" class="close" data-dismiss="modal"
-				aria-label="Close">
+				aria-label="Close" style="background-color: white">
 				<span aria-hidden="true">&times;</span>
 			</button>
-			<h4 class="modal-title" >Form Sertifikasi</h4>
+			<h4 class="modal-title">Form Sertifikasi</h4>
 		</div>
-		<div class= "modal-body">
-		<div class="row">
-			<div class="col-md-5">
-				<div class="form-group">
-					<div
-						th:class="${#fields.hasErrors('certificateName')} ? 'form-group has-error':'form-group'">
-						<label class="control-label">Nama Sertifikat</label> <input
-							type="text" th:field="*{certificateName}" class="form-control" />
-						<span th:if="${#fields.hasErrors('certificateName')}"
-							class="help-block" th:errors="*{certificateName}">Nama
-							Tidak Boleh Kosong</span>
+		<div class="modal-body">
+		<div class="wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group ">
+						<div class="col">
+							<label class="col col-form-label">Nama Sertifikasi *</label>
+							<div class="col">
+								<input type="text" name="certificateName" class="form-control"
+									>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<label class="col col-form-label">Penerbit *</label> <input
+						type="text" name="publisher" class="form-control" >
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<div class="col">
+					<label class="col col-form-label">Berlaku Mulai</label>
+					<div class="col form-group row">
+						<div class="col-md-3">
+							<select name='validStartMonth' id="validStartMonth"
+								class="form-control">
+								<option value="">- Pilih Bulan -</option>
+								<option th:each="i:${#numbers.sequence(1,12)}" th:value="${i}"
+									th:text="${i}" />
+							</select>
+						</div>
+						<div class="col-md-3">
+							<select id="validStartYear" name='validStartYear'
+								class="form-control"></select>
+						</div>
+
+					</div>
+				</div>
+				<div class="col">
+					<label class="col col-form-label">Berlaku Sampai</label>
+
+					<div class="col-md-3">
+						<select name="untilMonth" id="untilMonth" class="form-control"
+							disabled>
+							<option value="">- Pilih Bulan -</option>
+							<option th:each="i:${#numbers.sequence(1,12)}" th:value="${i}"
+								th:text="${i}" />
+						</select>
+					</div>
+					<div class="col-md-3">
+						<select id="untilYear" name="untilYear" class="form-control"
+							disabled></select>
 					</div>
 				</div>
 			</div>
+			<label class="col col-form-label">Catatan</label>
+			<div class="col">
+				<textarea name="notes" style="resize: unset" class="form-control"></textarea>
+			</div>
+
+			<br> <br>
+			<div class="btn-group pull-right" role="group" aria-label="...">
+				<button th:href="@{~/sertifikasi/index}" type="button"
+					class="btn btn-warning col link-modal">
+					<font style="color: white">Batal</font>
+				</button>
+				<button th:href="@{~/sertifikasi/index}" type="submit" class="btn btn-primary col" id="btn-simpan">
+					<font style="color: white"> <i class="fa fa-save"></i>Simpan
+					</font>
+				</button>
+
+				</div>
+			</div>
+
 			
-			
-
-
-			<div class="col-md-5">
-				<div class="form-group">
-					<div
-						th:class="${#fields.hasErrors('publisher')} ? 'form-group has-error':'form-group'">
-						<label class="control-label col-md-2">Penerbit</label> <input
-							type="text" th:field="*{publisher}" class="form-control" /> <span
-							th:if="${#fields.hasErrors('publisher')}" class="help-block"
-							th:errors="*{publisher}">Penerbit Tidak Boleh Kosong</span>
-					</div>
-				</div>
-			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-md-2">
-				<div class="form-group">
-					<div
-						th:class="${#fields.hasErrors('validStartMonth')} ? 'form-group has-error':'form-group'">
-						<label class="control-label">Berlaku Mulai*</label> <select
-							class="form-control select2" th:field="*{validStartMonth}"
-							style="width: 100%;">
-							<option selected="selected" value="">Pilih Bulan</option>
-						
-						</select> <span th:if="${#fields.hasErrors('validStartMonth')}"
-							class="help-block" th:errors="*{validStartMonth}">bulan
-							Tidak Boleh Kosong</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="form-group">
-					<div
-						th:class="${#fields.hasErrors('validStartYear')} ? 'form-group has-error':'form-group'">
-						<label class="control-label"></label> <select
-							class="form-control select2" th:field="*{validStartYear}"
-							style="width: 100%;">
-							<option selected="selected" value="">Pilih Tahun</option>
-				
-						</select> <span th:if="${#fields.hasErrors('validStartYear')}"
-							class="help-block" th:errors="*{validStartYear}">
-							Tidak Boleh Kosong</span>
-					</div>
-				</div>
-			</div>
-
-
-
-
-			<div class="col-md-2">
-				<div class="form-group">
-					<div
-						th:class="${#fields.hasErrors('untilMonth')} ? 'form-group has-error':'form-group'">
-						<label class="control-label">Berlaku Sampai *</label> <select
-							class="form-control select2" th:field="*{untilMonth}"
-							style="width: 100%;">
-							<option selected="selected" value="">Pilih Bulan</option>
-						
-						</select> <span th:if="${#fields.hasErrors('untilMonth')}"
-							class="help-block" th:errors="*{untilMonth}">bulan Tidak
-							Boleh Kosong</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-2">
-				<div class="form-group">
-					<div
-						th:class="${#fields.hasErrors('validStartYear')} ? 'form-group has-error':'form-group'">
-						<label class="control-label"></label> <select
-							class="form-control select2" th:field="*{validStartYear}"
-							style="width: 100%;">
-							<option selected="selected" value="">Pilih Tahun</option>
-						</select> <span th:if="${#fields.hasErrors('untilYear')}"
-							class="help-block" th:errors="*{untilYear}"> Tidak
-							Boleh Kosong</span>
-					</div>
-				</div>
-			</div>
 		</div>
-		<!-- modal mulai -->
-	<div class="modal fade" id="modal-input">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content"></div>
-		</div>
-	</div>
-	<!-- modal selesai -->
+</form>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+//validasi disable
+	$("#validStartMonth").change(function() {
+		if ($("#validStartMonth").val() != "" || null) {
+			$("#untilMonth").prop("disabled", false);
+		} else
+			$("#untilMonth").prop("disabled", true);
+	});
+	
+	$("#validStartYear").change(function() {
+		if ($("#validStartYear").val() != "" || null) {
+			$("#untilYear").prop("disabled", false);
+		} else
+			$("#untilYear").prop("disabled", true);
+	});
 	
 
-		<div class="box-footer">
-			<button type="submit" class="btn btn-primary">
-				<i class="fa fa-save"></i> Save
-			</button>
+	//Select tahun kebawah
+	var max1 = new Date().getFullYear();
+	min1 = max1 - 20, select1 = document.getElementById('validStartYear');
 
-			<button th:href="@{~/sertifikasi/index}"
-				class="link-modal">Cancel</button>
-		</div>
-	</div>
-	<!-- script untuk CRUD page sertifikasi  -->
-<script>
-$(document).ready(function () {
-    $('.tahun').datepicker({
-        format: "yyyy",
-        autoclose:true
-    });
-});
+	var opt1 = document.createElement('option');
+	opt1.value = "";
+	opt1.innerHTML = "- Pilih Tahun -";
+	select1.appendChild(opt1);
+	for (var i = max1; i >= min1; i--) {
+		var opt1 = document.createElement('option');
+		opt1.value = i;
+		opt1.innerHTML = i;
+		select1.appendChild(opt1);
+	}
+	//select1.value = new Date().getFullYear();
+
+	//Select tahun keatas
+	var min2 = new Date().getFullYear();
+	max2 = min2 + 20, select2 = document.getElementById('untilYear');
+
+	var opt2 = document.createElement('option');
+	opt2.value = "";
+	opt2.innerHTML = "- Pilih Tahun -";
+	select2.appendChild(opt2);
+	for (var j = min2; j <= max2+2; j++) {
+		var opt2 = document.createElement('option');
+		opt2.value = j;
+		opt2.innerHTML = j;
+		select2.appendChild(opt2);
+	}
+	//select2.value = new Date().getFullYear();
+	
+		
 </script>
 
-</form>
-<!-- content selesai -->
+</body>
+</html>
