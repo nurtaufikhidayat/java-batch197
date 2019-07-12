@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+	.mb{
+		margin-bottom: 10px;
+	}
+	
+	.w{
+		background-color: #b0d6f359;
+		color:#000066;
+	}
+	
+	.judul{
+		font-weight: bold; 
+		color: #000066;
+	}
+	
+	.f{
+		width: 100%;
+	}
+	
+	.i{
+		width: 20px;
+	  	border-bottom: none;
+	 	border-left:none;
+	 	border-right:none;
+	 	border-top:none;
+	}
+</style>
+<form action="@{~/pelamar/profile}" th:object="${profile}" method="post" id="form-profile">
+	<div class="x_panel">
+		<div class="x_title">
+			<button type="button" class="btn btn-primary pull-right">Unduh</button>
+			<h3>Profil</h3>
+		</div>
+		<div class="left col-xs-12">
+			<div class="col-xs-2">
+				<ul class="list-unstyled"> 
+					<li th:each="item:${listAttch}" 
+						th:if="${biodata.id == item.biodataId}">
+						<img th:src="${item.filePath}"
+						class="media-avatar pull-left img-circle f">
+					</li>
+				</ul>
+			</div>
+			<div class="col-xs-4 mb">
+				<ul class="list-unstyled">
+					<li ><h2 class="judul" th:text="${biodata.fullname}"></h2></li>
+					<li th:each="item:${listPekerjaan}" 
+						th:if="${biodata.id == item.biodataId}">
+						<span th:text="${item.lastPosition}"></span>
+					</li>
+					<li><input class="i" id="idTglUmur" th:value="${biodata.dob}" readonly/> Tahun</li>
+					<li>
+						<span th:if="${biodata.gender == 1}">Laki-Laki</span> 
+						<span th:if="${biodata.gender == 2}">Perempuan</span>
+					</li>
+					<li th:each="item:${listPendidikan}" th:if="${item.biodataId == biodata.id}">
+						<span th:if="${item.educationLevelId == 1}" th:text="${item.major}"></span>
+					</li>	
+				</ul>
+			</div>
+		</div>
+		<div class="left col-xs-12 w">
+			<table class="mb">
+				<tr>
+					<td><h2 class="judul">Pendidikan</h2></td>
+				</tr>
+				<tr th:each="item:${listPendidikan}" th:if="${item.biodataId == biodata.id}">
+					<td class="col-xs-3"><span th:text="${item.entryYear}"></span> - <span th:text="${item.graduationYear}"></span></td>
+					<td class="col-xs-8">
+						<span th:text="${item.schoolName}"></span>
+						<span th:text="${item.country}"></span><br> 
+						<span th:text="${item.major}"></span><br> 
+						<span th:text="${item.gpa}"></span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="left col-xs-12">
+			<table class="mb">
+				<tr>
+					<td><h2 class="judul">Pengalaman</h2></td>
+				</tr>
+				<tr th:each="item:${listPekerjaan}" th:if="${item.biodataId == biodata.id}">
+					<td class="col-xs-3"><span th:text="${item.joinYear}"></span> - <span th:text="${item.resignYear}"></span></td>
+					<td class="col-xs-8">
+						<span th:text="${item.lastPosition}"></span><br> 
+						<span th:text="${item.companyName}"></span><br> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="left col-xs-12 w">
+			<table class="mb">
+				<tr>
+					<td><h2 class="judul">Keterampilan</h2></td>
+				</tr>
+				<tr th:each="item:${listKeahlian}" th:if="${item.biodataId == biodata.id}">
+					<td class="col-xs-3">
+						<span th:if="${item.skillLevelId == 1}">tingkat lanjut</span>
+						<span th:if="${item.skillLevelId == 2}">menengah</span>
+						<span th:if="${item.skillLevelId == 3}">pemula</span>
+					</td>
+					<td class="col-xs-8">
+						<span th:text="${item.skillName}"></span> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="left col-xs-12">
+			<table class="mb">
+				<tr>
+					<td><h2 class="judul">Training</h2></td>
+				</tr>
+				<tr th:each="item:${listPelatihan}" th:if="${item.biodataId == biodata.id}">
+					<td class="col-xs-3"><span th:text="${item.trainingYear}"></span> - <span th:text="${item.trainingYear}"></span></td>
+					<td class="col-xs-8">
+						<span th:text="${item.trainingName}"></span><br> 
+						<span th:text="${item.notes}"></span> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="left col-xs-12 w">
+			<table class="mb">
+				<tr>
+					<td><h2 class="judul">Sertifikasi</h2></td>
+				</tr>
+				<tr th:each="item:${listSertifikasi}" th:if="${item.biodataId == biodata.id}">
+					<td class="col-xs-3"><span th:text="${item.validStartYear}"></span> - <span th:text="${item.untilYear}"></span></td>
+					<td class="col-xs-8">
+						<span th:text="${item.certificateName}"></span><br> 
+						<span th:text="${item.notes}"></span><br> 
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var date = new Date();
+		var tgl  = $('#idTglUmur').val();
+		$('#idTglUmur').val(date.getFullYear() - parseInt(tgl));
+	});
+</script>
+</html>

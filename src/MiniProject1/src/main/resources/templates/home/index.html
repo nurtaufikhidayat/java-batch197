@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	data-layout-decorate="~{fragments/layout}">
+<head>
+    <title>Plain Page</title>
+</head>
+<body>
+<div class="right_col" role="main" data-layout-fragment="content">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Pelamar</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="form-group pull-right top_search" style="width:300px;">
+                	<form method="post" data-th-action="@{~/pelamar/index}">
+                    <div class="input-group">
+                        <input type="text" id="txt-search" class="form-control" placeholder="Cari Nama Pelamar...">
+	                    <div class="input-group-btn">
+		                      <button class="btn btn-default" type="button" id="btn-cari" style="margin-right:0px;">Cari</button>
+		                      <button class="btn btn-default" type="reset">Reset</button>
+	                    </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Daftar Pelamar</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                            	<a href="#"><i class="fa fa-sort-alpha-asc"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-list"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="@{~/pelamar/index}" data-size="10">10</a></li>
+                                    <li><a href="@{~/pelamar/index}" data-size="20">20</a></li>
+                                    <li><a href="@{~/pelamar/index}" data-size="30">30</a></li>
+                                    <li><a href="@{~/pelamar/index}" data-size="40">40</a></li>
+                                </ul>
+                            </li>
+                            <li><a th:href="@{~/pelamar/add}" id="btn-add"><i class="fa fa-plus"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+		                <div class="row" id="row-content">      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="main-modal" data-layout-fragment="content-modal">
+	<div class="modal-dialog modal-lg" style="width:75%;">
+		<div class="modal-content" id="main-modal-content">
+		</div>
+	</div>
+</div>
+<script data-layout-fragment="script-js">	
+	// cari
+	$('#btn-cari').click(function(){
+		
+	});
+	
+	// tambah biodata
+	$("#btn-add").click(function(event){
+		event.preventDefault();
+		//alert('test');
+		var url = $(this).attr('href');
+		$.ajax({
+			url:url,
+			type:'get',
+			dataType:'html',
+			success: function(data){
+				$('#main-modal-content').html(data);
+				$('#main-modal').modal('show');
+			}
+		});
+	});
+	
+	// event row content
+	$('#row-content').on('click', function(){
+		
+	});
+</script>
+</body>
+</html>

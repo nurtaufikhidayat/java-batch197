@@ -42,7 +42,7 @@ public class FormBiodataModel {
 	private String nationality;
 	
 	@NotEmpty(message="Tidak boleh kosong")
-	private String ethic;
+	private String ethnic;
 	
 	private String hobby;
 	
@@ -204,12 +204,12 @@ public class FormBiodataModel {
 		this.nationality = nationality;
 	}
 
-	public String getEthic() {
-		return ethic;
+	public String getEthnic() {
+		return ethnic;
 	}
 
-	public void setEthic(String ethic) {
-		this.ethic = ethic;
+	public void setEthnic(String ethnic) {
+		this.ethnic = ethnic;
 	}
 
 	public String getHobby() {

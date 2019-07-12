@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<form id="form-dokumen" th:action="@{~/dokumen/save}" th:object="${dokumen}" method="POST">
+	<div class="modal-header" style="background-color:#000066">
+		<button type="button" class="close btn-xs" data-dismiss="modal" style="color: white; font-weight: bold;"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" style="color: white; font-weight: bold;">Tambah Dokumen (Maks:500KB)</h4>
+		<!-- Biodata ID, dengan HIDDEN -->
+		<input type="hidden" th:field="*{biodataId}" />
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('fileName')} ? 'form-group has-error':'form-group'">
+					<label>Nama File*</label>
+					<input type="text" th:field="*{fileName}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('fileName')}" class="help-block" th:errors="*{fileName}">pesan error</span>
+				</div>
+			</div>			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('notes')} ? 'form-group has-error':'form-group'">
+					<label>Keterangan*</label>
+					<input type="text" th:field="*{notes}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('notes')}" class="help-block" th:errors="*{notes}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+					<button type="button" class="btn btn-info btn-block" style="color: white; font-weight: bold;">Unggah File</button>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+					<button type="button" class="btn btn-warning btn-block" id="btn-close-form" style="background-color: #ff4000;color: white; font-weight: bold;">Batal</button>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<button type="submit" class="btn btn-primary btn-block" style="background-color:#000066;color: white; font-weight: bold;">Simpan</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="thumbnail">
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<button type="button" class="btn btn-info btn-block" style="color: white; font-weight: bold;">Unggah Foto</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				
+					<button type="button" class="btn btn-block" style="background-color: #ff4000;color: white; font-weight: bold;" id="btn-close-form">Batal</button>
+					
+			
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<button type="submit" class="btn btn-primary btn-block" style="background-color:#000066;color: white; font-weight: bold;">Simpan</button>
+			</div>
+		</div>
+	</form>
+</html>

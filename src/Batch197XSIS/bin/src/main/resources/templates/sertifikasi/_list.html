@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<tr th:each="item : ${listsertifikasi}">
+		<td th:text="${item.certificateName}"></td>
+		<td th:text="${item.publisher}"></td>
+		<td>
+			<span th:text="${item.validStartYear}"></span> - <span th:text="${item.validStartMonth}"></span> s.d 
+			<span th:text="${item.untilYear}"></span> - <span th:text="${item.untilMonth}"></span>
+		</td>
+		<td>
+			<div class="btn-group">
+				<button data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button" aria-expanded="false">
+					More <span class="caret"></span>
+				</button>
+				<ul role="menu" class="dropdown-menu">
+	                    <li><a th:href="@{/sertifikasi/ubah/{sid}(sid=${item.id})}" class="btn-ubah">Ubah</a></li>
+	                    <li><a th:href="@{/sertifikasi/hapus/{sid}(sid=${item.id})}" class="btn-hapus">Hapus</a></li>
+	                  </ul>
+			</div>
+		</td>
+	</tr>
+</html>

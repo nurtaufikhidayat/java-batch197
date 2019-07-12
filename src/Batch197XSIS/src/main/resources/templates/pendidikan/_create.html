@@ -1,0 +1,106 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<form id="form-pendidikan" th:action="@{~/pendidikan/save}" th:object="${pendidikan}" method="POST">
+	<div class="modal-header">
+		<button type="button" class="close btn-xs" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Tambah Pendidikan </h4>
+		
+		<!-- Biodata ID, dengan HIDDEN -->
+		<input type="hidden" th:field="*{biodataId}" />
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('schoolName')} ? 'form-group has-error':'form-group'">
+					<label>Nama Sekolah</label>
+					<input type="text" th:field="*{schoolName}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('schoolName')}" class="help-block" th:errors="*{schoolName}">pesan error</span>
+				</div>
+			</div>			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('city')} ? 'form-group has-error':'form-group'">
+					<label>Kota</label>
+					<input type="text" th:field="*{city}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('city')}" class="help-block" th:errors="*{city}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('country')} ? 'form-group has-error':'form-group'">
+					<label>Negara</label>
+					<input type="text" th:field="*{country}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('country')}" class="help-block" th:errors="*{country}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('educationLevelId')} ? 'form-group has-error':'form-group'">
+					<label>Jenjang Pendidikan</label>
+					<select th:field="*{educationLevelId}" class="form-control">
+						<option value="">- Pilih Jenjang-</option>
+						<option th:each="item : ${listEdu}" th:text="${item.description}" th:value="${item.id}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('educationLevelId')}" class="help-block" th:errors="*{educationLevelId}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('entryYear')} ? 'form-group has-error':'form-group'">
+					<label>Tahun Masuk</label>
+					<select th:field="*{entryYear}" class="form-control">
+						<option value="">- Pilih Tahun-</option>
+						<option th:each="item : ${listStartYear}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('entryYear')}" class="help-block" th:errors="*{entryYear}">pesan error</span>
+				</div>
+			</div>	
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('graduationYear')} ? 'form-group has-error':'form-group'">
+					<label>Tahun Lulus</label>
+					<select th:field="*{graduationYear}" class="form-control">
+						<option value="">- Pilih Tahun-</option>
+						<option th:each="item : ${listStartYear}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('graduationYear')}" class="help-block" th:errors="*{graduationYear}">pesan error</span>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('major')} ? 'form-group has-error':'form-group'">
+					<label>Jurusan</label>
+					<input type="text" th:field="*{major}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('major')}" class="help-block" th:errors="*{major}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('gpa')} ? 'form-group has-error':'form-group'">
+					<label>IPK</label>
+					<input type="text" th:field="*{gpa}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('gpa')}" class="help-block" th:errors="*{gpa}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div th:class="${#fields.hasErrors('notes')} ? 'form-group has-error':'form-group'">
+					<label>Catatan</label>
+					<textarea th:field="*{notes}" class="form-control" rows="4"> </textarea>
+					<span th:if="${#fields.hasErrors('notes')}" class="help-block" th:errors="*{notes}">pesan error</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="btn-group">
+       		<button type="button" class="btn btn-warning" id="btn-close-form">Batal</button>
+       		<button type="submit" class="btn btn-primary">Simpan</button>
+       	</div>
+     </div>
+</form>
+</html>

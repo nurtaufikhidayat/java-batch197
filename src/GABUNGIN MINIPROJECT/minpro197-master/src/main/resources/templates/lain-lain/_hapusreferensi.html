@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<form id="form-referensi" th:action="@{~/lain-lain/removereferensi}" th:object="${referensi}" method="POST">
+	<div class="modal-header">
+		<button type="button" class="close btn-xs" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Hapus Referensi ? </h4>
+
+		<!-- Biodata ID, dengan HIDDEN -->
+		<input type="hidden" th:field="*{id}" />
+		<input type="hidden" th:field="*{biodataId}" />
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-3 col-sm-3">
+				<i class="fa fa-trash fa-5x"></i>
+			</div>
+			<div class="col-md-9 col-md-9">
+				<h4 class="text-danger">Yakin akan menghapus data Referensi?</h4>
+				<h4 class="text-danger" th:text="${referensi.name}"></h4>
+			</div>
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<div class="btn-group">
+       		<button type="button" class="btn btn-warning" id="btn-close-hapus">Tidak</button>
+       		<button type="submit" class="btn btn-danger">Ya</button>
+       	</div>
+     </div>
+</form>
+</html> 

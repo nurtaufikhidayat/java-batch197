@@ -2,12 +2,12 @@
 <form class="" th:action="@{~/pelamar/save}" th:object="${biodata}"
 	method="post" id="form-pelamar">
 	<div class="modal-content">
-		<div class="modal-header" style="background-color: blue">
+		<div class="modal-header" style="background-color: #008">
 			<button type="button" class="close" data-dismiss="modal"
 				aria-label="Close" style="background-color: white">
 				<span aria-hidden="true">&times;</span>
 			</button>
-			<h4 class="modal-title">Masukan Biodata</h4>
+			<h4 class="modal-title" style="color:#fff;">Masukan Biodata</h4>
 		</div>
 		<div class="modal-body">
 			<div class="row">
@@ -129,7 +129,7 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<label class="control-label">Suku Bangsa</label> <input
-										type="text" th:field="*{ethic}" class="form-control" />
+										type="text" th:field="*{ethnic}" class="form-control" />
 								</div>
 							</div>
 						</div>
@@ -440,10 +440,10 @@
 							</div>
 					</div>
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary pull-right">
-								<i class="fa fa-save"></i> Save
+							<button type="submit" class="btn btn-primary pull-right" style="background-color:#008;color:#fff">
+								<i class="fa fa-save"></i> Simpan
 							</button>
-							<button data-dismiss="modal" class="btn btn-default pull-right">Cancel</button>
+							<button data-dismiss="modal" class="btn btn-default pull-right" style="background:#ff6600; color:#fff">Batal</button>
 						</div>
 					</div>
 </form>

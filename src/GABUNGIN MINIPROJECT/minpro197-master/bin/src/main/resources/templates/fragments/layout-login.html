@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Gentellela!</title>
+     
+    <!-- Bootstrap -->
+    <link th:href="@{~/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link th:href="@{~/fontawesome/css/fontawesome.min.css}" rel="stylesheet">
+    <!-- iCheck -->
+    <link th:href="@{~/iCheck/skins/flat/green.css}" rel="stylesheet">
+    <!-- NProgress -->
+    <link th:href="@{~/nprogress/nprogress.css}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link th:href="@{~/animate.css/animate.min.css}" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link th:href="@{~/build/css/custom.min.css}" rel="stylesheet">
+</head>
+<body class="login">
+	<div class="login_wrapper">
+	    <div class="animate form login_form">
+	    	<section class="login_content">
+	    		<!-- Login Content -->
+	        	<div layout:fragment="content"></div>
+	    	</section>
+	    </div>
+	</div>
+	<!-- jQuery -->
+    <script th:src="@{~/jquery/dist/jquery.min.js}"></script>
+    <!-- Bootstrap -->
+    <script th:src="@{~/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <!-- NProgress -->
+    <script th:src="@{~/nprogress/nprogress.js}"></script>
+    <!-- iCheck -->
+    <script th:src="@{~/iCheck/icheck.min.js}"></script>
+    <!-- Custom Theme Scripts -->
+    <script th:src="@{~/build/js/custom.min.js}"></script>
+</body>
+</html>

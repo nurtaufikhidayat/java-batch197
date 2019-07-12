@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+ table,tr,td{
+    font-family: Verdana;
+	color : DarkBlue;
+	border-top: 2px solid blue;
+    padding: 15px;
+    border-collapse: collapse;
+ }
+ 
+ 
+ tr:nth-child(even){
+	 background-color: #f2f2f2;
+}
+ 
+
+ .posisi{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+ }
+ body{
+    background-image: url('images.jpg');
+    background-repeat: no-repeat;
+    background-size: 1400px auto;
+ }
+</style>
+<form th:action="@{~/pelamar/biodata}" th:object="${biodata}" method="post" id="form-biodata" >
+<div class="x_panel">
+	<div class="x_title">
+		<h3>
+			Biodata 
+			<button class="btn btn-default" id="btn-edit-biodata" th:value="${id}" style="color:darkblue">
+				<i class="fa fa-edit"></i>
+			</button>
+		</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>Nama Lengkap</td>
+					<td>:</td>
+					<td th:text="${biodata.fullname}"></td>
+				</tr>
+				<tr>
+					<td>Nama Panggilan</td>
+					<td>:</td>
+					<td th:text="${biodata.nickname}"></td>
+				</tr>
+				<tr>
+					<td>Kontak</td>
+					<td>:</td>
+					<td><span th:text="${biodata.email}" style="color:darkblue"></span> / <span th:text="${biodata.phoneNumber1}" style="color:darkblue"></span></td>
+				</tr>
+				<tr>
+					<td>Tempat, Tgl. Lahir</td>
+					<td>:</td>
+					<td><span th:text="${biodata.pob}" style="color:darkblue"></span>, <span th:text="${biodata.dob}" style="color:darkblue"></span></td>
+				</tr>
+				<tr>
+					<td>Jenis Kelamin, Tinggi (cm), Berat (kg)</td>
+					<td>:</td>
+					<td><span th:if="${biodata.gender == true}" style="color:darkblue">Laki-laki
+						,</span> <span th:if="${biodata.gender == false}" style="color:darkblue">Wanita
+						,</span> <span th:text="${biodata.high}" style="color:darkblue">
+						</span>, <span th:text="${biodata.weight}" style="color:darkblue"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Agama</td>
+					<td>:</td>
+					<td><span th:text="${biodata.religion.name}" style="color:darkblue"></span></td>
+				</tr>
+				<tr>
+					<td>Kewarganergaraan, Suku Bangsa</td>
+					<td>:</td>
+					<td><span th:text="${biodata.nationality}" style="color:darkblue"></span>, <span th:text="${biodata.ethnic}" style="color:darkblue"></span></td>
+				</tr>
+				<tr>
+					<td>Kegemaran / Hobi</td>
+					<td>:</td>
+					<td th:text="${biodata.hobby}" style="color:darkblue"></td>
+				</tr>
+				<tr>
+					<td>Jenis & Nomor Identitas</td>
+					<td>:</td>
+					<td><span th:text="${biodata.identityType.name}" style="color:darkblue"></span>
+						- <span th:text="${biodata.identityNo}" style="color:darkblue"></span></td>
+				</tr>
+				<tr>
+					<td>Status & Tahun Pernikahan</td>
+					<td>:</td>
+					<td><span th:text="${biodata.maritalStatus.name}" style="color:darkblue"></span>
+						- <span th:text="${biodata.marriageYear}" style="color:darkblue"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	<div>
+</div>
+</form>
+</html>

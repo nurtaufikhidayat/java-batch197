@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<form th:action="@{~/pelamar/biodata}" th:object="${biodata}"
+	method="post" id="form-biodata">
+	<div class="x_panel">
+		<div class="x_title">
+			<h2>Biodata</h2>
+			<ul class="nav navbar-left panel_toolbox">
+				<li><a th:href="@{~/keahlian/add}" id="btn-add-bio" th:attr="data-biodata-id=${biodata.id}"><i
+						class="fa fa-plus"></i></a></li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		<div class="x_content" id="biodata-content">
+			<div class="row" style="margin: 0;">
+				<table style="width: 980px;">
+					<tbody>
+						<tr>
+							<td>Nama Lengkap</td>
+							<td>:</td>
+							<td th:text="${biodata.fullname}"></td>
+						</tr>
+						<tr>
+							<td>Nama Panggilan</td>
+							<td>:</td>
+							<td th:text="${biodata.nickname}"></td>
+						</tr>
+						<tr>
+							<td>Kontak</td>
+							<td>:</td>
+							<td><span th:text="${biodata.email}"></span> / <span
+								th:text="${biodata.phoneNumber1}"></span></td>
+						</tr>
+						<tr>
+							<td>Tempat, Tgl. Lahir</td>
+							<td>:</td>
+							<td><span th:text="${biodata.pob}"></span>, <span
+								th:text="${biodata.dob}"></span></td>
+						</tr>
+						<tr>
+							<td>Jenis Kelamin, Tinggi (cm), Berat (kg)</td>
+							<td>:</td>
+							<td><span th:if="${biodata.gender == true}">Laki-laki
+									,</span> <span th:if="${biodata.gender == false}">Wanita ,</span> <span
+								th:text="${biodata.high}">, </span> <span
+								th:text="${biodata.weight}"></span></td>
+						</tr>
+						<tr>
+							<td>Agama</td>
+							<td>:</td>
+							<td><span th:text="${biodata.religion.name}"></span></td>
+						</tr>
+						<tr>
+							<td>Kewarganergaraan, Suku Bangsa</td>
+							<td>:</td>
+							<td><span th:text="${biodata.nationality}"></span>, <span
+								th:text="${biodata.ethnic}"></span></td>
+						</tr>
+						<tr>
+							<td>Kegemaran / Hobi</td>
+							<td>:</td>
+							<td th:text="${biodata.hobby}"></td>
+						</tr>
+						<tr>
+							<td>Jenis & Nomor Identitas</td>
+							<td>:</td>
+							<td><span th:text="${biodata.identityType.name}"></span> - <span
+								th:text="${biodata.identityNo}"></span></td>
+						</tr>
+						<tr>
+							<td>Status & Tahun Pernikahan</td>
+							<td>:</td>
+							<td><span th:text="${biodata.maritalStatus.name}"></span> -
+								<span th:text="${biodata.marriageYear}"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</form>
+</html>

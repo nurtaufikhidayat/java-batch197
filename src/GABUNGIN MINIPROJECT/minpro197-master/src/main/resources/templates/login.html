@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login</title>
+<style type="text/css">
+
+.cntr-content {
+	position: absolute;
+	margin: auto;
+	left: 18%;
+	top: 10%;
+	text-align: center;
+}
+
+.brdr-lgn {
+	border-color: #000080;
+	border-style: solid;
+	border-width: 1px;
+}
+
+.fnt {
+	font-weight: bold;
+	color: #000080;
+}
+
+.size-lgn {
+	width: 300px;
+	height: 30px;
+}
+
+.btn-clr {
+	font-weight: bold;
+	color: white;
+	background-color: #000080;
+	width: 304px;
+	height: 34px;
+}
+</style>
+</head>
+
+<body>
+	<div class="col-md-6 cntr-content"
+		style="margin: 15px 0px 0px 201px; background-color: #fff; padding: 0px 76px 55px 84px; border: solid 1px #ddd;">
+		<form th:action="@{/login}" method="post" class="form-control"
+			id="form-login">
+			<h1 class="fnt" style="font-size: 40px;">XSIS 2.0</h1>
+			<div class="form-group has-feedback">
+				<input style="border-radius: 6px;" type="text"
+					class="form-control brdr-lgn size-lgn" id="username" name="username"
+					placeholder="Email" autofocus> <span
+					class="glyphicon glyphicon-lock form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				<input style="border-radius: 6px;" type="password"
+					class="form-control brdr-lgn size-lgn" id="password" name="password"
+					placeholder="Password"> <span
+					class="glyphicon glyphicon-lock form-control-feedback"></span>
+			</div><div>
+			<button type="Submit" style="border-radius: 6px;"
+				class="btn btn-clr brdr-lgn size-lgn" >Masuk</button></div>
+				<br>
+			<div class="form-group has-feedback">
+                <input type="hidden" name="txtcount" id="txt-count" class="form-control" value="0">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div><div>
+			<p class="fnt">2020 - Xsis Mitra Utama</p>
+			</div>
+			<div align="center" th:if="${param.error}" id="error">
+				<p style="font-size: 20; color: #FF1C19;">Email or Password is
+					invalid.</p>
+			</div>
+		</form>
+		<a href="/lupa-password" id="forgot">Lupa Password</a>
+	</div>
+</body>
+</html>

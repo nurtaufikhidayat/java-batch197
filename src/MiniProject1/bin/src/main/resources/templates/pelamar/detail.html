@@ -1,0 +1,33 @@
+<!-- content mulai -->
+<form th:object="${biodata}" method="post" id="form-pelamar">
+	<div class="box box-success box-solid">
+		<div class="box-header">
+			<button type="button" class="close" data-dismiss="modal"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<h4  class="box-title" id="modal-title-detail">Detail Pelamar</h4>
+		</div>
+		<div class="box-body form-horizontal">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-3" id="modal-sidebar-detail">
+						<aside th:replace="fragments/sidebarmodal :: sidebarmodal"></aside>
+					</div>
+					<div class="col-md-9" id="modal-content-detail">
+					<table class="table">
+						<thead>ISI JUDUL KONTEN DISINI</thead>
+						<tbody>
+						CONTENTNYA
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="box-footer">
+			<button data-dismiss="modal" class="btn btn-default pull-right">Cancel</button>
+		</div>
+	</div>
+</form>
+<!-- content selesai -->

@@ -1,0 +1,139 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<form id="form-pengalaman" th:action="@{~/pengalaman/save}" th:object="${pengalaman}" method="POST">
+	<div class="modal-header">
+		<button type="button" class="close btn-xs" id="btn-close-form"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Tambah Pengalaman </h4>
+		
+		<!-- Biodata ID, dengan HIDDEN -->
+		<input type="hidden" th:field="*{biodataId}" />
+		<input type="hidden" th:field="*{id}" />
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('companyName')} ? 'form-group has-error':'form-group'">
+					<label>Nama Perusahaan/Instansi *</label>
+					<input type="text" th:field="*{companyName}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('companyName')}" class="help-block" th:errors="*{companyName}">pesan error</span>
+				</div>
+			</div>			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('city')} ? 'form-group has-error':'form-group'">
+					<label>kota</label>
+					<input type="text" th:field="*{city}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('city')}" class="help-block" th:errors="*{city}">pesan error</span>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('country')} ? 'form-group has-error':'form-group'">
+					<label>Negara</label>
+					<input type="text" th:field="*{country}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('country')}" class="help-block" th:errors="*{country}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('joinMonth')} ? 'form-group has-error':'form-group'">
+					<label>Waktu Masuk *</label>
+					<select th:field="*{joinMonth}" class="form-control" id="start-month">
+						<option value="">- Pilih Bulan-</option>
+						<option th:each="item : ${listBulan}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('joinMonth')}" class="help-block" th:errors="*{joinMonth}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('joinYear')} ? 'form-group has-error':'form-group'">
+					<label>&nbsp;</label>
+					<select th:field="*{joinYear}" class="form-control" id="start-year">
+						<option value="">- Pilih Tahun-</option>
+						<option th:each="item : ${listStartYear}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('joinYear')}" class="help-block" th:errors="*{joinYear}">pesan error</span>
+				</div>
+			</div>		
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('resignMonth')} ? 'form-group has-error':'form-group'">
+					<label>Waktu Keluar</label>
+					<select th:field="*{resignMonth}" class="form-control" id="until-month" disabled="disabled">
+						<option value="">- Pilih Bulan-</option>
+						<option th:each="item : ${listBulan}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('resignMonth')}" class="help-block" th:errors="*{resignMonth}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('resignYear')} ? 'form-group has-error':'form-group'">
+					<label>&nbsp;</label>
+					<select th:field="*{resignYear}" class="form-control" id="until-year" disabled="disabled">
+						<option value="">- Pilih Tahun-</option>
+						<option th:each="item : ${listValidYear}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('resignYear')}" class="help-block" th:errors="*{resignYear}">pesan error</span>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('lastPosition')} ? 'form-group has-error':'form-group'">
+					<label>Posisi Terakhir *</label>
+					<input type="text" th:field="*{lastPosition}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('lastPosition')}" class="help-block" th:errors="*{lastPosition}">pesan error</span>
+				</div>
+			</div>			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('income')} ? 'form-group has-error':'form-group'">
+					<label>Penghasilan Terakhir</label>
+					<input type="text" th:field="*{income}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('income')}" class="help-block" th:errors="*{income}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div th:class="${#fields.hasErrors('isItRelated')} ? 'form-group has-error':'form-group'">
+					<label>IT Related?</label>
+					<input th:field="*{isItRelated}" class="form-control" rows="4"> </input>
+					<span th:if="${#fields.hasErrors('isItRelated')}" class="help-block" th:errors="*{isItRelated}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div th:class="${#fields.hasErrors('aboutJob')} ? 'form-group has-error':'form-group'">
+					<label>Keterangan singkat mengenai pekerjaan</label>
+					<textarea th:field="*{aboutJob}" class="form-control" rows="4"> </textarea>
+					<span th:if="${#fields.hasErrors('aboutJob')}" class="help-block" th:errors="*{aboutJob}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div th:class="${#fields.hasErrors('exitReason')} ? 'form-group has-error':'form-group'">
+					<label>Alasan Keluar</label>
+					<textarea th:field="*{exitReason}" class="form-control" rows="4"> </textarea>
+					<span th:if="${#fields.hasErrors('exitReason')}" class="help-block" th:errors="*{exitReason}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div th:class="${#fields.hasErrors('notes')} ? 'form-group has-error':'form-group'">
+					<label>Catatan</label>
+					<textarea th:field="*{notes}" class="form-control" rows="4"> </textarea>
+					<span th:if="${#fields.hasErrors('notes')}" class="help-block" th:errors="*{notes}">pesan error</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="btn-group">
+       		<button type="button" class="btn btn-warning" id="btn-close-form">Batal</button>
+       		<button type="submit" class="btn btn-primary">Simpan</button>
+       	</div>
+     </div>
+</form>
+</html>

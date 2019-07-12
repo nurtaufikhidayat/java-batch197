@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<form id="form-catatan" th:action="@{~/catatan/save}" th:object="${catatan}" method="POST">
+	<div class="modal-header">
+		<button type="button" class="close btn-xs" id="btn-close-form"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Tambah Catatan </h4>
+		<!-- Biodata ID, dengan HIDDEN -->
+		<input type="hidden" th:field="*{biodataId}"/>
+		<input type="hidden" th:field="*{id}" />
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('title')} ? 'form-group has-error':'form-group'">
+					<label>Judul Catatan</label>
+					<input type="text" th:field="*{title}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('title')}" class="help-block" th:errors="*{title}">pesan error</span>
+				</div>
+			</div>			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('noteTypeId')} ? 'form-group has-error':'form-group'">
+					<label>Jenis Catatan</label>
+					<select th:field="*{noteTypeId}" class="form-control">
+						<option value="">- Pilih -</option>
+						<option th:each="item : ${listType}" th:value="${item.id}" th:text="${item.name}" ></option>
+					</select>
+					<span th:if="${#fields.hasErrors('noteTypeId')}" class="help-block" th:errors="*{noteTypeId}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div th:class="${#fields.hasErrors('notes')} ? 'form-group has-error':'form-group'">
+					<label>Catatan</label>
+					<textarea th:field="*{notes}" class="form-control" rows="4"> </textarea>
+					<span th:if="${#fields.hasErrors('notes')}" class="help-block" th:errors="*{notes}">pesan error</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="btn-group">
+       		<button type="button" class="btn btn-warning" id="btn-close-form">Batal</button>
+       		<button type="submit" class="btn btn-primary">Simpan</button>
+       	</div>
+     </div>
+</form>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Keahlian</h2>
+		<ul class="nav navbar-left panel_toolbox">
+			<li><a th:href="@{~/keahlian/add/}" id="btn-add-keahlian"
+				th:attr="data-biodata-id=${biodata.id}"><i class="fa fa-plus"></i></a></li>
+		</ul>
+		<div class="clearfix"></div>
+	</div>
+	<div class="x_content" id="keluarga-content">
+		<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Nama Keahlian</th>
+					<th>Level Keahlian</th>
+					<th>#</th>
+				</tr>
+			</thead>
+			<tbody id="list-keahlian">
+				<tr th:each="item :${listKeahlian}">
+					<td th:text="${item.skillName}"></td>
+					<td th:text="${item.skillLevel.name}"></td>
+					<td class="col-md-1">
+						<div class="btn-group">
+							<button data-toggle="dropdown"
+								class="btn btn-primary dropdown-toggle btn-sm" type="button"
+								aria-expanded="false">
+								More <span class="caret"></span>
+							</button>
+							<ul role="menu" class="dropdown-menu">
+								<li><a th:href="@{/keahlian/ubah/{kid}(kid=${item.id})}" class="btn-ubah">Ubah</a></li>
+								<li><a th:href="@{/keahlian/hapus/{kid}(kid=${item.id})}" class="btn-hapus">Hapus</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12" id="list-keahlian">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="form-modal">
+	<div class="modal-dialog" style="width:75%;">
+		<div class="modal-content" id="form-modal-content"></div>
+	</div>
+</div>
+
+<div class="modal fade" id="hapus-modal">
+	<div class="modal-dialog modal-sm modal-danger">
+		<div class="modal-content" id="hapus-modal-content"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	//saat button add di click
+	$("#btn-add-keahlian").click(function(event) {
+		// cegah link redirect
+		event.preventDefault();
+		// mengambil nilai dari attribute btn-add-keahlian
+		// lihat sintaks ini th:attr="data-biodata-id=${biodata.id}"
+		var biodataId = $(this).attr('data-biodata-id');
+
+		// ambil nilai attribute href
+		// lihat th:href="@{~/keahlian/add/}"
+		var url = $(this).attr('href') + biodataId;
+		// buat ajax untuk create
+		// lihat keahlian controller @GetMapping(value="/keahlian/add/{bid}")
+		$.ajax({
+			url : url,
+			type : 'GET',
+			dataType : 'html',
+			success : function(data) {
+				$("#form-modal-content").html(data);
+				$("#form-modal").modal('show');
+			}
+		});
+
+	});
+	
+	// submit data form atau simpan data keahlian
+	// event di modal input, kemudian cari elemen dengan id => form-keahlian
+	// eventnya itu adalah ketika formnya di submit
+	$("#form-modal").on('submit', '#form-keahlian', function() {
+		// mendatakan data form dengan method serialize
+		var data = $(this).serialize();
+		// inisialisasi variable url, diambil dari attribute action #form-keahlian
+		// sehingga utk CREATE, UPDATE, DELETE menggunakan data ini, dan tidak perlu buat event submit berkali-kali
+		var url = $(this).attr('action');
+		// submit data dengan AJAX
+		$.ajax({
+			url : url, // url diisi dengan variable url
+			type : 'POST',
+			data : data, // data diisi dengan variable data
+			dataType : 'html',
+			done : function() {
+				$("#form-modal").find("#form-modal-content").html("");
+			},
+			success : function(data) {
+				// masukkan dulu resultnya ke modal
+				$("#form-modal").find("#form-modal-content").html(data);
+				// check jumlah element yang memiliki class => has-error
+				var check = $("#form-modal-content").find(".has-error").length;
+				// jika tidak ada error
+				if (check == 0) {
+					// menyembunyikan modal dengan id => form-modal
+					$("#form-modal").modal('hide');
+					// tampilkan data dengan memanggil method loadData
+					loadData();
+				}
+			}
+		});
+		// untuk mencegah supaya tidak submit automatis,
+		// sehingga form akan diam tidak melakukan action apapun
+		return false;
+	})
+	
+	.on('click', '#btn-close-form', function() {
+		$("#form-modal").modal('hide');
+	});
+
+	function loadData() {
+		// ambil nilai biodata id yang disimpan di  $("#btn-add-keahlian")
+		// lihat sintaks ini th:attr="data-biodata-id=${biodata.id}"
+		var biodataId = $("#btn-add-keahlian").attr('data-biodata-id');
+		$.ajax({
+			url : '/keahlian/list/' + biodataId,
+			type : 'GET',
+			dataType : 'html',
+			success : function(data) {
+				// <tbody id="list-keahlian"> akan di replace dengan data baru dari file _list.html masukan dulu result ke modal
+				$("#list-keahlian").html(data);
+			}
+		});
+	}
+	
+	// event hapus
+	$('#list-keahlian').on('click', '.btn-hapus', function(event) {
+		// cegah link redirect
+		event.preventDefault();
+
+		var url = $(this).attr('href');
+		// buat ajax untuk create
+		// lihat pelatihan controller @GetMapping(value="/keahlian/hapus/{kid}")
+		$.ajax({
+			url : url,
+			type : 'GET',
+			dataType : 'html',
+			success : function(data) {
+				$("#hapus-modal-content").html(data);
+				$("#hapus-modal").modal('show');
+			}
+		});
+	})
+	
+	// edit keahlian
+	.on('click','.btn-ubah', function(event){
+		// cegah link redirect
+		event.preventDefault();
+		
+		var url =  $(this).attr('href');
+		// buat ajax untuk create
+		// lihat pelatihan controller @GetMapping(value="/keahlian/ubah/{sid}")
+		$.ajax({
+			url:url,
+			type:'GET',
+			dataType:'html',
+			success:function(data){
+				$("#form-modal-content").html(data);
+				$("#form-modal").modal('show');
+			}
+		});
+	});
+	
+	$("#hapus-modal").on('submit', '#form-keahlian', function() {
+		// dapatkan url dari attribute action dari form => #form-keahlian
+		// lihat di file _create.html
+		var url = $(this).attr('action');
+		// mendatakan data form dengan method serialize
+		var data = $(this).serialize();
+
+		$.ajax({
+			url : url,
+			type : 'POST',
+			data : data,
+			dataType : 'html',
+			success : function(data) {
+				$("#hapus-modal").modal('hide');
+				loadData();
+			}
+		});
+		// cegah supaya form tidak redirect
+		return false;
+	})
+
+	.on('click', '#btn-close-hapus', function() {
+		$("#hapus-modal").modal('hide');
+	});
+	
+</script>
+</html>

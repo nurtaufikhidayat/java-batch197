@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" th:fragment="sidebar-menu">
+    <div class="menu_section">
+        <h3>General</h3>
+        <ul class="nav side-menu">
+            <li th:each="menu : ${menuList}">
+            	<a th:href="@{/}"><i th:class="${menu.menuIcon}"></i> <span th:text="${menu.title}">Home</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+</html>

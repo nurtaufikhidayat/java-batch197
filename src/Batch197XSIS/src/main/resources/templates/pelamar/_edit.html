@@ -1,0 +1,346 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<form id="form-biodata-create" th:action="@{~/pelamar/update}" th:object="${pelamar}" method="post">
+	<div class="modal-header">
+		<button type="button" class="close btn-xs" id="btn-close-form"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Tambah Pelamar</h4>
+		<!-- HIDDEN ID -->
+		<input type="hidden" th:field="*{id}"/>
+		<input type="hidden" th:field="*{biodataId}"/>
+		<input type="hidden" th:field="*{addressId}"/>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('fullname')} ? 'form-group has-error':'form-group'">
+					<label for="fullname">Nama Lengkap</label>
+					<input type="text" th:field="*{fullname}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('fullname')}" class="help-block" th:errors="*{fullname}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('nickname')} ? 'form-group has-error':'form-group'">
+					<label for="nickname">Nama Panggilan</label>
+					<input type="text" th:field="*{nickname}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('nickname')}" class="help-block" th:errors="*{nickname}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('pob')} ? 'form-group has-error':'form-group'">
+					<label for="pob">Tempat Lahir</label>
+					<input type="text" th:field="*{pob}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('pob')}" class="help-block" th:errors="*{pob}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('dob')} ? 'form-group has-error':'form-group'">
+					<label for="dob">Tanggal Lahir</label>
+					<div class="input-group date" id="dob-datepicker">
+						<input type="text" th:field="*{dob}" class="form-control"/>
+						<span class="input-group-addon">
+                        	<span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+					</div>
+					
+					<span th:if="${#fields.hasErrors('dob')}" class="help-block" th:errors="*{dob}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('gender')} ? 'form-group has-error':'form-group'">
+					<label for="gender">Jenis Kelamin</label>
+					<select type="text" th:field="*{gender}" class="form-control">
+						<option value="">- Pilih -</option>
+						<option value="0">Laki-Laki</option>
+						<option value="1">Perempuan</option>
+					</select>
+					<span th:if="${#fields.hasErrors('gender')}" class="help-block" th:errors="*{gender}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('religionId')} ? 'form-group has-error':'form-group'">
+					<label for="religionId">Agama</label>
+					<select th:field="*{religionId}" class="form-control">
+						<option value="">- Pilih -</option>
+						<option th:each="item : ${listReligion}" th:value="${item.id}" th:text="${item.description}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('religionId')}" class="help-block" th:errors="*{religionId}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('high')} ? 'form-group has-error':'form-group'">
+					<label for="high">Tinggi</label>
+					<input type="text" th:field="*{high}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('high')}" class="help-block" th:errors="*{high}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('weight')} ? 'form-group has-error':'form-group'">
+					<label for="weight">Berat</label>
+					<input type="text" th:field="*{weight}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('weight')}" class="help-block" th:errors="*{weight}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('nationality')} ? 'form-group has-error':'form-group'">
+					<label for="nationality">Kewarganegaraan</label>
+					<input type="text" th:field="*{nationality}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('nationality')}" class="help-block" th:errors="*{nationality}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('ethnic')} ? 'form-group has-error':'form-group'">
+					<label for="ethnic">Suku Bangsa</label>
+					<input type="text" th:field="*{ethnic}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('ethnic')}" class="help-block" th:errors="*{ethnic}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('hobby')} ? 'form-group has-error':'form-group'">
+					<label for="hobby">Kegemaran</label>
+					<input type="text" th:field="*{hobby}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('hobby')}" class="help-block" th:errors="*{hobby}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('identityTypeId')} ? 'form-group has-error':'form-group'">
+					<label for="identityTypeId">Jenis Identitas</label>
+					<select th:field="*{identityTypeId}" class="form-control">
+						<option value="">- Pilih -</option>
+						<option th:each="item : ${listIdentity}" th:value="${item.id}" th:text="${item.description}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('identityTypeId')}" class="help-block" th:errors="*{identityTypeId}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('identityNo')} ? 'form-group has-error':'form-group'">
+					<label for="identityNo">Nomor Identitas</label>
+					<input type="text" th:field="*{identityNo}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('identityNo')}" class="help-block" th:errors="*{identityNo}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('email')} ? 'form-group has-error':'form-group'">
+					<label for="email">Email</label>
+					<input type="text" th:field="*{email}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('email')}" class="help-block" th:errors="*{email}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('phoneNumber1')} ? 'form-group has-error':'form-group'">
+					<label for="phoneNumber1">No. Hp.</label>
+					<input type="text" th:field="*{phoneNumber1}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('phoneNumber1')}" class="help-block" th:errors="*{phoneNumber1}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('phoneNumber2')} ? 'form-group has-error':'form-group'">
+					<label for="phoneNumber2">No. Alternatif</label>
+					<input type="text" th:field="*{phoneNumber2}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('phoneNumber2')}" class="help-block" th:errors="*{phoneNumber2}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('parentPhoneNumber')} ? 'form-group has-error':'form-group'">
+					<label for="parentPhoneNumber">No. Telp. Orang Tua</label>
+					<input type="text" th:field="*{parentPhoneNumber}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('parentPhoneNumber')}" class="help-block" th:errors="*{parentPhoneNumber}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('childSequence')} ? 'form-group has-error':'form-group'">
+					<label for="childSequence">Anak Ke.</label>
+					<input type="text" th:field="*{childSequence}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('childSequence')}" class="help-block" th:errors="*{childSequence}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('howManyBrothers')} ? 'form-group has-error':'form-group'">
+					<label for="howManyBrothers">Dari Berapa Bersaudara</label>
+					<input type="text" th:field="*{howManyBrothers}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('howManyBrothers')}" class="help-block" th:errors="*{howManyBrothers}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('maritalStatusId')} ? 'form-group has-error':'form-group'">
+					<label for="maritalStatusId">Status Penikahan</label>
+					<select th:field="*{maritalStatusId}" class="form-control">
+						<option value="">- Pilih -</option>
+						<option th:each="item : ${listMarital}" th:value="${item.id}" th:text="${item.description}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('maritalStatusId')}" class="help-block" th:errors="*{maritalStatusId}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('marriageYear')} ? 'form-group has-error':'form-group'">
+					<label for="marriageYear">Tahun Pernikahan</label>
+					<input type="text" th:field="*{marriageYear}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('marriageYear')}" class="help-block" th:errors="*{marriageYear}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<h4 class="modal-title">Alamat Sesuai Kartu Identitas</h4>
+				<hr style="margin-top:0px;"/>
+			</div>
+			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<h4 class="modal-title">Alamat Sesuai Kartu Identitas</h4>
+				<hr style="margin-top:0px;"/>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('address1')} ? 'form-group has-error':'form-group'">
+					<label for="address1">Alamat</label>
+					<input type="text" th:field="*{address1}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('address1')}" class="help-block" th:errors="*{address1}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('address2')} ? 'form-group has-error':'form-group'">
+					<label for="address2">Alamat</label>
+					<input type="text" th:field="*{address2}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('address2')}" class="help-block" th:errors="*{address2}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('postalCode1')} ? 'form-group has-error':'form-group'">
+					<label for="postalCode1">Kode Pos</label>
+					<input type="text" th:field="*{postalCode1}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('postalCode1')}" class="help-block" th:errors="*{postalCode1}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('rt1')} ? 'form-group has-error':'form-group'">
+					<label for="rt1">RT.</label>
+					<input type="text" th:field="*{rt1}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('rt1')}" class="help-block" th:errors="*{rt1}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('rw1')} ? 'form-group has-error':'form-group'">
+					<label for="rw1">RW.</label>
+					<input type="text" th:field="*{rw1}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('rw1')}" class="help-block" th:errors="*{rw1}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('postalCode2')} ? 'form-group has-error':'form-group'">
+					<label for="postalCode2">Kode Pos</label>
+					<input type="text" th:field="*{postalCode2}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('postalCode2')}" class="help-block" th:errors="*{postalCode2}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('rt2')} ? 'form-group has-error':'form-group'">
+					<label for="rt2">RT.</label>
+					<input type="text" th:field="*{rt2}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('rt2')}" class="help-block" th:errors="*{rt2}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('rw2')} ? 'form-group has-error':'form-group'">
+					<label for="rw2">RW.</label>
+					<input type="text" th:field="*{rw2}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('rw2')}" class="help-block" th:errors="*{rw2}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('kelurahan1')} ? 'form-group has-error':'form-group'">
+					<label for="kelurahan1">Desa/Kelurahan</label>
+					<input type="text" th:field="*{kelurahan1}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('kelurahan1')}" class="help-block" th:errors="*{kelurahan1}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('kecamatan1')} ? 'form-group has-error':'form-group'">
+					<label for="kecamatan1">Kecamatan</label>
+					<input type="text" th:field="*{kecamatan1}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('kecamatan1')}" class="help-block" th:errors="*{kecamatan1}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('region1')} ? 'form-group has-error':'form-group'">
+					<label for="region1">region</label>
+					<input type="text" th:field="*{region1}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('region1')}" class="help-block" th:errors="*{region1}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('kelurahan2')} ? 'form-group has-error':'form-group'">
+					<label for="kelurahan2">Desa/Kelurahan</label>
+					<input type="text" th:field="*{kelurahan2}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('kelurahan2')}" class="help-block" th:errors="*{kelurahan2}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('kecamatan2')} ? 'form-group has-error':'form-group'">
+					<label for="kecamatan2">Kecamatan</label>
+					<input type="text" th:field="*{kecamatan2}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('kecamatan2')}" class="help-block" th:errors="*{kecamatan2}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-2 col-sm-2 col-xs-12">
+				<div th:class="${#fields.hasErrors('region2')} ? 'form-group has-error':'form-group'">
+					<label for="region2">region</label>
+					<input type="text" th:field="*{region2}" class="form-control"/>
+					<span th:if="${#fields.hasErrors('region2')}" class="help-block" th:errors="*{region2}">pesan error</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="btn-group">
+       		<button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+       		<button type="submit" class="btn btn-primary">Simpan</button>
+       	</div>
+     </div>
+</form>
+</html>

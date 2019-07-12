@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<div sec:authorize="isAuthenticated()" class="profile clearfix" th:fragment="menu-profile-quick-info">
+    <div class="profile_pic">
+        <img th:src="@{~/build/images/img.jpg}" alt="..." class="img-circle profile_img">
+    </div>
+    <div class="profile_info">
+        <span>Welcome,</span>
+        <h2 sec:authentication="name">CrunchDroid</h2>
+    </div>
+</div>
+</html>

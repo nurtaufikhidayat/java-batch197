@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<tr th:each="item : ${listpelatihan}">
+		<td th:text="${item.trainingName}"></td>
+		<td th:text="${item.organizer}"></td>
+		<td>
+			<span th:text="${item.trainingYear}"></span> - <span th:text="${item.trainingMonth}"></span>
+		</td>
+		<td>
+			<span th:text="${item.trainingDuration}"></span> - <span th:text="${item.timePeriode.description}"></span>
+		</td>
+		<td>
+			<div class="btn-group">
+				<button data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button" aria-expanded="false">
+					More <span class="caret"></span>
+				</button>
+                <ul role="menu" class="dropdown-menu">
+                  <li><a th:href="@{/pelatihan/ubah/{sid}(sid=${item.id})}" class="btn-ubah">Ubah</a></li>
+                  <li><a th:href="@{/pelatihan/hapus/{sid}(sid=${item.id})}" class="btn-hapus">Hapus</a></li>
+                </ul>
+			</div>
+		</td>
+	</tr>
+</html>

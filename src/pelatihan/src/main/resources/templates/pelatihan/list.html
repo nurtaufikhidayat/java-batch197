@@ -1,0 +1,20 @@
+<tr th:each="item :${list}">
+	<td th:text="${item.trainingName}"></td>
+	<td th:text="${item.organizer}"></td>
+	<td th:text="${item.publisher}"></td>
+	<td th:text="${item.trainingYear}"></td>
+	<td th:text="${item.trainingMonth}"></td>
+	<td th:text="${item.trainingDuration}"></td>
+	<td class="col-md-1">
+		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">More
+                    <span class="fa fa-caret-down"></span></button>
+                    <ul class="dropdown-menu">
+                    <li>
+                    <a href="pelatihan/edit">Edit</a>
+                    </li>
+                    <li>
+                    <a href="pelatihan/remove">Delete</a>
+                    </li>
+                    </ul>
+	</td>
+</tr>

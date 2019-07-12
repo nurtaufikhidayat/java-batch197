@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title layout:title-pattern="$LAYOUT_TITLE | $CONTENT_TITLE">Min Project</title>
+    
+    <!-- Bootstrap -->
+    <link th:href="@{~/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link th:href="@{~/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <!-- NProgress -->
+    <link th:href="@{~/nprogress/nprogress.css}" rel="stylesheet">
+    <!-- iCheck -->
+    <link th:href="@{~/iCheck/skins/flat/green.css}" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+    <link th:href="@{~/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css}" rel="stylesheet">
+   
+    <!-- bootstrap-daterangepicker -->
+    <link  th:href="@{~/bootstrap-daterangepicker/daterangepicker.css}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link th:href="@{~/build/css/custom.min.css}" rel="stylesheet">
+</head>
+<body class="nav-md">
+	<div class="container body">
+	    <div class="main_container">
+	        <div class="col-md-3 left_col">
+	            <div class="left_col scroll-view">
+	                <div class="navbar nav_title" style="border: 0;">
+	                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela!</span></a>
+	                </div>
+	
+	                <div class="clearfix"></div>
+	
+	                <!-- menu profile quick info -->
+	                <div sec:authorize="isAuthenticated()" th:replace="fragments/fragment-menu-profile-quick-info :: menu-profile-quick-info"></div>
+	                <!-- /menu profile quick info -->
+	
+	                <br/>
+	
+	                <!-- sidebar menu -->
+	                <div th:replace="fragments/fragment-sidebar-menu :: sidebar-menu"></div>
+	                <!-- /sidebar menu -->
+	
+	                <!-- /menu footer buttons -->
+	                <!--<div data-th-replace="fragments/fragment-menu-footer-buttons :: menu-footer-buttons"></div>-->
+	                <!-- /menu footer buttons -->
+	
+	            </div>
+	        </div>
+	
+	        <!-- top navigation -->
+	        <div th:replace="fragments/fragment-top-navigation :: top-navigation"></div>
+	        <!-- /top navigation -->
+	
+	        <!-- page content -->
+	        <div layout:fragment="content"></div>
+	        <!-- /page content -->
+	
+	        <!-- footer content -->
+	        <div th:replace="fragments/fragment-footer-content :: footer-content"></div>
+	        <!-- /footer content -->
+	    </div>
+	</div>
+	
+	<div layout:fragment="content-modal"></div>
+	
+	<div layout:fragment="child-modal"></div>
+	<!-- jQuery -->
+    <script th:src="@{~/jquery/dist/jquery.min.js}"></script>
+    <!-- Bootstrap -->
+    <script th:src="@{~/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <!-- FastClick -->
+    <script th:src="@{~/fastclick/lib/fastclick.js}"></script>
+    <!-- NProgress -->
+    <script th:src="@{~/nprogress/nprogress.js}"></script>
+    
+    <!-- bootstrap-progressbar -->
+    <script th:src="@{~/bootstrap-progressbar/bootstrap-progressbar.min.js}"></script>
+    <!-- iCheck -->
+    <script th:src="@{~/iCheck/icheck.min.js}"></script>
+    <!-- Skycons -->
+    <script th:src="@{~/skycons/skycons.js}"></script>
+  
+    <!-- bootstrap-daterangepicker -->
+    <script th:src="@{~/moment/moment-with-locales.min.js}"></script>
+    <script th:src="@{~/bootstrap-daterangepicker/daterangepicker.js}"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script th:src="@{~/build/js/custom.min.js}"></script>
+    
+    <script layout:fragment="script-js" type="text/javascript"></script>
+</body>
+</html>

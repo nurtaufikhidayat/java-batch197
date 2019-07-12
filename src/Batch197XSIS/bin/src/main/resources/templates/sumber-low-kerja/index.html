@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Sumber Lowongan Kerja</h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="x_content" id="sumber-low-kerja-content">
+
+		<form th:action="@{~/sumber-low-kerja/save}" th:object="${sumberLoker}" method="POST" id="form-sumber-loker" >
+			<!-- Hidden ID -->
+			<input type="hidden" th:field="*{id}" /> 
+			<!-- Biodata ID, dengan HIDDEN -->
+			<input id="biodata-id" type="hidden" th:field="*{biodataId}" />
+			
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('vacancySource')} ? 'form-group has-error':'form-group'">
+							<label>Sumber</label>
+							<select th:field="*{vacancySource}" id="vacancy-source" class="form-control" required>
+								<option value="">- Pilih -</option>
+								<option value="event">Event</option>
+								<option value="career-center">Career Center</option>
+								<option value="referensi">Referensi</option>
+								<option value="sumber-lain">Sumber Lain</option>
+							</select>
+							<span th:if="${#fields.hasErrors('vacancySource')}" class="help-block" th:errors="*{vacancySource}">pesan error</span>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('candidateType')} ? 'form-group has-error':'form-group'">
+							<label>Tipe Pelamar</label>
+							<select th:field="*{candidateType}" id="candidate-type" class="form-control">
+								<option value="">- Pilih -</option>
+								<option value="profesional">Profesional</option>
+								<option value="lulusan baru">Lulusan Baru</option>
+							</select>
+							<span th:if="${#fields.hasErrors('candidateType')}" class="help-block" th:errors="*{candidateType}">pesan error</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('eventName')} ? 'form-group has-error':'form-group'">
+							<label>Nama Event *</label>
+							<input th:field="*{eventName}" type="text" class="form-control" id="event-name" readonly="readonly"/>
+							<span th:if="${#fields.hasErrors('eventName')}" class="help-block" th:errors="*{eventName}">pesan error</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('careerCenterName')} ? 'form-group has-error':'form-group'">
+							<label>Nama Karir Center *</label>
+							<input th:field="*{careerCenterName}" type="text" class="form-control" id="career-center-name" readonly="readonly" />
+							<span th:if="${#fields.hasErrors('careerCenterName')}" class="help-block" th:errors="*{careerCenterName}">pesan error</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('referrerName')} ? 'form-group has-error':'form-group'">
+							<label>Referrer Name *</label>
+							<input th:field="*{referrerName}" type="text" class="form-control" id="referrer-name" readonly="readonly" />
+							<span th:if="${#fields.hasErrors('referrerName')}" class="help-block" th:errors="*{referrerName}">pesan error</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('referrerPhone')} ? 'form-group has-error':'form-group'">
+							<label>Referrer Mobile Number *</label>
+							<input th:field="*{referrerPhone}" type="text" class="form-control" id="referrer-phone" readonly="readonly" />
+							<span th:if="${#fields.hasErrors('referrerPhone')}" class="help-block" th:errors="*{referrerPhone}">pesan error</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('referrerEmail')} ? 'form-group has-error':'form-group'">
+							<label>Referrer email *</label>
+							<input th:field="*{referrerEmail}" type="text" class="form-control" id="referrer-email" readonly="readonly" />
+							<span th:if="${#fields.hasErrors('referrerEmail')}" class="help-block" th:errors="*{referrerEmail}">pesan error</span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('otherSource')} ? 'form-group has-error':'form-group'">
+							<label>Sumber Lain *</label>
+							<input th:field="*{otherSource}" type="text" class="form-control" id="other-source" readonly="readonly" />
+							<span th:if="${#fields.hasErrors('otherSource')}" class="help-block" th:errors="*{otherSource}">pesan error</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
+						<div th:class="${#fields.hasErrors('lastIncome')} ? 'form-group has-error':'form-group'">
+							<label>Penghasilan Terakhir (IDR)</label>
+							<input th:field="*{lastIncome}" type="text" class="form-control" id="last-income"/>
+							<span th:if="${#fields.hasErrors('lastIncome')}" class="help-block" th:errors="*{lastIncome}">pesan error</span>
+						</div>
+					</div>
+					<div class="col-md-6 xdisplay_inputx form-group has-feedback" id="tgl-lamar">
+						<div th:class="${#fields.hasErrors('applyDate')} ? 'form-group has-error':'form-group'">
+							<label>Tgl. Lamaran Kerja</label>
+							<input th:field="*{applyDate}" type="date" class="form-control datepicker" id="apply-date" />
+							<span class="fa fa-calendar-o form-control-feedback right"></span>
+							<span th:if="${#fields.hasErrors('applyDate')}" class="help-block" th:errors="*{applyDate}">pesan error</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="btn-group pull-right">
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+						<button type="submit" class="btn btn-primary">Simpan</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script>
+	// submit data from atau simpan data sumber-loker
+	$('#detail-content').on('submit', '#form-sumber-loker', function() {
+		// dapatkan url dari attribute action dari form #form-sumber-loker
+		var url = $(this).attr('action');
+		// datakan data form dengan method serialize
+		var data = $(this).serialize();
+	
+		$.ajax({
+			url:url,
+			type:'POST',
+			data : data,
+			dataType:'html',
+			success:function(data){
+				// masukan dulu result ke modal
+				//$("#form-sumber-loker").html(data);
+				// check jumlah element yang memiliki class has-error
+				var check = $("#form-sumber-loker").find(".has-error").length;
+				// jika tidak ada error
+				if(check==0){
+					//$("#form-modal").modal('hide');
+					// tampilkan data dengan memanggil method loadData
+					//loadData();
+				}
+			}
+		});
+		alert("Input Data Sukses");
+		// cegah form redirect
+		return false;
+	});
+	
+	$(document).ready(function() {
+		//Get selected vacancy source which loaded from db
+		var drop = $("#vacancy-source").children("option:selected").val();
+		//alert(drop);
+		
+		//Cek opsinya
+		//var xxx_holder =  digunakan sebagai penyimpanan sementara
+		if (drop == 'event') {
+			//Hanya nama event yg aktif
+			
+			//enabled(event-name) -> readonly selainnya
+			$("#event-name").prop("readonly", false);
+			var event_name_holder = $("#event-name").val();
+			
+			$("#career-center-name").prop("readonly", true);
+			$("#referrer-name").prop("readonly", true);
+			$("#referrer-phone").prop("readonly", true);
+			$("#referrer-email").prop("readonly", true);
+			$("#other-source").prop("readonly", true);
+
+		} else if (drop == 'career-center') {
+			//Hanya nama karir center yg aktif
+			
+			$("#event-name").prop("readonly", true);
+			
+			//enabled(career-center-name) -> readonly selainnya
+			$("#career-center-name").prop("readonly", false);
+			var career_center_name_holder = $("#career-center-name").val();
+			
+			$("#referrer-name").prop("readonly", true);
+			$("#referrer-phone").prop("readonly", true);
+			$("#referrer-email").prop("readonly", true);
+			$("#other-source").prop("readonly", true);
+
+		} else if (drop == 'referensi') {
+			//Hanya field Referrer yang aktif
+			
+			$("#event-name").prop("readonly", true);
+			$("#career-center-name").prop("readonly", true);
+			
+			//enabled(referrer-name, phone & email) -> readonly selainnya
+			$("#referrer-name").prop("readonly", false);
+			var referrer_name_holder = $("#referrer-name").val();
+			$("#referrer-phone").prop("readonly", false);
+			var referrer_phone_holder = $("#referrer-phone").val();
+			$("#referrer-email").prop("readonly", false);
+			var referrer_email_holder = $("#referrer-email").val();
+			
+			$("#other-source").prop("readonly", true);
+
+		} else if (drop == 'sumber-lain') {
+			//Hanya sumber lain yang aktif
+			
+			$("#event-name").prop("readonly", true);
+			$("#career-center-name").prop("readonly", true);
+			$("#referrer-name").prop("readonly", true);
+			$("#referrer-phone").prop("readonly", true);
+			$("#referrer-email").prop("readonly", true);
+			
+			//enabled(other-source) -> readonly selainnya
+			$("#other-source").prop("readonly", false);
+			var other_source_holder = $("#other-source").val();
+
+		} else {
+			//readonly semua input
+			$("#event-name").prop("readonly", true);
+			$("#career-center-name").prop("readonly", true);
+			$("#referrer-name").prop("readonly", true);
+			$("#referrer-phone").prop("readonly", true);
+			$("#referrer-email").prop("readonly", true);
+			$("#other-source").prop("readonly", true);
+		}
+
+		/*==================================================================*/
+		
+		//Jquery saat vacancy-source diganti
+		$("#vacancy-source").change(function() {
+
+			var drop_pilih = $(this).children("option:selected").val();
+
+			if (drop_pilih == 'event') {
+				//Hanya nama event yg aktif
+				
+				//enabled(event-name) -> readonly selainnya
+				$("#event-name").prop("readonly", false);
+				$("#event-name").val(event_name_holder);
+				
+				$("#career-center-name").prop("readonly", true);
+				$("#career-center-name").val(''); 
+				$("#referrer-name").prop("readonly", true);
+				$("#referrer-name").val(''); 
+				$("#referrer-phone").prop("readonly", true);
+				$("#referrer-phone").val(''); 
+				$("#referrer-email").prop("readonly", true);
+				$("#referrer-email").val(''); 
+				$("#other-source").prop("readonly", true);
+				$("#other-source").val('');
+
+			} else if (drop_pilih == 'career-center') {
+				//Hanya nama karir center yg aktif
+				
+				$("#event-name").prop("readonly", true);
+				$("#event-name").val('');
+				
+				//enabled(career-center-name) -> readonly selainnya
+				$("#career-center-name").prop("readonly", false);
+				$("#career-center-name").val(career_center_name_holder);
+				
+				$("#referrer-name").prop("readonly", true);
+				$("#referrer-name").val(''); 
+				$("#referrer-phone").prop("readonly", true);
+				$("#referrer-phone").val(''); 
+				$("#referrer-email").prop("readonly", true);
+				$("#referrer-email").val(''); 
+				$("#other-source").prop("readonly", true);
+				$("#other-source").val('');
+				
+			} else if (drop_pilih == 'referensi') {
+				//Hanya field Referrer yang aktif
+				
+				$("#event-name").prop("readonly", true);
+				$("#event-name").val(''); 
+				$("#career-center-name").prop("readonly", true);
+				$("#career-center-name").val('');
+				
+				//enabled(referrer-name, phone & email) -> readonly selainnya
+				$("#referrer-name").prop("readonly", false);
+				$("#referrer-name").val(referrer_name_holder); 
+				$("#referrer-phone").prop("readonly", false);
+				$("#referrer-phone").val(referrer_phone_holder); 
+				$("#referrer-email").prop("readonly", false);
+				$("#referrer-email").val(referrer_email_holder);
+				
+				$("#other-source").prop("readonly", true);
+				$("#other-source").val('');
+
+			} else if (drop_pilih == 'sumber-lain') {
+				//Hanya sumber lain yang aktif
+				
+				$("#event-name").prop("readonly", true);
+				$("#event-name").val(''); 
+				$("#career-center-name").prop("readonly", true);
+				$("#career-center-name").val(''); 
+				$("#referrer-name").prop("readonly", true);
+				$("#referrer-name").val(''); 
+				$("#referrer-phone").prop("readonly", true);
+				$("#referrer-phone").val(''); 
+				$("#referrer-email").prop("readonly", true);
+				$("#referrer-email").val('');
+				
+				//enabled(other-source) -> readonly selainnya
+				$("#other-source").prop("readonly", false);
+				$("#other-source").val(other_source_holder);
+
+			} else {
+				//readonly semua input
+				$("#event-name").prop("readonly", true);
+				$("#event-name").val(''); 
+				$("#career-center-name").prop("readonly", true);
+				$("#career-center-name").val(''); 
+				$("#referrer-name").prop("readonly", true);
+				$("#referrer-name").val(''); 
+				$("#referrer-phone").prop("readonly", true);
+				$("#referrer-phone").val(''); 
+				$("#referrer-email").prop("readonly", true);
+				$("#referrer-email").val(''); 
+				$("#other-source").prop("readonly", true);
+				$("#other-source").val('');
+			}
+		});
+	});
+</script>
+</html>

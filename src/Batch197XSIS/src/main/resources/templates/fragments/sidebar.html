@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<aside th:fragment="sidebar" class="main-sidebar">
+		<div class="span3">
+			<div class="sidebar">
+				<ul class="widget widget-menu unstyled"
+					style="background-color: white; border-style: solid; border-width: 1px;border-color:#000066;">
+					<li><a th:href="@{~/home/index}">Beranda</a></li>
+					<li><a th:href="@{~/pelamar/index}">Pelamar</a></li>
+					<li><a href="#">Proses Pelamar</a></li>
+					<li><a class="collapsed" data-toggle="collapse"
+						href="#togglePages"> <i class="fa fa-angle-down pull-right"></i>Penjadwalan
+					</a>
+						<ul id="togglePages" class="collapse unstyled">
+							<li><a href="#"></i>SubMenu 1</a></li>
+							<li><a href="#"></i>SubMenu 2</a></li>
+							<li><a href="#"></i>SubMenu 3</a></li>
+						</ul></li>
+					<li><a class="collapsed" data-toggle="collapse"
+						href="#togglePages"> <i class="fa fa-angle-down pull-right"></i>Test
+					</a>
+						<ul id="togglePages" class="collapse unstyled">
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 1</a></li>
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 2</a></li>
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 3</a></li>
+						</ul></li>
+					<li><a class="collapsed" data-toggle="collapse"
+						href="#togglePages"> <i class="fa fa-angle-down pull-right"></i>Bootcamp
+					</a>
+						<ul id="togglePages" class="collapse unstyled">
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 1</a></li>
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 2</a></li>
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 3</a></li>
+						</ul></li>
+					<li><a class="collapsed" data-toggle="collapse"
+						href="#togglePages"> <i class="fa fa-angle-down pull-right"></i>Laporan
+					</a>
+						<ul id="togglePages" class="collapse unstyled">
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 1</a></li>
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 2</a></li>
+							<li><a href="#"><i class="icon-inbox"></i>SubMenu 3</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.sidebar-->
+		</div>
+		<!--/.span3-->
+	</aside>
+	<script>
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+			$(".side-nav .collapse").on(
+					"hide.bs.collapse",
+					function() {
+						$(this).prev().find(".fa").eq(1).removeClass(
+								"fa-angle-right").addClass("fa-angle-down");
+					});
+			$('.side-nav .collapse').on(
+					"show.bs.collapse",
+					function() {
+						$(this).prev().find(".fa").eq(1).removeClass(
+								"fa-angle-down").addClass("fa-angle-right");
+					});
+		})
+	</script>
+</body>

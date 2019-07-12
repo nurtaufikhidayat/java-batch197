@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	data-layout-decorate="~{fragments/layout}">
+<head>
+    <title>Plain Page</title>
+</head>
+<body>
+<div class="right_col" role="main" data-layout-fragment="content">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Pelamar</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="form-group pull-right top_search" style="width:300px;">
+                	<form method="post" id="form-search" data-th-action="@{~/pelamar/list}">
+                    <div class="input-group">
+                        <input type="text" id="txt-search" class="form-control" placeholder="Cari Nama Pelamar...">
+	                    <div class="input-group-btn">
+		                      <button class="btn btn-default" type="button" id="btn-cari" style="margin-right:0px;">Cari</button>
+		                      <button class="btn btn-default" type="reset">Reset</button>
+	                    </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Daftar Pelamar</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                            	<a href="#"><i class="fa fa-sort-alpha-asc"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-list"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="@{~/pelamar/index}" data-size="10">10</a></li>
+                                    <li><a href="@{~/pelamar/index}" data-size="20">20</a></li>
+                                    <li><a href="@{~/pelamar/index}" data-size="30">30</a></li>
+                                    <li><a href="@{~/pelamar/index}" data-size="40">40</a></li>
+                                </ul>
+                            </li>
+                            <li><a th:href="@{~/pelamar/add}" id="btn-add"><i class="fa fa-plus"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+		                <div class="row" id="row-content">      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="main-modal" data-layout-fragment="content-modal">
+	<div class="modal-dialog modal-lg" style="width:75%;">
+		<div class="modal-content" id="main-modal-content">
+		</div>
+	</div>
+</div>
+<script data-layout-fragment="script-js">	
+	// cari
+	$('#btn-cari').click(function(){
+		
+	});
+	
+	// tambah biodata
+// 	$("#btn-add").click(function(event){
+// 		event.preventDefault();
+// 		var url = $(this).attr('href');
+// 		$.ajax({
+// 			url:url,
+// 			type:'get',
+// 			dataType:'html',
+// 			success: function(data){
+// 				$('#main-modal-content').html(data);
+// 				$('#main-modal').modal('show');
+// 			}
+// 		});
+// 	});
+	
+	$("#btn-add").click(function(event) {
+		event.preventDefault();
+ 		var url = $(this).attr('href');
+		// request halaman dengan ajax
+		$.ajax({
+			url : url, // lihat di PelamarController, cari GetMapping(value="/add")
+			type : 'get',
+			dataType : 'html',
+			success : function(data) {
+				$('#main-modal-content').html(data);
+ 				$('#main-modal').modal('show');
+			}
+		});
+	});
+	//#4 event di modal input, kemudian cari element dengan id form-pelamar
+	// event ny adalah ketika form di submit
+	$("#modal-input").on("submit", "#form-pelamar", function() {
+		// inisialisasi variable dataForm, diambil dari serialize method
+		var dataForm = $(this).serialize()
+		// inisialisasi variable urlForm diambil dari atribute action dari form
+		// sehingga untuk CREATE, UPDATE, DELETE menggunakan data ini
+		// dan tidak perlu membuat event submit berkali-kali
+		var urlForm = $(this).attr('action');
+		// submit data dengan AJAX
+		$.ajax({
+			url : urlForm, // url di isi dengan variable urlForm
+			type : 'post',
+			data : dataForm, // data di isi dengan variable dataForm
+			dataType : 'html',
+			done : function() {
+				$("#modal-input").find(".modal-dialog").html("");
+			},
+			success : function(result) {
+				// masukan dulu result ke modal
+				$("#modal-input").find(".modal-dialog").html(result)
+				// check jumlah element yang memiliki class has-error
+				var check = $("#modal-input").find(".has-error").length;
+				// jika tidak ada error
+				if (check == 0) {
+					// menyembunyikan modal dengan id modal-input
+					$("#modal-input").modal('hide');
+					// tampilkan data dengan memanggil method loadData
+					loadData();
+				}
+			},
+		});
+		// mencegah submit automatis, sehingga form akan diam tidak melakukan action
+		return false;
+	});
+	
+	// cari data
+	$('#btn-cari').on('click', function(){
+		var key = $('#txt-search').val();
+		var url = '/pelamar/list/'+ key;
+		$.ajax({
+			url:url,
+			type:'get',
+			dataType:'html',
+			success: function(data){
+				$('#row-content').html(data);
+			}
+		});
+	});
+	
+	// detail view biodata
+	$('#row-content').on('click','.btn-view', function(){
+		var key = $(this).val();
+		var url = '/pelamar/detail/'+ key;
+		$.ajax({
+			url:url,
+			type:'get',
+			dataType:'html',
+			success: function(data){
+				$('#main-modal-content').html(data);
+				$('#main-modal').modal('show');
+			}
+		});
+	});
+	
+	// send mail biodata
+	$('#row-content').on('click','.btn-send-mail', function(){
+		
+	});
+	
+	// menu disamping click
+	$('#main-modal').on('click','.biodata-menu', function(event){
+		event.preventDefault();
+		
+		var biodataId = $(this).attr('data-biodata-id');
+		var url = $(this).attr('href');
+		
+		var judul = $(this).text();
+		
+		$.ajax({
+			url:url+'/'+biodataId,
+			type:'get',
+			dataType:'html',
+			success: function(data){
+				// ganti judul
+				$('#main-modal').find('#biodata-title').html(judul);
+				$('#main-modal').find('#detail-content').html(data);				
+			}
+		});
+	});
+</script>
+</body>
+</html>

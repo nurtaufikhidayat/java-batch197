@@ -1,0 +1,90 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<form id="form-sertifikasi" th:action="@{~/sertifikasi/save}" th:object="${sertifikasi}" method="POST">
+	<div class="modal-header">
+		<button type="button" class="close btn-xs" id="btn-close-form"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Tambah Setifikasi </h4>
+		<!-- Biodata ID, dengan HIDDEN -->
+		<input type="hidden" th:field="*{biodataId}" />
+		<input type="hidden" th:field="*{id}" />
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('certificateName')} ? 'form-group has-error':'form-group'">
+					<label>Nama Setifikasi</label>
+					<input type="text" th:field="*{certificateName}" class="form-control" required/>
+					<span th:if="${#fields.hasErrors('certificateName')}" class="help-block" th:errors="*{certificateName}">pesan error</span>
+				</div>
+			</div>			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('publisher')} ? 'form-group has-error':'form-group'">
+					<label>Penerbit</label>
+					<input type="text" th:field="*{publisher}" class="form-control" required/>
+					<span th:if="${#fields.hasErrors('publisher')}" class="help-block" th:errors="*{publisher}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('validStartMonth')} ? 'form-group has-error':'form-group'">
+					<label>Berlaku Mulai</label>
+					<select th:field="*{validStartMonth}" class="form-control" id="start-month">
+						<option value="">- Pilih Bulan-</option>
+						<option th:each="item : ${listBulan}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('validStartMonth')}" class="help-block" th:errors="*{validStartMonth}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('validStartYear')} ? 'form-group has-error':'form-group'">
+					<label>&nbsp;</label>
+					<select th:field="*{validStartYear}" class="form-control" id="start-year">
+						<option value="">- Pilih Tahun-</option>
+						<option th:each="item : ${listStartYear}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('validStartYear')}" class="help-block" th:errors="*{validStartYear}">pesan error</span>
+				</div>
+			</div>		
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('untilMonth')} ? 'form-group has-error':'form-group'">
+					<label>Berlaku Sampai</label>
+					<select th:field="*{untilMonth}" class="form-control" id="until-month" disabled="disabled">
+						<option value="">- Pilih Bulan-</option>
+						<option th:each="item : ${listBulan}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('untilMonth')}" class="help-block" th:errors="*{untilMonth}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('untilYear')} ? 'form-group has-error':'form-group'">
+					<label>&nbsp;</label>
+					<select th:field="*{untilYear}" class="form-control" id="until-year" disabled="disabled">
+						<option value="">- Pilih Tahun-</option>
+						<option th:each="item : ${listValidYear}" th:text="${item}" th:value="${item}"></option>
+					</select>
+					<span th:if="${#fields.hasErrors('untilYear')}" class="help-block" th:errors="*{untilYear}">pesan error</span>
+				</div>
+			</div>	
+			
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div th:class="${#fields.hasErrors('notes')} ? 'form-group has-error':'form-group'">
+					<label>Catatan</label>
+					<textarea th:field="*{notes}" class="form-control" rows="4"> </textarea>
+					<span th:if="${#fields.hasErrors('notes')}" class="help-block" th:errors="*{notes}">pesan error</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="btn-group">
+       		<button type="button" class="btn btn-warning" id="btn-close-form">Batal</button>
+       		<button type="submit" class="btn btn-primary">Simpan</button>
+       	</div>
+     </div>
+</form>
+</html>

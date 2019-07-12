@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ 	layout:decorate="~{fragments/layout-login.html}">
+<head>
+<title>Select Role</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form th:action="@{/set-access}" method="post" id="form-access">
+			<h1>Select Your Role</h1>
+			<div>
+				<select id="roleId" name="roleId" class="form-control">
+					<option value="">= Role List =</option>
+					<option th:each="item : ${listRole}" th:value="${item.id}" th:text="${item.name}">
+				</select>
+			</div>
+			<br/>
+			<div>
+				<select id="companyId" name="companyId" class="form-control">
+					<option value="">= Company List =</option>
+					<option th:each="item : ${listCompany}" th:value="${item.id}" th:text="${item.name}">
+				</select>
+			</div>
+			<br/>
+			<div>
+				<button type="submit" class="btn btn-default submit">Go!</button>
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="separator">
+				<!--p class="change_link">
+					<a class="to_register" th:href="@{~/forgot-password}">Lost your password?</a>
+				</p>
+				<div class="clearfix"></div>
+				<br /-->
+			</div>
+		</form>
+	</div>
+</body>

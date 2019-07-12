@@ -60,7 +60,7 @@ public class XBiodataModel {
 	private String fullname;
 	
 	@NotEmpty(message="Tidak boleh kosong")
-	@Column(name="nickname", length=100, nullable=false)
+	@Column(name="nick_name", length=100, nullable=false)
 	private String nickname;
 	
 	@NotEmpty(message="Tidak boleh kosong")
@@ -93,8 +93,8 @@ public class XBiodataModel {
 	private String nationality;
 	
 	@NotEmpty(message="Tidak boleh kosong")
-	@Column(name="ethic", length=50, nullable=true)
-	private String ethic;
+	@Column(name="ethnic", length=50, nullable=true)
+	private String ethnic;
 	
 	@Column(name="hobby", length=225, nullable=true)
 	private String hobby;
@@ -170,7 +170,7 @@ public class XBiodataModel {
 		this.high = form.getHigh();
 		this.weight = form.getWeight();
 		this.nationality = form.getNationality();
-		this.ethic = form.getEthic();
+		this.ethnic = form.getEthnic();
 		this.hobby = form.getHobby();
 		this.identityTypeId = form.getIdentityTypeId();
 		this.identityNo = form.getIdentityNo();
@@ -330,11 +330,11 @@ public class XBiodataModel {
 	}
 
 	public String getEthic() {
-		return ethic;
+		return ethnic;
 	}
 
 	public void setEthic(String ethic) {
-		this.ethic = ethic;
+		this.ethnic = ethic;
 	}
 
 	public String getHobby() {

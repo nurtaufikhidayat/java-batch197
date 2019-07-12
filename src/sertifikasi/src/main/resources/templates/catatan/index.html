@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Catatan</h2>
+		<ul class="nav navbar-right panel_toolbox">
+			<!-- button ADD catatan -->
+			<li><a th:href="@{~/catatan/add/}" id="btn-add-catatan"
+				th:attr="data-biodata-id=${biodata.id}"><i class="fa fa-plus"></i></a></li>
+		</ul>
+		<div class="clearfix"></div>
+	</div>
+	<div class="x_content" id="catatan-content">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>JUDUL CATATAN</th>
+					<th>JENIS CATATAN</th>
+					<th>DIBUAT OLEH</th>
+					<th>#</th>
+				</tr>
+			</thead>
+			<tbody id="list-catatan">
+				<tr th:each="item : ${listCatatan}">
+					<td th:text="${item.biodataId}"></td>
+					<td th:text="${item.title}"></td>
+					<td th:text="${item.noteTypeId}"></td>
+
+					<td>
+						<div class="btn-group">
+							<button data-toggle="dropdown"
+								class="btn btn-primary dropdown-toggle btn-sm" type="button"
+								aria-expanded="false">
+								More <span class="caret"></span>
+							</button>
+							<ul role="menu" class="dropdown-menu">
+								<li><a th:href="@{/catatan/ubah/{sid}(sid=${item.id})}"
+									class="btn-ubah">Ubah</a></li>
+								<li><a th:href="@{/catatan/hapus/{sid}(sid=${item.id})}"
+									id="btn-hapus">Hapus</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12" id="list-catatan"></div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="form-modal">
+	<div class="modal-dialog" style="width: 75%;">
+		<div class="modal-content" id="form-modal-content"></div>
+	</div>
+</div>
+
+<div class="modal fade" id="hapus-modal">
+	<div class="modal-dialog modal-sm modal-danger">
+		<div class="modal-content" id="hapus-modal-content"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	// saat button add di click
+	$("#btn-add-catatan").click(function(event) {
+		// cegah link redirect
+		event.preventDefault();
+		// mengambil nilai dari attribute btn-add-sertifikasi
+		// lihat sintaks ini th:attr="data-biodata-id=${biodata.id}"
+		var biodataId = $(this).attr('data-biodata-id');
+
+		// ambil nilai attribute href
+		// lihat th:href="@{~/sertifikasi/add/}"
+		var url = $(this).attr('href') + biodataId;
+		// buat ajax untuk create
+		// lihat sertifikasi controller @GetMapping(value="/catatan/add/{bid}")
+		$.ajax({
+			url : url,
+			type : 'GET',
+			dataType : 'html',
+			success : function(data) {
+				$("#form-modal-content").html(data);
+				$("#form-modal").modal('show');
+			}
+		});
+
+	});
+</script>
+
+</html>

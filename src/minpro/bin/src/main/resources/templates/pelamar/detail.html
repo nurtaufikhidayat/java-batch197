@@ -1,0 +1,18 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="modal-header">
+	<button type="button" class="close btn-xs" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title" id="biodata-title">Detail Pelamar</h4>
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="col-md-2">
+			<div class="btn-group-vertical">
+				<button th:each="item : ${biodataMenuList}" class="btn btn-default biodata-menu" th:href="@{~/{url}(url=${item.menuUrl})}" th:text="${item.title}" th:attr="data-biodata-id=${pelamar.id}"></button>
+			</div>
+		</div>
+		<div class="col-md-10" id="detail-content">
+		
+		</div>
+	</div>
+</div>
+</html>

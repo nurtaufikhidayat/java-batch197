@@ -1,0 +1,61 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="col-md-12 col-sm-12 col-xs-12 profile_details"
+	th:each="biodata : ${list.content}"
+	style="border: 1px solid #e3e3e3; background-color: #b0d6f359;">
+	<div class="col-md-10 col-sm-10 col-xs-10"
+		style="padding: 10px 10px 10px">
+		<h2 class="brief" style="font-weight: bold; color: #000066;">
+			<i th:text="${biodata.fullname}">Nama Lengkap</i>
+		</h2>
+		<div class="left col-xs-12">
+			<ul class="list-unstyled">
+				<li><strong>Nama Panggilan &nbsp;: </strong> <span
+					th:text="${biodata.nickname}"
+					style="font-weight: bold; color: #000066;"></span></li>
+				<li><strong>Email
+						&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;: </strong> <span
+					th:text="${biodata.email}"
+					style="font-weight: bold; color: #000066;"></span></li>
+				<li><strong>Phone &emsp;&emsp;&emsp;&emsp;&emsp;:</strong> <span
+					th:text="${biodata.phoneNumber1}"
+					style="font-weight: bold; color: #000066;"></span></li>
+				<li th:each="item2:${listPend}"
+					th:if="*{biodata.id == item2.id}">
+					<strong>Pendidkan &emsp;&emsp;&emsp;:</strong>
+						<span th:text="${item2.major}" style="font-weight: bold; color: #000066;"></span>
+						<span style="font-weight: bold; color: #000066;"> , </span>
+						<span th:text="${item2.schoolName}" style="font-weight: bold; color: #000066;"></span>
+				</li>
+			</ul>
+
+
+		</div>
+	</div>
+	<div class="col-md-2 col-sm-2 col-xs-2" style="padding-top: 5%">
+		<button type="button" class="btn btn-primary btn-xs btn-view"
+			th:value="${biodata.id}">
+			<i class="fa fa-search"> </i>
+		</button>
+		<button type="button" class="btn btn-success btn-xs btn-send-mail"
+			th:value="${biodata.id}">
+			<i class="fa fa-envelope"> </i>
+		</button>
+	</div>
+</div>
+<!-- Pagination/Halaman -->
+<ul class="pagination pagination-right pull-right"
+	style="margin-top: 40px;">
+	<li th:if="${list.hasPrevious()}">
+		<button type="button" class="btn btn-paging"
+			th:href="@{~/pelamar/search(page=${list.number-1},size=${list.size})}">
+			Previous</button>
+	</li>
+	<li th:if="${list.hasNext()}">
+		<button type="button" class="btn btn-paging"
+			th:href="@{~/pelamar/search(page=${list.number+1},size=${list.size})}">
+			Next</button>
+	</li>
+</ul>
+<!-- End Pagination -->
+
+</html>

@@ -1,0 +1,145 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<form id="form-sertifikasi" th:action="@{~/sertifikasi/edit}" th:object="${sertifikasi}" method="POST">
+	<div class="modal-header">
+		<button type="button" class="close btn-xs" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Ubah Setifikasi </h4>
+		
+		<!-- Biodata ID, dengan HIDDEN -->
+		<input type="hidden" th:field="*{biodataId}" />
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('certificateName')} ? 'form-group has-error':'form-group'">
+					<label>Nama Setifikasi</label>
+					<input type="text" th:field="*{certificateName}" class="form-control" required/>
+					<span th:if="${#fields.hasErrors('certificateName')}" class="help-block" th:errors="*{certificateName}">pesan error</span>
+				</div>
+			</div>			
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div th:class="${#fields.hasErrors('publisher')} ? 'form-group has-error':'form-group'">
+					<label>Penerbit</label>
+					<input type="text" th:field="*{publisher}" class="form-control" required/>
+					<span th:if="${#fields.hasErrors('publisher')}" class="help-block" th:errors="*{publisher}">pesan error</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-3 col-xs-12 form-group">
+				<div th:class="${#fields.hasErrors('validStartMonth')} ? 'form-group has-error':'form-group'">
+					<label>Berlaku Mulai</label>
+					<select th:field="*{validStartMonth}" class="form-control" id="validStartMonth">
+						<option value="">- Pilih Bulan-</option>
+						<option th:each="i:${#numbers.sequence(1,12)}" th:value="${i}" th:text="${i}" />
+						
+					</select>
+					<span th:if="${#fields.hasErrors('validStartMonth')}" class="help-block" th:errors="*{validStartMonth}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div th:class="${#fields.hasErrors('validStartYear')} ? 'form-group has-error':'form-group'">
+					<label>&nbsp;</label>
+					<select th:field="*{validStartYear}" class="form-control" id="validStartYear">
+					</select>
+					<span th:if="${#fields.hasErrors('validStartYear')}" class="help-block" th:errors="*{validStartYear}">pesan error</span>
+				</div>
+			</div>		
+			<div class="col-md-3 col-sm-3 col-xs-12 form-group">
+				<div th:class="${#fields.hasErrors('untilMonth')} ? 'form-group has-error':'form-group'">
+					<label>Berlaku Sampai</label>
+					<select th:field="*{untilMonth}" class="form-control" id="untilMonth">
+						<option value="">- Pilih Bulan-</option>
+						<option th:each="i:${#numbers.sequence(1,12)}" th:value="${i}" th:text="${i}" />
+					</select>
+					<span th:if="${#fields.hasErrors('untilMonth')}" class="help-block" th:errors="*{untilMonth}">pesan error</span>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-3 col-xs-12 form-group">
+				<div th:class="${#fields.hasErrors('untilYear')} ? 'form-group has-error':'form-group'">
+					<label>&nbsp;</label>
+					<select th:field="*{untilYear}" class="form-control" id="untilYear">
+						<option value="">- Pilih Tahun-</option>
+						
+					</select>
+					<span th:if="${#fields.hasErrors('untilYear')}" class="help-block" th:errors="*{untilYear}">pesan error</span>
+				</div>
+			</div>	
+			
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div th:class="${#fields.hasErrors('notes')} ? 'form-group has-error':'form-group'">
+					<label>Catatan</label>
+					<textarea th:field="*{notes}" class="form-control" rows="4"> </textarea>
+					<span th:if="${#fields.hasErrors('notes')}" class="help-block" th:errors="*{notes}">pesan error</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="btn-group">
+       		<button type="button" class="btn btn-warning" id="btn-close-form">Batal</button>
+       		<button type="submit" class="btn btn-primary">Simpan</button>
+       	</div>
+     </div>
+</form>
+<script type="text/javascript">
+
+$.
+//validasi disable
+	$("#validStartMonth").change(function() {
+		if ($("#validStartMonth").val() != "" || null) {
+			$("#untilMonth").prop("disabled", false);
+		} else
+			$("#untilMonth").prop("disabled", true);
+	});
+	
+	
+	$("#validStartYear").change(function() {
+		if ($("#validStartYear").val() != "" || null) {
+			$("#untilYear").prop("disabled", false);
+		} else
+			$("#untilYear").prop("disabled", true);
+	});
+	
+
+	//Select tahun kebawah
+	var max1 = new Date().getFullYear();
+	min1 = max1 - 20, select1 = document.getElementById('validStartYear');
+
+	var opt1 = document.createElement('option');
+	opt1.value = "";
+	opt1.innerHTML = "- Pilih Tahun -";
+	select1.appendChild(opt1);
+	for (var i = max1; i >= min1; i--) {
+		var opt1 = document.createElement('option');
+		opt1.value = i;
+		opt1.innerHTML = i;
+		select1.appendChild(opt1);
+	}
+	
+
+	//Select tahun keatas
+	var min2 = new Date().getFullYear();
+	max2 = min2 + 20, select2 = document.getElementById('untilYear');
+
+	var opt2 = document.createElement('option');
+	opt2.value = "";
+	opt2.innerHTML = "- Pilih Tahun -";
+	select2.appendChild(opt2);
+	for (var j = min2; j <= max2+2; j++) {
+		var opt2 = document.createElement('option');
+		opt2.value = j;
+		opt2.innerHTML = j;
+		select2.appendChild(opt2);
+	}
+	//select2.value = new Date().getFullYear();
+	
+		
+		
+</script>
+
+</html>

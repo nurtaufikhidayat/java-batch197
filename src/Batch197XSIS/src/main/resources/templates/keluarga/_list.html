@@ -1,0 +1,26 @@
+<tr th:each="item :${listKeluarga}">
+	<td th:text="${item.familyRelation.name}"></td>
+	<td th:text="${item.name}"></td>
+	<td>
+		<span th:if="${item.gender == true}">Perempuan</span>
+		<span th:if="${item.gender == false}">Laki-laki</span>
+	</td>
+	<td th:text="${item.dob}"></td>
+	<td th:text="${item.educationLevel.name}"></td>
+	<td th:text="${item.job}"></td>
+	<td class="col-md-1">
+		<div class="btn-group">
+			<button data-toggle="dropdown"
+				class="btn btn-primary dropdown-toggle btn-sm" type="button"
+				aria-expanded="false">
+				More <span class="caret"></span>
+			</button>
+			<ul role="menu" class="dropdown-menu">
+				<li><a th:href="@{/keluarga/ubah/{kid}(kid=${item.id})}"
+					class="btn-ubah">Ubah</a></li>
+				<li><a th:href="@{/keluarga/hapus/{kid}(kid=${item.id})}"
+					class="btn-hapus">Hapus</a></li>
+			</ul>
+		</div>
+	</td>
+</tr>

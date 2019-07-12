@@ -1,0 +1,36 @@
+<div class="media user">
+	<table
+		style="border-top-style: double; border-bottom-style: double; border-color: #fff;"
+		class="table" th:each="item :${list.content}">
+		<tr>
+			<td colspan="2"><h4 th:text="${item.fullname}"></h4></td>
+		</tr>
+		<tr>
+			<td style="width: 20%;">Nama Panggilan</td>
+			<td th:text="${item.nickname}"
+				style="font-weight: bold; color: #000066;"></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td th:text="${item.email}"
+				style="font-weight: bold; color: #000066;"></td>
+		</tr>
+		<tr>
+			<td>No. Handphone</td>
+			<td th:text="${item.phoneNumber1}"
+				style="font-weight: bold; color: #000066;"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="btn-group pull-right">
+					<button class="btn btn-sm btn-view" th:value="${item.id}">
+						<i class="fa fa-search" style="color: #000066;"></i>
+					</button>
+					<button class="btn btn-sm" th:value="${item.id}">
+						<i class="fa fa-envelope" style="color: #000066;"></i>
+					</button>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="x_panel">
+	<div class="x_title">
+		<h2>Sumber Lowongan Kerja</h2>
+		<div class="clearfix"></div>
+	</div>
+	<div class="x_content" id="sumber-low-kerja-content">
+
+		<form class="" th:action="@{~/sumber-low-kerja/save}"
+			th:object="${sumberLoker}" method="post" id="form-sumber-loker">
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
+						<label>Sumber</label> <select id="sumber-loker" class="form-control">
+							<option value="">- Pilih -</option>
+							<option value="event">Event</option>
+							<option value="career-center">Career Center</option>
+							<option value="referensi">Referensi</option>
+							<option value="sumber-lain">Sumber Lain</option>
+						</select>
+					</div>
+
+					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
+						<label>Tipe Pelamar</label> <select id="tipe-pelamar" class="form-control">
+							<option value="">- Pilih -</option>
+							<option value="pro">Profesional</option>
+							<option value="newb">Lulusan Baru</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<label>Nama Event *</label>
+						<input type="text" class="form-control" id="event-name" disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<label>Nama Karir Center *</label>
+						<input type="text" class="form-control" id="nama-career-center" disabled />
+						<input type="text" class="form-control" id="nama-career-center2" disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<label>Referrer Name *</label>
+						<input type="text" class="form-control" id="ref-name" disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<label>Referrer Mobile Number *</label>
+						<input type="text" class="form-control"	id="ref-mobile-num" disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<label>Referrer email *</label> <input type="text"
+							class="form-control" id="ref-email"
+							disabled />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-sm-6 col-xs-12 form-group">
+						<label>Sumber Lain *</label> <input type="text" class="form-control" id="input-sumber-lain" disabled />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-12 form-group">
+						<label>Penghasilan Terakhir (IDR)</label> <input type="text" class="form-control" />
+					</div>
+					<div class="col-md-6 xdisplay_inputx form-group has-feedback"
+						id="tgl-lamar">
+						<label>Tgl. Lamaran Kerja</label> 
+						<input type="date" class="form-control datepicker" /> 
+						<span class="fa fa-calendar-o form-control-feedback right"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="btn-group pull-right">
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+						<button type="submit" class="btn btn-primary">Simpan</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+
+		//#nama-career-center2 dibuat hanya untuk mengisi kekosongan 
+		//tidak akan pernah memasukan input karena statusnya selalu disabled
+		$("#nama-career-center2").hide();
+
+		$("#sumber-loker").change(function() {
+
+			var drop_pilih = $(this).children("option:selected").val();
+
+			if (drop_pilih == 'event') {
+				//Hanya nama event yg aktif
+				$("#event-name").prop("disabled", false);
+				$("#nama-career-center").prop("disabled", true);
+				$("#nama-career-center").hide();
+				$("#nama-career-center2").show();
+				$("#ref-name").prop("disabled", true);
+				$("#ref-mobile-num").prop("disabled", true);
+				$("#ref-email").prop("disabled", true);
+				$("#input-sumber-lain").prop("disabled", true);
+			} else if (drop_pilih == 'career-center') {
+				//Hanya nama karir center yg aktif
+				$("#event-name").prop("disabled", true);
+				$("#nama-career-center").prop("disabled", false);
+				$("#nama-career-center").show();
+				$("#nama-career-center2").hide();
+				$("#ref-name").prop("disabled", true);
+				$("#ref-mobile-num").prop("disabled", true);
+				$("#ref-email").prop("disabled", true);
+				$("#input-sumber-lain").prop("disabled", true);
+
+			} else if (drop_pilih == 'referensi') {
+				//Hanya field Referrer yang aktif
+				$("#event-name").prop("disabled", true);
+				$("#nama-career-center").prop("disabled", true);
+				$("#nama-career-center").hide();
+				$("#nama-career-center2").show();
+				$("#ref-name").prop("disabled", false);
+				$("#ref-mobile-num").prop("disabled", false);
+				$("#ref-email").prop("disabled", false);
+				$("#input-sumber-lain").prop("disabled", true);
+
+			} else if (drop_pilih == 'sumber-lain') {
+				//Hanya sumber lain yang aktif
+				$("#event-name").prop("disabled", true);
+				$("#nama-career-center").prop("disabled", true);
+				$("#nama-career-center").hide();
+				$("#nama-career-center2").show();
+				$("#ref-name").prop("disabled", true);
+				$("#ref-mobile-num").prop("disabled", true);
+				$("#ref-email").prop("disabled", true);
+				$("#input-sumber-lain").prop("disabled", false);
+			} else {
+				$("#event-name").prop("disabled", true);
+				$("#nama-career-center").prop("disabled", true);
+				$("#nama-career-center").hide();
+				$("#nama-career-center2").show();
+				$("#ref-name").prop("disabled", true);
+				$("#ref-mobile-num").prop("disabled", true);
+				$("#ref-email").prop("disabled", true);
+				$("#input-sumber-lain").prop("disabled", true);
+			}
+		});
+	});
+</script>
+</html>

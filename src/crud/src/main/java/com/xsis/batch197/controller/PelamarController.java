@@ -55,24 +55,26 @@ public class PelamarController {
 		// buat object view
 		ModelAndView view = new ModelAndView("pelamar/create");
 		// membuat object pelamar yg akan dikirim ke view
-		// object pelamar adalah new object dari PelamarModel
+		// object pelamar adalah new object dari FormBiodataModel
 		FormBiodataModel pelamar = new FormBiodataModel();
-		// isi kdProvinsi dengan method getKode()
+		// lemparkan data FormBiodataModel ke view, datanya pelamar
 		view.addObject("biodata", pelamar);
 		return view;
 	}
 	
 	private boolean  saveValidation(FormBiodataModel pelamar, BindingResult result) {
 		boolean isValid = true;
+		//cek isi data repoBiodata
 		Long countEmail = repoBiodata.count(new Specification<XBiodataModel>()  {
 			
 			@Override
 			public Predicate toPredicate(Root<XBiodataModel> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 				// TODO Auto-generated method stub
+				// membandingkan email yang ada di field email dengan email yang baru dimasukan
 				return criteriaBuilder.equal(root.get("email"), pelamar.getEmail());
 			}
 		});
-		
+		// jika email sudah ada atau lebih dari 0
 		if(countEmail.intValue() > 0) {
 			result.rejectValue("email", "email.duplicate", "Email is duplicate");
 			isValid = false;
@@ -83,10 +85,11 @@ public class PelamarController {
 			@Override
 			public Predicate toPredicate(Root<XBiodataModel> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 				// TODO Auto-generated method stub
+				// membandingan nomor identitas yang ada di field identy\ityNo dengan identitas yang baru di masukan/input
 				return criteriaBuilder.equal(root.get("identityNo"), pelamar.getIdentityNo());
 			}
 		});
-		
+		// jika nik sudah ada atau lebih dari 0
 		if(countNik.intValue() > 0) {
 			result.rejectValue("identityNo", "identityNo.duplicate", "identityNo is duplicate");
 			isValid=false;
@@ -97,6 +100,7 @@ public class PelamarController {
 			@Override
 			public Predicate toPredicate(Root<XBiodataModel> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
 				// TODO Auto-generated method stub
+				// membandingkan parentPhoneNumber yang diinput dengan parentPhoneNumber, phoneNumber, phoneNumber2 yang ada di field
 				return criteriaBuilder.or(
 						criteriaBuilder.equal(root.get("parentPhoneNumber"), pelamar.getParentPhoneNumber()),
 						criteriaBuilder.equal(root.get("phoneNumber1"), pelamar.getParentPhoneNumber()),
@@ -104,17 +108,16 @@ public class PelamarController {
 						criteriaBuilder.equal(root.get("phoneNumber2"), pelamar.getParentPhoneNumber())
 						
 						
-								);
+				);
 			}
 		});
-		
+		// jika no hp sudah ada atau lebih dari 0
 		if(countParentPhone.intValue() > 0) {
 			result.rejectValue("parentPhoneNumber", "countPhone.duplicate", "Parent Phone is duplicate");
 			isValid=false;
 		}
 		
-		
-Long countPhone1 = repoBiodata.count(new Specification<XBiodataModel>()  {
+		Long countPhone1 = repoBiodata.count(new Specification<XBiodataModel>()  {
 			
 			@Override
 			public Predicate toPredicate(Root<XBiodataModel> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -126,7 +129,7 @@ Long countPhone1 = repoBiodata.count(new Specification<XBiodataModel>()  {
 						criteriaBuilder.equal(root.get("phoneNumber2"), pelamar.getPhoneNumber1())
 						
 						
-								);
+				);
 			}
 		});
 		
@@ -135,7 +138,7 @@ Long countPhone1 = repoBiodata.count(new Specification<XBiodataModel>()  {
 			isValid=false;
 		}
 		
-Long countPhone2 = repoBiodata.count(new Specification<XBiodataModel>()  {
+		Long countPhone2 = repoBiodata.count(new Specification<XBiodataModel>()  {
 			
 			@Override
 			public Predicate toPredicate(Root<XBiodataModel> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -147,7 +150,7 @@ Long countPhone2 = repoBiodata.count(new Specification<XBiodataModel>()  {
 						criteriaBuilder.equal(root.get("phoneNumber2"), pelamar.getPhoneNumber2())
 						
 						
-								);
+				);
 			}
 		});
 		
@@ -166,9 +169,6 @@ Long countPhone2 = repoBiodata.count(new Specification<XBiodataModel>()  {
 			logger.info("save pelamar error");
 		} else {
 			
-			
-			
-			
 			if(saveValidation(pelamar, result)) {
 				XBiodataModel biodata = new XBiodataModel(pelamar);
 				Long dummyIdUser = new Long(1);
@@ -178,7 +178,6 @@ Long countPhone2 = repoBiodata.count(new Specification<XBiodataModel>()  {
 				biodata.setIsDelete(false);
 				biodata.setIdentityTypeId(new Long(1));
 				biodata.setCompanyId("");
-
 				repoBiodata.save(biodata);
 				
 				XAddressModel address = new XAddressModel(pelamar);
@@ -187,10 +186,7 @@ Long countPhone2 = repoBiodata.count(new Specification<XBiodataModel>()  {
 				address.setIsDelete(false);
 				address.setBiodataId(biodata.getId());
 				repoAddress.save(address);
-			}
-			
-			
-			
+			}	
 		}
 
 		ModelAndView view = new ModelAndView("pelamar/create");
